@@ -53,7 +53,7 @@ max_extrude_only_velocity: 120
 
 [tmc2209 extruder]
 uart_pin: T0:PA15
-interpolate: false
+interpolate: true
 run_current: 0.85 #**
 hold_current: 0.100
 sense_resistor: 0.11 #**

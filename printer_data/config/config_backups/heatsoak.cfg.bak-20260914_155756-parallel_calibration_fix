@@ -368,14 +368,8 @@ gcode:
     {% if st.state and (st.state|string) != "{}" and st.heatsoak_active %}
         {% set bed = st.state.get("bed", 60)|float %}
 
-        # Start bed AND nozzle heating together, both non-blocking -- calibration only
-        # needs the nozzle, not the bed, so these must not be sequenced (see
-        # PRINTER_HEATSOAK_PARK / the HEATUP TICK BRANCH below for why bed and
-        # nozzle-readiness are now checked independently instead of bed-then-nozzle).
+        # Start bed heating (don't block yet)
         M140 S{bed}
-        {% if cfg.soak_nozzle_temp|float > 0 %}
-            M104 S{cfg.soak_nozzle_temp|int}
-        {% endif %}
 
         {% set soak_timeout = (cfg.soak_max_seconds|float + 600)|int %}
         SET_IDLE_TIMEOUT TIMEOUT={soak_timeout}
@@ -611,7 +605,7 @@ gcode:
             {% if cfg.soak_nozzle_temp|float > 0 %}
                 { ui("text Nozzle: " ~ (printer.extruder.temperature|round(1)) ~ "C / " ~ (cfg.soak_nozzle_temp|int) ~ "C") }
             {% endif %}
-            { ui("text Soak remaining: " ~ format_time(soak_left|int) ~ " (counting during heat-up)") }
+            { ui("text Soak: " ~ format_time(soak_left|int) ~ " once heated") }
         {% else %}
             { ui("text Soak remaining: " ~ format_time(soak_left|int)) }
             { ui("text Bed target: " ~ (state.get("bed", 0)|int)|string ~ "C") }
@@ -646,21 +640,6 @@ gcode:
             SET_FAN_SPEED FAN={fan_entry[0]} SPEED=0
         {% endfor %}
         M107
-    {%- endmacro -%}
-
-    # Soak time is tracked as an ABSOLUTE deadline (state.soak_deadline, in
-    # toolhead.estimated_print_time seconds -- a real wall-clock-derived reading that
-    # keeps advancing through PAUSE/heating/calibration, unlike print_stats.total_duration
-    # which freezes while paused) rather than a decrementing counter. This is what makes
-    # heat-up and tool calibration count AGAINST the soak instead of stacking after it --
-    # the deadline is fixed once at INIT and everything else just asks "how much of that
-    # is left right now", so it doesn't matter whether the toolhead spent that time
-    # sitting idle or off doing PRINTER_HEATSOAK_PARK. If heat-up + calibration alone take
-    # longer than the whole soak budget, remaining() naturally reads 0 and the HEATUP TICK
-    # BRANCH resumes immediately once both are actually done -- no separate countdown wait
-    # tacked on afterward.
-    {%- macro remaining() -%}
-        { [state.get("soak_deadline", 0)|float - printer.toolhead.estimated_print_time|float, 0.0]|max }
     {%- endmacro -%}
 
     # 2026-08-27 (beta), rewritten after a live test caught a real bug:
@@ -721,10 +700,9 @@ gcode:
     {% if IS_ADJUST %}
         {% if state and (state|string) != "{}" and active %}
             {% set delta   = params.ADJUST|float * 60.0 %}
-            {% set now     = printer.toolhead.estimated_print_time|float %}
-            {% set newleft = [[remaining()|float + delta, 0]|max,
+            {% set newleft = [[state.get("soak_left", 0)|float + delta, 0]|max,
                                cfg.soak_max_seconds|float]|min %}
-            {% set _ = state.update({"soak_deadline": now + newleft}) %}
+            {% set _ = state.update({"soak_left": newleft}) %}
             SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
             { show_ui(newleft|int) }
             {% if not state.get("heating", false) %}
@@ -793,34 +771,19 @@ gcode:
             {% set noz_needed = noz_target > 0 %}
             {% set noz_ready  = (not noz_needed) or (printer.extruder.temperature >= (noz_target - 2.0)) %}
 
-            # Bed and nozzle are checked independently, not bed-then-nozzle -- both
-            # heat commands already fired together back in _HEATSOAK_PREP. Tool
-            # calibration (PRINTER_HEATSOAK_PARK) only needs the nozzle, not the bed,
-            # so it runs as soon as the nozzle is ready regardless of bed state, in
-            # parallel with whatever the bed is still doing. Runs exactly once per
-            # soak, guarded by state.calibrated.
-            {% if noz_ready and not state.get("calibrated", false) %}
+            {% if not bed_ready %}
+                { show_ui(state.get("soak_left", 0)|int) }
+                UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION={cfg.heatup_tick_interval}
+            {% elif not noz_ready %}
+                M104 S{noz_target}
+                { show_ui(state.get("soak_left", 0)|int) }
+                UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION={cfg.heatup_tick_interval}
+            {% else %}
                 PRINTER_HEATSOAK_PARK
-                {% set _ = state.update({"calibrated": true}) %}
-            {% endif %}
-            {% set calibrated = state.get("calibrated", false) %}
-            SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
-
-            {% set soak_left = remaining()|float %}
-
-            {% if bed_ready and calibrated and soak_left <= 0 %}
-                # Heat-up + calibration alone already ate the whole soak budget --
-                # resume immediately instead of tacking a countdown on afterward.
-                RESPOND TYPE=echo MSG="Heatsoak: bed+calibration done and soak deadline already passed during heat-up -- resuming now."
-                { resume_and_start() }
-            {% elif bed_ready and calibrated %}
-                RESPOND TYPE=echo MSG="Heatsoak: bed at {bed_target}C, calibration done. Countdown running."
+                RESPOND TYPE=echo MSG="Heatsoak: bed at {bed_target}C, parked. Countdown running."
                 {% set _ = state.update({"heating": false}) %}
                 SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
                 UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=5
-            {% else %}
-                { show_ui(soak_left|int) }
-                UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION={cfg.heatup_tick_interval}
             {% endif %}
         {% endif %}
 
@@ -847,10 +810,10 @@ gcode:
                 {% set ctemp_str = get_chamber_temp(chamber_sensor) %}
                 {action_respond_info("Heatsoak: waiting for chamber -- %sC / %sC target" % (
                     (ctemp_str|float)|round(1)|string, chamber_target|int|string))}
-                { show_ui(remaining()|float|int) }
+                { show_ui(state.get("soak_left", 0)|int) }
                 UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=30
             {% else %}
-                {% set soak_left = remaining()|float %}
+                {% set soak_left = state.get("soak_left", 0)|float %}
 
                 {% if soak_left <= 0 %}
                     { resume_and_start() }
@@ -865,7 +828,10 @@ gcode:
                         {% set interval = 5 %}
                     {% endif %}
 
-                    { show_ui(soak_left|int) }
+                    {% set newleft = [soak_left - interval, 0]|max %}
+                    {% set _ = state.update({"soak_left": newleft}) %}
+                    SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
+                    { show_ui(newleft|int) }
                     UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION={interval}
                 {% endif %}
             {% endif %}
@@ -935,9 +901,8 @@ gcode:
             {% set _ = state.update({
                 "bed":            bed|float,
                 "noz":            noz|float,
-                "soak_deadline":  printer.toolhead.estimated_print_time|float + soak_sec|float,
+                "soak_left":      soak_sec|float,
                 "heating":        true,
-                "calibrated":     false,
                 "chamber_target": chamber|float,
                 "print_dur_sec":  dur_sec|int,
                 "layer":          params.LAYER|default("")|string,
