@@ -611,7 +611,7 @@ gcode:
             {% if cfg.soak_nozzle_temp|float > 0 %}
                 { ui("text Nozzle: " ~ (printer.extruder.temperature|round(1)) ~ "C / " ~ (cfg.soak_nozzle_temp|int) ~ "C") }
             {% endif %}
-            { ui("text Soak: " ~ format_time(soak_left|int) ~ " once heated" ~ (" (calibration done)" if state.get("calibrated", false) else " (calibrating tools now)")) }
+            { ui("text Soak remaining: " ~ format_time(soak_left|int) ~ " (counting during heat-up)") }
         {% else %}
             { ui("text Soak remaining: " ~ format_time(soak_left|int)) }
             { ui("text Bed target: " ~ (state.get("bed", 0)|int)|string ~ "C") }
@@ -648,20 +648,17 @@ gcode:
         M107
     {%- endmacro -%}
 
-    # Soak time itself is tracked as an ABSOLUTE deadline (state.soak_deadline, in
-    # toolhead.estimated_print_time seconds -- a real wall-clock-derived reading that keeps
-    # advancing through PAUSE/heating/calibration, unlike print_stats.total_duration which
-    # freezes while paused) rather than a decrementing counter -- but the deadline is only
-    # SET once the bed actually reaches target temp AND calibration has finished (see the
-    # HEATUP TICK BRANCH below), not at INIT. Soaking is specifically about holding the
-    # frame/gantry hot once the bed is at temperature, so the soak duration itself (state
-    # .soak_total, the raw seconds decided at INIT) always runs in full starting from that
-    # point -- heat-up time is never subtracted from it. Tool calibration is the one thing
-    # that runs in parallel with heat-up instead of stacking after it (guarded by
-    # state.calibrated in the HEATUP TICK BRANCH) -- it just needs to finish by the time the
-    # bed does, which it always will in practice, rather than starting only once bed_ready.
-    # remaining() is only meaningful once soak_deadline exists (i.e. after that transition);
-    # before that, callers show state.soak_total directly (a fixed value, not counting down).
+    # Soak time is tracked as an ABSOLUTE deadline (state.soak_deadline, in
+    # toolhead.estimated_print_time seconds -- a real wall-clock-derived reading that
+    # keeps advancing through PAUSE/heating/calibration, unlike print_stats.total_duration
+    # which freezes while paused) rather than a decrementing counter. This is what makes
+    # heat-up and tool calibration count AGAINST the soak instead of stacking after it --
+    # the deadline is fixed once at INIT and everything else just asks "how much of that
+    # is left right now", so it doesn't matter whether the toolhead spent that time
+    # sitting idle or off doing PRINTER_HEATSOAK_PARK. If heat-up + calibration alone take
+    # longer than the whole soak budget, remaining() naturally reads 0 and the HEATUP TICK
+    # BRANCH resumes immediately once both are actually done -- no separate countdown wait
+    # tacked on afterward.
     {%- macro remaining() -%}
         { [state.get("soak_deadline", 0)|float - printer.toolhead.estimated_print_time|float, 0.0]|max }
     {%- endmacro -%}
@@ -808,22 +805,20 @@ gcode:
             {% set calibrated = state.get("calibrated", false) %}
             SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
 
-            # The soak clock itself still only starts once the bed is actually AT
-            # temperature -- soaking is specifically about holding the frame/gantry hot
-            # once the bed has reached target, not from the moment heat-up begins.
-            # Calibration is what runs in parallel here (absorbed into however long the
-            # bed takes to heat, instead of tacked on sequentially after) -- the soak
-            # duration itself is untouched, full length, starting from this transition.
-            {% if bed_ready and calibrated %}
+            {% set soak_left = remaining()|float %}
+
+            {% if bed_ready and calibrated and soak_left <= 0 %}
+                # Heat-up + calibration alone already ate the whole soak budget --
+                # resume immediately instead of tacking a countdown on afterward.
+                RESPOND TYPE=echo MSG="Heatsoak: bed+calibration done and soak deadline already passed during heat-up -- resuming now."
+                { resume_and_start() }
+            {% elif bed_ready and calibrated %}
                 RESPOND TYPE=echo MSG="Heatsoak: bed at {bed_target}C, calibration done. Countdown running."
-                {% set _ = state.update({
-                    "heating":       false,
-                    "soak_deadline": printer.toolhead.estimated_print_time|float + state.get("soak_total", 0)|float,
-                }) %}
+                {% set _ = state.update({"heating": false}) %}
                 SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
                 UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=5
             {% else %}
-                { show_ui(state.get("soak_total", 0)|float|int) }
+                { show_ui(soak_left|int) }
                 UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION={cfg.heatup_tick_interval}
             {% endif %}
         {% endif %}
@@ -939,7 +934,7 @@ gcode:
             {% set _ = state.update({
                 "bed":            bed|float,
                 "noz":            noz|float,
-                "soak_total":     soak_sec|float,
+                "soak_deadline":  printer.toolhead.estimated_print_time|float + soak_sec|float,
                 "heating":        true,
                 "calibrated":     false,
                 "chamber_target": chamber|float,
