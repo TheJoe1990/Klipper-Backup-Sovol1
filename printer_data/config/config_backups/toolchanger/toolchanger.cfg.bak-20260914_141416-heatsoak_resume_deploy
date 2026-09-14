@@ -306,12 +306,12 @@ pickup_gcode:
     {% endif %}
 
 
-# NOTE 2026-09-14: [gcode_macro RESUME] used to be declared here too, with the same
-# rename_existing: RESUME_BASE as sovol-macros.cfg's RESUME. Klipper's config loader silently
-# MERGES two sections with the same name instead of erroring, so this one (loaded later) was
-# quietly winning and sovol-macros.cfg's own resume logic never ran. Consolidated into the
-# single [gcode_macro RESUME] in sovol-macros.cfg -- this file's INITIALIZE_TOOLCHANGER /
-# VERIFY_TOOL_DETECTED lines now run there, first, before anything else.
+[gcode_macro RESUME]
+rename_existing: RESUME_BASE
+gcode:
+  INITIALIZE_TOOLCHANGER
+  VERIFY_TOOL_DETECTED
+  RESUME_BASE
 
 [gcode_macro TOOL_ALIGN_START]
 gcode:

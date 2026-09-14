@@ -423,15 +423,6 @@ gcode:
 
     RESPOND TYPE='echo' MSG="DEBUG: All received parameters: {params}"
 
-    # Verify toolchanger state immediately, before anything else -- runs after EVERY
-    # soak/skip resume regardless of which internal path triggered it (manual RESUME vs. the
-    # heatsoak timer's own auto-resume, which calls RESUME_BASE directly and intentionally
-    # bypasses the RESUME wrapper above). Added 2026-09-14 to close a previously-undiagnosed
-    # open question: whether heatsoak was actually re-initializing the toolchanger. It wasn't --
-    # the auto-resume path never touched it.
-    INITIALIZE_TOOLCHANGER
-    VERIFY_TOOL_DETECTED
-
     TDD_POLLING_START
     M400
 
@@ -620,18 +611,7 @@ gcode:
 [gcode_macro RESUME]
 rename_existing: RESUME_BASE
 variable_state: 'normal'
-description: "Real RESUME. Consolidated 2026-09-14: this used to be defined a SECOND time in\
-    toolchanger/toolchanger.cfg with the same rename_existing target -- Klipper's config loader\
-    silently MERGES two [gcode_macro RESUME] sections instead of erroring, so whichever file\
-    loaded last (toolchanger.cfg) was quietly winning and this whole custom resume body below\
-    never ran. Toolchanger's INITIALIZE_TOOLCHANGER/VERIFY_TOOL_DETECTED safety check is now\
-    folded in below (must run first, before any motion) instead of living in a second section."
 gcode:
-    # Ported from the old duplicate [gcode_macro RESUME] in toolchanger/toolchanger.cfg --
-    # verify tool state BEFORE any of the position-restore motion below.
-    INITIALIZE_TOOLCHANGER
-    VERIFY_TOOL_DETECTED
-
     {% if printer.pause_resume.is_paused %}
         M117 Resuming Print...
 
@@ -775,31 +755,9 @@ gcode:
 
 
 [gcode_macro CANCEL_PRINT]
-description: "Cancels the current print and parks the nozzle. Also tears down any active\
-    heatsoak first (folded in 2026-09-14 from the new Heatsoak_Universal.cfg template instead\
-    of letting the template declare its own second [gcode_macro CANCEL_PRINT] section -- two\
-    sections with the same name silently merge in Klipper's config loader instead of erroring,\
-    which is exactly the bug that broke RESUME here for years; see the RESUME macro above)."
+description: Cancels the current print and parks the nozzle
 rename_existing: CANCEL_PRINT_BASE
 gcode:
-    # Heatsoak teardown (from Heatsoak_Universal.cfg's own CANCEL_PRINT wrapper) -- catches
-    # cancellation from ANY source (Mainsail's button, a raw API call, this macro itself),
-    # not just the heatsoak popup's own [X] Cancel button, so a soak's timers/fans/state never
-    # keep running unaware after an external cancel.
-    {% set hs_st = printer["gcode_macro START_PRINT"] %}
-    {% if hs_st.state and (hs_st.state|string) != "{}" and hs_st.heatsoak_active %}
-        {action_respond_info("Heatsoak: tearing down for external CANCEL_PRINT")}
-        UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=0
-        UPDATE_DELAYED_GCODE ID=_HEATSOAK_PREP DURATION=0
-        UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION=0
-        RESPOND TYPE=command MSG="action:prompt_end"
-        SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=heatsoak_active VALUE=0
-        M106 S0
-        M107
-        RESTORE_GCODE_STATE NAME=HEATSOAK_STATE MOVE=0
-        SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{{}}"
-    {% endif %}
-
     {% set z_max = printer['gcode_macro _global_var'].z_maximum_lifting_distance|int %}
     {% set e_retract = printer['gcode_macro _global_var'].cancel_park.e|float %}
     {% set current_z = printer.gcode_move.position.z|float %}
