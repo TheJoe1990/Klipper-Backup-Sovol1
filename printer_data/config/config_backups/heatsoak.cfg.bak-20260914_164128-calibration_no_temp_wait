@@ -788,17 +788,18 @@ gcode:
     {% elif IS_HEATUP_TICK %}
         {% if state and (state|string) != "{}" and active and state.get("heating", false) %}
             {% set bed_target = state.get("bed", 0)|float %}
+            {% set noz_target = cfg.soak_nozzle_temp|float %}
             {% set bed_ready  = printer.heater_bed.temperature >= (bed_target - 1.0) %}
+            {% set noz_needed = noz_target > 0 %}
+            {% set noz_ready  = (not noz_needed) or (printer.extruder.temperature >= (noz_target - 2.0)) %}
 
-            # Tool calibration (PRINTER_HEATSOAK_PARK) doesn't wait on ANY heater here --
-            # CALIBRATE_TOOL_OFFSETS takes its own CAL_TEMP param and issues its own
-            # M104/M109 (tools_calibrate.cfg), and KOMB manages its own heater
-            # target/TEMPERATURE_WAIT internally (KOMB.cfg) -- both are fully
-            # self-sufficient on nozzle temp, so gating entry on the nozzle being
-            # pre-heated here just adds a redundant wait. Runs on the very first tick,
-            # fully in parallel with bed (and nozzle) heat-up. Runs exactly once per
+            # Bed and nozzle are checked independently, not bed-then-nozzle -- both
+            # heat commands already fired together back in _HEATSOAK_PREP. Tool
+            # calibration (PRINTER_HEATSOAK_PARK) only needs the nozzle, not the bed,
+            # so it runs as soon as the nozzle is ready regardless of bed state, in
+            # parallel with whatever the bed is still doing. Runs exactly once per
             # soak, guarded by state.calibrated.
-            {% if not state.get("calibrated", false) %}
+            {% if noz_ready and not state.get("calibrated", false) %}
                 PRINTER_HEATSOAK_PARK
                 {% set _ = state.update({"calibrated": true}) %}
             {% endif %}
