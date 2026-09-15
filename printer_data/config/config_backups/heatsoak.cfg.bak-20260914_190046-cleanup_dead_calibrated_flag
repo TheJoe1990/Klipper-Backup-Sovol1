@@ -276,7 +276,7 @@ gcode:
 # =============================================================================
 #  USER HOOK: PRINTER_HEATSOAK_PARK
 #  Move toolhead to soak position after homing.
-#  Default: bed center at park_z. Override to customize.
+#  Default: bed centre at park_z. Override to customise.
 # =============================================================================
 
 [gcode_macro PRINTER_HEATSOAK_PARK]
@@ -859,6 +859,7 @@ gcode:
                 # (tools_calibrate.cfg's own M104/M109, KOMB.cfg's own
                 # SET_HEATER_TEMPERATURE/TEMPERATURE_WAIT).
                 PRINTER_HEATSOAK_PARK
+                {% set _ = state.update({"calibrated": true}) %}
                 SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
                 UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=1
             {% endif %}
@@ -977,6 +978,7 @@ gcode:
                 "noz":            noz|float,
                 "soak_total":     soak_sec|float,
                 "heating":        true,
+                "calibrated":     false,
                 "chamber_target": chamber|float,
                 "print_dur_sec":  dur_sec|int,
                 "layer":          params.LAYER|default("")|string,

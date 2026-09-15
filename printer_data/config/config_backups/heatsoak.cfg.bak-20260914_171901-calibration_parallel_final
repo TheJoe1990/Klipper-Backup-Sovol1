@@ -276,7 +276,7 @@ gcode:
 # =============================================================================
 #  USER HOOK: PRINTER_HEATSOAK_PARK
 #  Move toolhead to soak position after homing.
-#  Default: bed center at park_z. Override to customize.
+#  Default: bed centre at park_z. Override to customise.
 # =============================================================================
 
 [gcode_macro PRINTER_HEATSOAK_PARK]
@@ -611,7 +611,7 @@ gcode:
             {% if cfg.soak_nozzle_temp|float > 0 %}
                 { ui("text Nozzle: " ~ (printer.extruder.temperature|round(1)) ~ "C / " ~ (cfg.soak_nozzle_temp|int) ~ "C") }
             {% endif %}
-            { ui("text Soak: " ~ format_time(soak_left|int) ~ " once bed is heated") }
+            { ui("text Soak: " ~ format_time(soak_left|int) ~ " once heated" ~ (" (calibration done)" if state.get("calibrated", false) else " (calibrating tools now)")) }
         {% else %}
             { ui("text Soak remaining: " ~ format_time(soak_left|int)) }
             { ui("text Bed target: " ~ (state.get("bed", 0)|int)|string ~ "C") }
@@ -651,20 +651,17 @@ gcode:
     # Soak time itself is tracked as an ABSOLUTE deadline (state.soak_deadline, in
     # toolhead.estimated_print_time seconds -- a real wall-clock-derived reading that keeps
     # advancing through PAUSE/heating/calibration, unlike print_stats.total_duration which
-    # freezes while paused) rather than a decrementing counter -- but the deadline is only SET
-    # once the bed actually reaches target temp (see the HEATUP TICK BRANCH below), not at
-    # INIT. Soaking is specifically about holding the frame/gantry hot once the bed is at
-    # temperature, so the soak duration itself (state.soak_total, the raw seconds decided at
-    # INIT) always runs in full starting from that moment -- bed heat-up time is never
-    # subtracted from it. Tool calibration (PRINTER_HEATSOAK_PARK) runs immediately AFTER the
-    # deadline is set, in the same tick, rather than gating the countdown behind it -- so
-    # however long calibration takes IS counted against the already-running deadline (a real
-    # timestamp, unaffected by whether the popup could redraw during that blocking call --
-    # see the HEATUP TICK BRANCH's own comment for why it can't). If calibration alone runs
-    # past the deadline, remaining() reads 0 immediately once it returns and the branch
-    # resumes right there, no separate countdown wait tacked on afterward. remaining() is
-    # only meaningful once soak_deadline exists (i.e. once the bed is ready); before that,
-    # callers show state.soak_total directly (a fixed value, not counting down).
+    # freezes while paused) rather than a decrementing counter -- but the deadline is only
+    # SET once the bed actually reaches target temp AND calibration has finished (see the
+    # HEATUP TICK BRANCH below), not at INIT. Soaking is specifically about holding the
+    # frame/gantry hot once the bed is at temperature, so the soak duration itself (state
+    # .soak_total, the raw seconds decided at INIT) always runs in full starting from that
+    # point -- heat-up time is never subtracted from it. Tool calibration is the one thing
+    # that runs in parallel with heat-up instead of stacking after it (guarded by
+    # state.calibrated in the HEATUP TICK BRANCH) -- it just needs to finish by the time the
+    # bed does, which it always will in practice, rather than starting only once bed_ready.
+    # remaining() is only meaningful once soak_deadline exists (i.e. after that transition);
+    # before that, callers show state.soak_total directly (a fixed value, not counting down).
     {%- macro remaining() -%}
         { [state.get("soak_deadline", 0)|float - printer.toolhead.estimated_print_time|float, 0.0]|max }
     {%- endmacro -%}
@@ -726,20 +723,11 @@ gcode:
     # =========================================================================
     {% if IS_ADJUST %}
         {% if state and (state|string) != "{}" and active %}
-            {% set delta = params.ADJUST|float * 60.0 %}
-            {% if state.get("heating", false) %}
-                # Still waiting on the bed -- no deadline exists yet, so adjust the
-                # total soak duration itself (what the deadline will be computed from
-                # once the bed IS ready), not a not-yet-existent countdown.
-                {% set newleft = [[state.get("soak_total", 0)|float + delta, 0]|max,
-                                   cfg.soak_max_seconds|float]|min %}
-                {% set _ = state.update({"soak_total": newleft}) %}
-            {% else %}
-                {% set now     = printer.toolhead.estimated_print_time|float %}
-                {% set newleft = [[remaining()|float + delta, 0]|max,
-                                   cfg.soak_max_seconds|float]|min %}
-                {% set _ = state.update({"soak_deadline": now + newleft}) %}
-            {% endif %}
+            {% set delta   = params.ADJUST|float * 60.0 %}
+            {% set now     = printer.toolhead.estimated_print_time|float %}
+            {% set newleft = [[remaining()|float + delta, 0]|max,
+                               cfg.soak_max_seconds|float]|min %}
+            {% set _ = state.update({"soak_deadline": now + newleft}) %}
             SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
             { show_ui(newleft|int) }
             {% if not state.get("heating", false) %}
@@ -805,62 +793,38 @@ gcode:
             {% set bed_target = state.get("bed", 0)|float %}
             {% set bed_ready  = printer.heater_bed.temperature >= (bed_target - 1.0) %}
 
-            {% if not bed_ready %}
-                { show_ui(state.get("soak_total", 0)|float|int) }
-                UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION={cfg.heatup_tick_interval}
-            {% else %}
-                # Bed is at temp: start the soak clock right now, for the FULL configured
-                # duration -- fixed, independent of whatever calibration below takes -- and
-                # only then run calibration, in the same breath, instead of gating the
-                # countdown behind it.
-                #
-                # IMPORTANT Klipper constraint (verified against klippy/extras/gcode_macro.py
-                # GetStatusWrapper): a gcode_macro's ENTIRE Jinja template is rendered into one
-                # flat gcode string up front -- printer.toolhead.estimated_print_time is read
-                # once and CACHED for every reference within that one render -- and only after
-                # the whole string is produced does Klipper dispatch it for real, line by line,
-                # which is when real time actually elapses. That means a Jinja-level "how much
-                # time did that take" check placed after PRINTER_HEATSOAK_PARK in THIS SAME
-                # template call cannot see calibration's real duration -- it evaluates before
-                # calibration ever runs for real, not after. So there is no same-call "resume
-                # instantly the moment calibration finishes" branch here; that would be dead
-                # code that always reads noticeably positive minutes remaining regardless of
-                # calibration's real length. Also why the popup can't redraw live during
-                # PRINTER_HEATSOAK_PARK -- it's committed to the string before calibration's
-                # gcode even starts executing.
-                #
-                # What DOES work: the deadline itself is a real timestamp, correctly set below
-                # BEFORE calibration's gcode runs. Once calibration actually finishes and this
-                # call's remaining lines execute for real, the short heartbeat armed just below
-                # fires moments later as a genuinely SEPARATE macro call/render -- which reads a
-                # fresh, current estimated_print_time and correctly sees however long
-                # calibration actually took. That's where "resume immediately if calibration
-                # alone ran past the deadline" actually happens -- a few real seconds after
-                # calibration returns, not synchronously with it. Kept short (1s, not the usual
-                # 30s heatup_tick_interval) specifically to make that gap negligible.
+            # Tool calibration (PRINTER_HEATSOAK_PARK) doesn't wait on ANY heater here --
+            # CALIBRATE_TOOL_OFFSETS takes its own CAL_TEMP param and issues its own
+            # M104/M109 (tools_calibrate.cfg), and KOMB manages its own heater
+            # target/TEMPERATURE_WAIT internally (KOMB.cfg) -- both are fully
+            # self-sufficient on nozzle temp, so gating entry on the nozzle being
+            # pre-heated here just adds a redundant wait. Runs on the very first tick,
+            # fully in parallel with bed (and nozzle) heat-up. Runs exactly once per
+            # soak, guarded by state.calibrated.
+            {% if not state.get("calibrated", false) %}
+                PRINTER_HEATSOAK_PARK
+                {% set _ = state.update({"calibrated": true}) %}
+            {% endif %}
+            {% set calibrated = state.get("calibrated", false) %}
+            SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
+
+            # The soak clock itself still only starts once the bed is actually AT
+            # temperature -- soaking is specifically about holding the frame/gantry hot
+            # once the bed has reached target, not from the moment heat-up begins.
+            # Calibration is what runs in parallel here (absorbed into however long the
+            # bed takes to heat, instead of tacked on sequentially after) -- the soak
+            # duration itself is untouched, full length, starting from this transition.
+            {% if bed_ready and calibrated %}
+                RESPOND TYPE=echo MSG="Heatsoak: bed at {bed_target}C, calibration done. Countdown running."
                 {% set _ = state.update({
                     "heating":       false,
                     "soak_deadline": printer.toolhead.estimated_print_time|float + state.get("soak_total", 0)|float,
                 }) %}
                 SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
-                RESPOND TYPE=echo MSG="Heatsoak: bed at {bed_target}C. Countdown started, calibrating tools now."
-
-                # Regenerate the popup right here, at the actual moment the countdown starts --
-                # otherwise it keeps showing the old "once bed is heated" heating-phase text for
-                # however long calibration takes, which is confusing (looks stuck/stale). This is
-                # the freshest correct value obtainable at this point (full soak_total, since
-                # calibration hasn't run yet) -- see the big comment above for why a MORE current
-                # value can't be computed here, and why the 1s follow-up below is what actually
-                # corrects it again once calibration's real duration is known.
+                UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=5
+            {% else %}
                 { show_ui(state.get("soak_total", 0)|float|int) }
-
-                # CALIBRATE_TOOL_OFFSETS/KOMB don't need this gate to already be past any
-                # particular nozzle temp -- both manage their own heating internally
-                # (tools_calibrate.cfg's own M104/M109, KOMB.cfg's own
-                # SET_HEATER_TEMPERATURE/TEMPERATURE_WAIT).
-                PRINTER_HEATSOAK_PARK
-                SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
-                UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=1
+                UPDATE_DELAYED_GCODE ID=_HEATSOAK_HEATUP_TICK DURATION={cfg.heatup_tick_interval}
             {% endif %}
         {% endif %}
 
@@ -977,6 +941,7 @@ gcode:
                 "noz":            noz|float,
                 "soak_total":     soak_sec|float,
                 "heating":        true,
+                "calibrated":     false,
                 "chamber_target": chamber|float,
                 "print_dur_sec":  dur_sec|int,
                 "layer":          params.LAYER|default("")|string,

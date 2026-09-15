@@ -276,7 +276,7 @@ gcode:
 # =============================================================================
 #  USER HOOK: PRINTER_HEATSOAK_PARK
 #  Move toolhead to soak position after homing.
-#  Default: bed center at park_z. Override to customize.
+#  Default: bed centre at park_z. Override to customise.
 # =============================================================================
 
 [gcode_macro PRINTER_HEATSOAK_PARK]
@@ -726,20 +726,11 @@ gcode:
     # =========================================================================
     {% if IS_ADJUST %}
         {% if state and (state|string) != "{}" and active %}
-            {% set delta = params.ADJUST|float * 60.0 %}
-            {% if state.get("heating", false) %}
-                # Still waiting on the bed -- no deadline exists yet, so adjust the
-                # total soak duration itself (what the deadline will be computed from
-                # once the bed IS ready), not a not-yet-existent countdown.
-                {% set newleft = [[state.get("soak_total", 0)|float + delta, 0]|max,
-                                   cfg.soak_max_seconds|float]|min %}
-                {% set _ = state.update({"soak_total": newleft}) %}
-            {% else %}
-                {% set now     = printer.toolhead.estimated_print_time|float %}
-                {% set newleft = [[remaining()|float + delta, 0]|max,
-                                   cfg.soak_max_seconds|float]|min %}
-                {% set _ = state.update({"soak_deadline": now + newleft}) %}
-            {% endif %}
+            {% set delta   = params.ADJUST|float * 60.0 %}
+            {% set now     = printer.toolhead.estimated_print_time|float %}
+            {% set newleft = [[remaining()|float + delta, 0]|max,
+                               cfg.soak_max_seconds|float]|min %}
+            {% set _ = state.update({"soak_deadline": now + newleft}) %}
             SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
             { show_ui(newleft|int) }
             {% if not state.get("heating", false) %}
@@ -859,6 +850,7 @@ gcode:
                 # (tools_calibrate.cfg's own M104/M109, KOMB.cfg's own
                 # SET_HEATER_TEMPERATURE/TEMPERATURE_WAIT).
                 PRINTER_HEATSOAK_PARK
+                {% set _ = state.update({"calibrated": true}) %}
                 SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE="{state}"
                 UPDATE_DELAYED_GCODE ID=_HEATSOAK_UPDATE DURATION=1
             {% endif %}
@@ -977,6 +969,7 @@ gcode:
                 "noz":            noz|float,
                 "soak_total":     soak_sec|float,
                 "heating":        true,
+                "calibrated":     false,
                 "chamber_target": chamber|float,
                 "print_dur_sec":  dur_sec|int,
                 "layer":          params.LAYER|default("")|string,

@@ -276,7 +276,7 @@ gcode:
 # =============================================================================
 #  USER HOOK: PRINTER_HEATSOAK_PARK
 #  Move toolhead to soak position after homing.
-#  Default: bed center at park_z. Override to customize.
+#  Default: bed centre at park_z. Override to customise.
 # =============================================================================
 
 [gcode_macro PRINTER_HEATSOAK_PARK]

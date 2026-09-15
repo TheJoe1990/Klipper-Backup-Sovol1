@@ -154,19 +154,6 @@ dropoff_gcode:
 
     M82
     G90
-
-    # ─── EXPERIMENTAL 2026-09-14: a sharp, fast, small +Y move as the very first motion
-    # of the dropoff, before anything else (even the Z lift) -- goal is to snap off any
-    # stringy/wet filament still connecting the nozzle to the prime tower via inertia,
-    # rather than dragging it along into the rest of the dropoff path. Plain G1, not
-    # ROUNDED_G0 -- rounding/blending the corner works against an inertia-based snap,
-    # which wants an abrupt start, not a smoothed curve. Direction is a simple fixed
-    # guess (+Y, 5mm, max velocity) rather than computed from the prime tower's actual
-    # position -- deliberately simple to test first; revisit with the tower-relative
-    # direction approach discussed if this isn't reliable enough. Clamped to
-    # lim_max.y so it can't be commanded past the axis limit.
-    G1 Y{ [cur.y + 5, lim_max.y]|min } F{ printer.toolhead.max_velocity|float * 60 }
-
     SET_VELOCITY_LIMIT ACCEL={ accel }
 
     # ─── Move up to the dock and drop it off
