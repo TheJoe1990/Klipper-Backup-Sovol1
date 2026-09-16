@@ -292,17 +292,6 @@ gcode:
     {% set svc = printer["gcode_macro TC_SERVICE_TOOL"] %}
     {% set svc_tool = svc.service_tool|int %}
 
-    # This is the FIRST thing that touches the toolchanger during a soak (it runs
-    # before _START_PRINT, which is where the 2026-09-14 INITIALIZE_TOOLCHANGER fix
-    # was placed) -- so SELECT_TOOL below can still hit "toolchanger status is
-    # uninitialized" on its own, e.g. after a print that faulted mid-toolchange
-    # (confirmed 2026-09-15: an "Extrude below minimum temp" fault auto-exited the
-    # previous SD print and left toolchanger status uninitialized; the next print's
-    # heatsoak crashed here before ever reaching _START_PRINT's init call). Same
-    # idempotent init/verify pair used there and in RESUME, called first here too.
-    INITIALIZE_TOOLCHANGER
-    VERIFY_TOOL_DETECTED
-
     # Force baseline physical service tool onto the gantry before QGL/calibration.
     SELECT_TOOL T={svc_tool}
 
