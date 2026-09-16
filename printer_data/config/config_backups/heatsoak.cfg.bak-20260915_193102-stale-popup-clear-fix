@@ -360,13 +360,6 @@ gcode:
 initial_duration: 2
 gcode:
     {% set st = printer["gcode_macro START_PRINT"] %}
-    # Unconditional, every restart: clearing heatsoak_active/state below only fixes
-    # the backend logic -- it never told Mainsail/Fluidd to close whatever popup was
-    # last on screen (found 2026-09-15: a fault-exited print or any restart mid-soak
-    # left the countdown/heatsoak dialog stuck open indefinitely, with the printer
-    # otherwise fully idle underneath it). action:prompt_end is a no-op if nothing is
-    # actually open, so it's safe to send every time regardless of the state below.
-    RESPOND TYPE=command MSG="action:prompt_end"
     {% if st.heatsoak_active or (st.state and (st.state|string) != "{}") %}
         RESPOND TYPE=echo MSG="Heatsoak: clearing stale active state left over from before this restart"
         SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=heatsoak_active VALUE=0
