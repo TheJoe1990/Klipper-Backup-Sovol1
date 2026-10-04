@@ -1,0 +1,9 @@
+15:27:54 === part 2 start
+15:27:55 bed at temp
+15:27:55    detected tool: 0 (expected 0)
+15:28:26    detected tool: 0 (expected 0)
+15:29:06    detected tool: 0 (expected 0)
+    // Retries: 0/5 Probed points range: 0.123750 tolerance: 0.050000
+    // Retries: 1/5 Probed points range: 0.024375 tolerance: 0.050000
+15:29:06 T3 probe z offset (T0 reference, then T3 pickup)
+15:30:37 ERROR on 'TC_CALIBRATE_TOOL_PROBE_Z_OFFSETS T=3': {"error":{"code":400,"message":"Unknown","traceback":"Traceback (most recent call last):\n\n  File \"/home/biqu/moonraker/moonraker/components/application.py\", line 714, in _process_http_request\n    result = await self.api_defintion.request(\n\n  File \"/home/biqu/moonraker/moonraker/components/kl

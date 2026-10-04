@@ -1,0 +1,9 @@
+15:39:06 === part 3 start
+15:39:07 bed at temp
+15:39:07 mounted tool at start: 0
+15:39:08    detected tool: 0 (expected 0)
+15:39:39    detected tool: 0 (expected 0)
+15:39:58    detected tool: 0 (expected 0)
+    // Retries: 0/5 Probed points range: 0.013125 tolerance: 0.050000
+15:39:58 hot input shaper ALL tools
+15:48:04 ERROR on 'TC_SHAPER_CALIBRATE T=all': {"error":{"code":400,"message":"Unknown","traceback":"Traceback (most recent call last):\n\n  File \"/home/biqu/moonraker/moonraker/components/application.py\", line 714, in _process_http_request\n    result = await self.api_defintion.request(\n\n  File \"/home/biqu/moonraker/moonraker/components/kl
