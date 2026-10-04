@@ -92,9 +92,9 @@ gcode:
     # --- Tool list (2026-10-03) ---
     # TOOLS=<n,n,...> (heatsoak passes the tools this print uses) -> calibrate those.
     # No TOOLS (manual run / Mainsail button) -> the fixed list below.
-    # T3 added 2026-10-04 (umbilical done, dock tuned, probe fixed).
-    # (Replaces the old "for tonight" hardcode.)
-    {% set manual_default = [0, 1, 2, 3] %}
+    # !! T3 is left out of the fixed list on purpose until its umbilical is done and
+    # !! its dock is tuned -- add 3 here then. (Replaces the old "for tonight" hardcode.)
+    {% set manual_default = [0, 1, 2] %}
     {% if params.TOOLS is defined and (params.TOOLS|string|trim) != "" %}
         {% for t in (params.TOOLS|string).split(",") %}
             {% if t|trim|int in tools_all and t|trim|int not in ns.to_cal %}
