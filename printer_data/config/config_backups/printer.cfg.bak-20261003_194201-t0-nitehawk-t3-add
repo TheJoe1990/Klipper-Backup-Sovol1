@@ -36,7 +36,6 @@
 [include toolchanger/toolhead_0.cfg]
 [include toolchanger/toolhead_1.cfg]
 [include toolchanger/toolhead_2.cfg]
-[include toolchanger/toolhead_3.cfg]   # added 2026-10-03, Nitehawk-36 (USB), built from T1
 
 
 [resonance_tester]
@@ -411,12 +410,6 @@ tuning_goal: performance
 #*# pid_kp = 32.582
 #*# pid_ki = 4.022
 #*# pid_kd = 65.981
-#*#
-#*# [extruder3]
-#*# control = pid
-#*# pid_kp = 25.471
-#*# pid_ki = 2.784
-#*# pid_kd = 58.267
 #*#
 #*# [heater_bed]
 #*# control = pid

@@ -26,14 +26,15 @@ gcode:
     SELECT_TOOL T={tool}
 
 
-# 2026-10-03: T3 enabled, same form as T0-T2 above (old commented draft replaced)
-[gcode_macro T3]
-variable_tool: 3
-variable_spool_id: None
-variable_pressure_advance: None
-gcode:
-    SET_TOOL_PRESSURE_ADVANCE TOOL={tool} PA={pressure_advance} SMOOTH=0.040
-    SELECT_TOOL T={tool}
+#[gcode_macro T3]
+#variable_tool: 3
+#variable_spool_id: None
+#variable_pressure_advance: None
+#gcode:
+#  {% if pressure_advance != None %}
+#    SET_PRESSURE_ADVANCE EXTRUDER={printer[printer.toolchanger.tool_names[tool]].extruder} ADVANCE={pressure_advance}
+#  {% endif %}
+#  SELECT_TOOL T={tool}
   
 [gcode_macro SET_TOOL_MAPPING]
 description: [T<number>] [TOOL<number>]
