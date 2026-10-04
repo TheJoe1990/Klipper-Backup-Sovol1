@@ -1,0 +1,16 @@
+[Unit]
+Description=Klipper config backup to GitHub (triggered by klipper-backup-restartwatch on every Klipper start/restart, 2026-10-03)
+After=klipper.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=biqu
+# Let Klipper finish connecting to its 6 MCUs first, then run as the lowest
+# CPU/IO priority so git never competes with klippy on the CB1.
+ExecStartPre=/bin/sleep 90
+ExecStart=/home/biqu/klipper-backup-onstart.sh
+Nice=19
+IOSchedulingClass=idle
+TimeoutStartSec=infinity
+

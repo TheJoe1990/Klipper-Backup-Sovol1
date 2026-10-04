@@ -1,0 +1,13 @@
+[Unit]
+Description=Trigger a Klipper config backup to GitHub after every Klipper start/RESTART/FIRMWARE_RESTART (2026-10-03)
+After=klipper.service
+
+[Service]
+Type=simple
+ExecStart=/home/biqu/klipper-backup-restartwatch.sh
+Restart=always
+RestartSec=10
+Nice=19
+
+[Install]
+WantedBy=multi-user.target
