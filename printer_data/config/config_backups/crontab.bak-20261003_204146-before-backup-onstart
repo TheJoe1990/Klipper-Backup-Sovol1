@@ -1,0 +1,2 @@
+0 */4 * * * $HOME/klipper-backup/script.sh
+0 */4 * * * /home/biqu/klipper-backup/script.sh -c "Cron backup - $(date +'\%x - \%X')"
