@@ -240,15 +240,7 @@ gcode:
       T{tn}
     {% endif %}
     
-    # 2026-10-04: one axis per call + a pause. A single both-axes call starts the Y
-    # test while klippy is still post-processing the X result; on the CB1 that stall
-    # caused "MCU 'mcu' shutdown: Timer too close" right at the start of the 2nd axis
-    # (4 times on 2026-10-04). Both axes still land in pending input_shaper items,
-    # which _TC_SHAPER_CALIBRATE_SAVE_TO_SVF reads below.
-    SHAPER_CALIBRATE CHIPS="{accel}" AXIS=X
-    M400
-    G4 P5000
-    SHAPER_CALIBRATE CHIPS="{accel}" AXIS=Y
+    SHAPER_CALIBRATE CHIPS="{accel}"
 
     {% if ('gcode_macro SHOW_LATEST_SHAPER_PLOT' in P.configfile.settings) and show_images %}
       { ("SHOW_LATEST_SHAPER_PLOT PREFIX=plot_" ~ (name|replace('tool ', '')|lower)) }
