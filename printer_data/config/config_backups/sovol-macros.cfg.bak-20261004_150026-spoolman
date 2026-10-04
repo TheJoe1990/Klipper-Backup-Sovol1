@@ -528,7 +528,6 @@ gcode:
 
     # Switch to slicer-selected tool and final heating
     T{active_tool}
-    _TC_SYNC_SPOOL   # 2026-10-04: make sure the printing tool spool is the active Spoolman spool
     M117 Final heating active tool (T{active_tool}) to {final_tool_temp}°C...
     M104 T{active_tool} S{final_tool_temp}
     M190 S{bed_target_temp}

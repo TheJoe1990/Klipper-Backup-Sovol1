@@ -89,8 +89,6 @@ before_change_gcode:
     {% endif %}
 
 after_change_gcode:
-    # 2026-10-04: bill filament to the newly mounted tool spool (see spoolman.cfg)
-    _TC_SYNC_SPOOL T={tool.tool_number}
     {% set tn = "T"+(tool.tool_number|string) %}
     {% if printer["gcode_macro " + tn ] %}
        SET_GCODE_VARIABLE MACRO={tn} VARIABLE=color VALUE="'c44'"
