@@ -363,12 +363,8 @@ gcode:
 
 [gcode_macro FAN_ALL_ON]
 gcode:
-    # 2026-10-03: loop over every tool instead of hardcoded T0/T1 (T2/T3 added)
-    {% for n in printer.toolchanger.tool_numbers %}
-        {% if printer["fan_generic T" ~ n ~ "_partfan"] is defined %}
-            SET_FAN_SPEED FAN=T{n}_partfan SPEED=1.0
-        {% endif %}
-    {% endfor %}
+    SET_FAN_SPEED FAN=T0_partfan SPEED=1.0
+    SET_FAN_SPEED FAN=T1_partfan SPEED=1.0
 
 
 [force_move]
@@ -441,13 +437,8 @@ gcode:
 
     # Clear any paused state
     CLEAR_PAUSE
-    # 2026-10-03: loop over every tool instead of hardcoded T0/T1 (T2/T3 added); tools without an
-    # encoder_sensorN (T2 Orbiter, T3 none yet) are skipped
-    {% for n in printer.toolchanger.tool_numbers %}
-        {% if printer["filament_motion_sensor encoder_sensor" ~ n] is defined or printer["filament_switch_sensor encoder_sensor" ~ n] is defined %}
-            SET_FILAMENT_SENSOR SENSOR=encoder_sensor{n} ENABLE=0
-        {% endif %}
-    {% endfor %}
+    SET_FILAMENT_SENSOR SENSOR=encoder_sensor0 ENABLE=0
+    SET_FILAMENT_SENSOR SENSOR=encoder_sensor1 ENABLE=0
 
     # Set minimum bed temperature for mesh calibration
     {% if bed_target_temp <= mesh_calibrate_temp %}
@@ -574,12 +565,8 @@ gcode:
     TDD_POLLING_STOP
 
         M117 Print Complete - Turning Off LEDs
-        # 2026-10-03: loop over every tool instead of hardcoded T0/T1 (T2/T3 added)
-        {% for n in printer.toolchanger.tool_numbers %}
-            {% if printer["neopixel T" ~ n ~ "_hotend_rgb"] is defined %}
-                SET_LED LED=T{n}_hotend_rgb RED=0 GREEN=0 BLUE=0
-            {% endif %}
-        {% endfor %}
+        SET_LED LED=T0_hotend_rgb RED=0 GREEN=0 BLUE=0
+        SET_LED LED=T1_hotend_rgb RED=0 GREEN=0 BLUE=0
 
     #; Run exhaust fan for 10 minutes before shutting it off
     #M117 Running exhaust fan for 10 minutes...
@@ -850,12 +837,8 @@ gcode:
     SELECT_TOOL T=0
 
         M117 Print Complete - Turning Off LEDs
-        # 2026-10-03: loop over every tool instead of hardcoded T0/T1 (T2/T3 added)
-        {% for n in printer.toolchanger.tool_numbers %}
-            {% if printer["neopixel T" ~ n ~ "_hotend_rgb"] is defined %}
-                SET_LED LED=T{n}_hotend_rgb RED=0 GREEN=0 BLUE=0
-            {% endif %}
-        {% endfor %}
+        SET_LED LED=T0_hotend_rgb RED=0 GREEN=0 BLUE=0
+        SET_LED LED=T1_hotend_rgb RED=0 GREEN=0 BLUE=0
 
     ; Run exhaust fan for 10 minutes (600,000 ms) before shutting it off
     #M117 Running exhaust fan for 10 minutes...
@@ -994,26 +977,19 @@ gcode:
     {% set printing = printer.print_stats.state == "printing" %}
 
     ; Determine LED color based on conditions
-    ; 2026-10-03: loops over every tool (was hardcoded T0/T1). While printing all
-    ; LEDs stay WHITE as before; otherwise each tool's LED now follows ITS OWN
-    ; hotend temp (was: every LED followed the active tool's temp, so a hot T0
-    ; made a cold T3 show red). temp/target above are kept for the active tool.
-    {% for n in printer.toolchanger.tool_numbers %}
-        {% set led = "T" ~ n ~ "_hotend_rgb" %}
-        {% set ext = printer["tool T" ~ n].extruder|default("") %}
-        {% if printer["neopixel " ~ led] is defined %}
-            {% if printing %}
-                #M117 Setting LEDs to WHITE (Printing)
-                SET_LED LED={led} RED={255/255} GREEN={255/255} BLUE={255/255}
-            {% elif ext and printer[ext].temperature|default(0) > 40 %}
-                #M117 Setting LED to RED (Hot Nozzle)
-                SET_LED LED={led} RED={255/255} GREEN={0/255} BLUE={0/255}
-            {% else %}
-                #M117 Turning LED OFF (Cool Nozzle)
-                SET_LED LED={led} RED={0/255} GREEN={0/255} BLUE={0/255}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+    {% if printing %}
+        #M117 Setting LEDs to WHITE (Printing)
+        SET_LED LED=T0_hotend_rgb RED={255/255} GREEN={255/255} BLUE={255/255}
+        SET_LED LED=T1_hotend_rgb RED={255/255} GREEN={255/255} BLUE={255/255}
+    {% elif temp > 40 %}
+        #M117 Setting LEDs to RED (Hot Nozzle)
+        SET_LED LED=T0_hotend_rgb RED={255/255} GREEN={0/255} BLUE={0/255}
+        SET_LED LED=T1_hotend_rgb RED={255/255} GREEN={0/255} BLUE={0/255}
+    {% else %}
+        #M117 Turning LEDs OFF (Cool Nozzle)
+        SET_LED LED=T0_hotend_rgb RED={0/255} GREEN={0/255} BLUE={0/255}
+        SET_LED LED=T1_hotend_rgb RED={0/255} GREEN={0/255} BLUE={0/255}
+    {% endif %}
 
     ; Schedule next update in 2 seconds
     UPDATE_DELAYED_GCODE ID=led_update DURATION=2
@@ -1067,25 +1043,37 @@ gcode:
     # 3) If a sensor reports 'no filament' immediately, it PAUSEs the print so nothing moves.
     # ======================================================================
 
-    # 2026-10-03: loops over every tool instead of hardcoded encoder_sensor0/1.
-    # Only tools that actually have an encoder_sensorN are touched (T2's Orbiter
-    # sensor and T3, which has none yet, are skipped). Still checks ALL tools'
-    # sensors, not just the ones this print uses (unchanged behavior).
+    # Enable (your current names)
+    SET_FILAMENT_SENSOR SENSOR=encoder_sensor0 ENABLE=1
+    SET_FILAMENT_SENSOR SENSOR=encoder_sensor1 ENABLE=1
+
+    # Always query so the console log shows current status
+    QUERY_FILAMENT_SENSOR SENSOR=encoder_sensor0
+    QUERY_FILAMENT_SENSOR SENSOR=encoder_sensor1
+
+    # If these are implemented as filament_switch_sensor or filament_motion_sensor,
+    # they typically expose filament_detected. If not present, we just skip the hard-fail.
     {% set bad = [] %}
-    {% for n in printer.toolchanger.tool_numbers %}
-        {% set sname = "encoder_sensor" ~ n %}
-        {% set sw = printer["filament_switch_sensor " ~ sname] %}
-        {% set mo = printer["filament_motion_sensor " ~ sname] %}
-        {% if sw is defined or mo is defined %}
-            # Enable, then always query so the console log shows current status
-            SET_FILAMENT_SENSOR SENSOR={sname} ENABLE=1
-            QUERY_FILAMENT_SENSOR SENSOR={sname}
-            # Both sensor types expose filament_detected
-            {% if not (sw if sw is defined else mo).filament_detected %}
-                {% set _ = bad.append(sname) %}
-            {% endif %}
+
+    {% if printer["filament_switch_sensor encoder_sensor0"] is defined %}
+        {% if not printer["filament_switch_sensor encoder_sensor0"].filament_detected %}
+            {% set _ = bad.append("encoder_sensor0") %}
         {% endif %}
-    {% endfor %}
+    {% elif printer["filament_motion_sensor encoder_sensor0"] is defined %}
+        {% if not printer["filament_motion_sensor encoder_sensor0"].filament_detected %}
+            {% set _ = bad.append("encoder_sensor0") %}
+        {% endif %}
+    {% endif %}
+
+    {% if printer["filament_switch_sensor encoder_sensor1"] is defined %}
+        {% if not printer["filament_switch_sensor encoder_sensor1"].filament_detected %}
+            {% set _ = bad.append("encoder_sensor1") %}
+        {% endif %}
+    {% elif printer["filament_motion_sensor encoder_sensor1"] is defined %}
+        {% if not printer["filament_motion_sensor encoder_sensor1"].filament_detected %}
+            {% set _ = bad.append("encoder_sensor1") %}
+        {% endif %}
+    {% endif %}
 
     {% if bad|length > 0 %}
         RESPOND TYPE=error MSG={"Runout sensor reports NO FILAMENT at enable time: " ~ (bad|join(", ")) ~ ". Pausing so the printer does not move."}
