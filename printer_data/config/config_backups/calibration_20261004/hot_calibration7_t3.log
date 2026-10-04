@@ -12,3 +12,12 @@
 16:50:44 mounted tool at start: 3
 16:50:44    detected tool: 3 (expected 3)
 16:51:16    detected tool: 3 (expected 3)
+16:51:57    detected tool: 3 (expected 3)
+    // Retries: 0/5 Probed points range: 0.136875 tolerance: 0.050000
+    // Retries: 1/5 Probed points range: 0.020625 tolerance: 0.050000
+16:51:58 hot input shaper T3 (one tool per command; T0 saved 15:4x)
+16:57:14 ERROR on 'TC_SHAPER_CALIBRATE T=3': {"error":{"code":400,"message":"Unknown","traceback":"Traceback (most recent call last):\n\n  File \"/home/biqu/moonraker/moonraker/components/application.py\", line 714, in _process_http_request\n    result = await self.api_defintion.request(\n\n  File \"/home/biqu/moonraker/moonraker/components/kl
+    // Recommended shaper_type_y = mzv, shaper_freq_y = 49.8 Hz
+    // shaper_type_x:mzv shaper_freq_x:65.000 damping_ratio_x:0.100000
+    // shaper_type_y:mzv shaper_freq_y:49.800 damping_ratio_y:0.100000
+    // Shaper calibration data written to /tmp/calibration_data_y_20261004_165438.csv file
