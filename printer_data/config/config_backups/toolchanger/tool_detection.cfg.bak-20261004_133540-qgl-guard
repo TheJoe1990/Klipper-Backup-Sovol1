@@ -42,13 +42,7 @@ gcode:
 
 [gcode_macro _STOP_IF_INCORRECT_TOOL]
 gcode:
-  # 2026-10-04: outside a print, PAUSE does nothing and whatever called SELECT_TOOL
-  # kept going (a failed T0 pickup went straight on to homing + QGL). Not printing
-  # -> raise a real error so the whole command chain stops. Printing -> pause as before.
-  {% set printing = printer.print_stats.state in ['printing', 'paused'] %}
-  {% if 'T' in params and (printer.tool_probe_endstop.active_tool_number | int) != (params.T | int) and not printing %}
-    {action_raise_error("Tool pickup FAILED: expected T" ~ params.T ~ ", detected " ~ printer.tool_probe_endstop.active_tool_number ~ ". Stopped. Check the dock/shuttle by hand.")}
-  {% elif 'T' in params and (printer.tool_probe_endstop.active_tool_number | int) != (params.T | int) %}
+  {% if 'T' in params and (printer.tool_probe_endstop.active_tool_number | int) != (params.T | int) %}
     RESPOND TYPE=error MSG='Tool not detected, expected {params.T}. Pausing the print.'
     PAUSE
   {% elif (printer.tool_probe_endstop.active_tool_number | int) == -1 %}

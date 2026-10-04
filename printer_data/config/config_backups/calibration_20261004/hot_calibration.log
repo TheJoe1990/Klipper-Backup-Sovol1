@@ -1,0 +1,12 @@
+13:00:33 waiting for bed >= 99C
+13:00:33 bed at temp
+13:00:33 SELECT_TOOL T=0 (QGL probes with the mounted tool)
+13:00:56 QUAD_GANTRY_LEVEL (hot)
+    // Retries: 0/5 Probed points range: 0.048750 tolerance: 0.050000
+13:01:16 CALIBRATE_TOOL_OFFSETS (manual list T0-T3)
+    // Tool offset is 0.500000,-0.481250,0.100625
+    // T2 offsets saved/applied: old X=0.475 Y=-0.531 Z=0.061 -> new X=0.5 Y=-0.481 Z=0.101 dX=0.025 dY=0.05 dZ=0.039
+    // Tool offset is -0.206250,-0.062500,-0.005625
+    // T3 offsets saved/applied: old X=0.0 Y=0.0 Z=0.0 -> new X=-0.206 Y=-0.063 Z=-0.006 dX=-0.206 dY=-0.063 dZ=-0.006
+13:11:34 TC_CALIBRATE_TOOL_PROBE_Z_OFFSETS T=all
+13:18:27 ERROR on 'TC_CALIBRATE_TOOL_PROBE_Z_OFFSETS T=all': {"error":{"code":400,"message":"No active tool probe","traceback":"Traceback (most recent call last):\n\n  File \"/home/biqu/moonraker/moonraker/components/application.py\", line 701, in _process_http_request\n    result = await self.api_defintion.request(\n\n  File \"/home/biqu/moonraker/moonraker/components/klippy_connection.py\", line 617, in request\n    return await self._request_standard(web_request)\n\n  File \"/home/biqu/moonraker/moonraker/components/klippy_connection.py\", line 714, in _request_standard\n    return await base_request.wait(timeout)\n\n  File \"/home/biqu/moonraker/moonraker/components/klippy_connection.py\", line 825, in wait\n    return await asyncio.wait_for(asyncio.shield(self._fut), to)\n\n  File \"/usr/lib/python3.9/asyncio/tasks.py\", line 481, in wait_for\n    return fut.result()\n\nmoonraker.utils.exceptions.ServerError: No active tool probe\n\n\nThe above exception was the direct cause of the following exception:\n\n\nTraceback (most recent call last):\n\n  File \"/home/biqu/moonraker-env/lib/python3.9/site-packages/tornado/web.py\", line 1880, in _execute\n    result = await result\n\n  File \"/home/biqu/moonraker/moonraker/components/application.py\", line 687, in post\n    await self._process_http_request(RequestType.POST)\n\n  File \"/home/biqu/moonraker/moonraker/components/application.py\", line 707, in _process_http_request\n    raise tornado.web.HTTPError(\n\ntornado.web.HTTPError: HTTP 400: No active tool probe\n"}}

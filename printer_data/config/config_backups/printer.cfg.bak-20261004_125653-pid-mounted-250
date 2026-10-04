@@ -397,27 +397,27 @@ tuning_goal: performance
 #*#
 #*# [extruder]
 #*# control = pid
-#*# pid_kp = 28.600
-#*# pid_ki = 2.804
-#*# pid_kd = 72.934
+#*# pid_kp = 24.988
+#*# pid_ki = 2.221
+#*# pid_kd = 70.281
 #*#
 #*# [extruder1]
 #*# control = pid
-#*# pid_kp = 26.363
-#*# pid_ki = 3.030
-#*# pid_kd = 57.341
+#*# pid_kp = 25.471
+#*# pid_ki = 2.784
+#*# pid_kd = 58.267
 #*#
 #*# [extruder2]
 #*# control = pid
-#*# pid_kp = 35.711
-#*# pid_ki = 4.668
-#*# pid_kd = 68.300
+#*# pid_kp = 32.582
+#*# pid_ki = 4.022
+#*# pid_kd = 65.981
 #*#
 #*# [extruder3]
 #*# control = pid
-#*# pid_kp = 33.106
-#*# pid_ki = 4.087
-#*# pid_kd = 67.044
+#*# pid_kp = 25.471
+#*# pid_ki = 2.784
+#*# pid_kd = 58.267
 #*#
 #*# [heater_bed]
 #*# control = pid

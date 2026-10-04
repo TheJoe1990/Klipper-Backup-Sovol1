@@ -1,0 +1,12 @@
+13:29:35 M117 Dock autotune T3 - click Continue in Mainsail
+13:29:35 TC_DOCK_AUTOTUNE
+13:29:36 echo: Dock autotune started, range: ±0.5mm and step: ±0.05mm
+13:29:39 echo: Recording baseline, Unselecting
+13:30:27 !! Tool not detected, expected 3. Pausing the print.
+13:30:37 // action:prompt_begin Dock alignment check
+13:30:37 // action:prompt_text f-b: 0.0°
+13:30:37 // action:prompt_text l-r: 0.0°
+13:31:25 SET_GCODE_VARIABLE MACRO=TC_DOCK_AUTOTUNE VARIABLE=storage VALUE='{}'
+13:32:45 !! Tool not detected, expected 0. Pausing the print.
+13:33:46 !! No trigger on probe after full movement
+13:33:46 !! No trigger on probe after full movement

@@ -1,0 +1,15 @@
+12:45:24 PID all tools mounted, target 250C
+12:45:24 T0: picking up
+12:45:24 T0: PID_CALIBRATE HEATER=extruder TARGET=250
+12:47:53 T0 extruder RESULT pid_Kp=28.600 pid_Ki=2.804 pid_Kd=72.934
+12:47:53 T1: picking up
+12:48:23 T1: PID_CALIBRATE HEATER=extruder1 TARGET=250
+12:50:39 T1 extruder1 RESULT pid_Kp=26.363 pid_Ki=3.030 pid_Kd=57.341
+12:50:39 T2: picking up
+12:51:08 T2: PID_CALIBRATE HEATER=extruder2 TARGET=250
+12:53:34 T2 extruder2 RESULT pid_Kp=35.711 pid_Ki=4.668 pid_Kd=68.300
+12:53:34 T3: picking up
+12:54:06 T3: PID_CALIBRATE HEATER=extruder3 TARGET=250
+12:56:30 T3 extruder3 RESULT pid_Kp=33.106 pid_Ki=4.087 pid_Kd=67.044
+12:56:30 docking last tool
+12:56:42 DONE

@@ -728,20 +728,6 @@ gcode:
 
 
 
-[gcode_macro _QGL_REQUIRE_TOOL]
-description: Hard stop for bed probing (QGL) unless a real tool is mounted and detected (2026-10-04)
-gcode:
-    # Rendered AFTER DETECT_ACTIVE_TOOL_PROBE ran (separate macro), so it sees fresh data.
-    {% set det = printer.tool_probe_endstop.active_tool_number|int %}
-    {% set tc  = printer.toolchanger.tool_number|int %}
-    {% set what = params.WHAT|default('bed probing') %}
-    {% if det < 0 %}
-        {action_raise_error("REFUSED " ~ what ~ ": no tool detected on the shuttle (detected=" ~ det ~ "). Pick up a tool and confirm it is detected first.")}
-    {% elif tc >= 0 and det != tc %}
-        {action_raise_error("REFUSED " ~ what ~ ": toolchanger says T" ~ tc ~ " but the probes detect T" ~ det ~ ". Fix the tool state first.")}
-    {% endif %}
-
-
 [gcode_macro QUAD_GANTRY_LEVEL]
 description: "Safe Quad Gantry Leveling with hotend temperature guard"
 # ----------------------------------------------------------------------
@@ -771,14 +757,6 @@ description: "Safe Quad Gantry Leveling with hotend temperature guard"
 rename_existing: QUAD_GANTRY_LEVEL_BASE
 gcode:
     {action_respond_info("Starting Quad Gantry Leveling...")}
-
-    # --- HARD SAFETY (2026-10-04): NEVER level without a real tool on the shuttle ---
-    # The shuttle-only probe (T-100) is for toolless Z homing at the pin, not the bed:
-    # leveling on it drove the empty shuttle to Z=-25 on 2026-10-04. Re-detect the
-    # tool first, then _QGL_REQUIRE_TOOL errors out (before any motion) if none is
-    # detected or it disagrees with the toolchanger. Must stay the first commands.
-    DETECT_ACTIVE_TOOL_PROBE
-    _QGL_REQUIRE_TOOL WHAT=QUAD_GANTRY_LEVEL
 
     # --- Safety: do not start QGL until the active nozzle is <= 150C ---
     {% set cap = 150 %}

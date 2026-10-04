@@ -129,7 +129,3 @@ origin: https://github.com/andrewmcgr/klipper_tmc_autotune.git
 managed_services: klipper
 primary_branch: main
 install_script: install.sh
-# Spoolman on Home Assistant add-on (added 2026-10-04)
-[spoolman]
-server: http://10.0.50.253:7912
-sync_rate: 5
