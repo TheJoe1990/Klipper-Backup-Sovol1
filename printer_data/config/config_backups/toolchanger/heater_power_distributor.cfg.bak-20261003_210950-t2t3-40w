@@ -2,7 +2,7 @@
 [heater_power_distributor hotends]
 heaters: extruder, extruder1, extruder2, extruder3   # extruder3 (T3) added 2026-10-03
 max_power: 150                # total budget for the group (watts)
-powers: 60, 60, 40, 40        # rated W per heater, defaults to 60 (T0/T1 = 60W heaters, T2/T3 = 40W; corrected 2026-10-03)
+powers: 60, 60, 40, 60        # rated W per heater, defaults to 60 (T3 = same 60W as T1)
 #model: rapido_v2              # none|bambulab|v1|rapido_v2|v3|triangle70|custom, defaults to none
 active_extruder_boost: 1.8    # multiply weight of active tool (1.0 = equal-share), defaults to 1
 poll_interval: 1.0            # seconds between updates, defaults to 1
