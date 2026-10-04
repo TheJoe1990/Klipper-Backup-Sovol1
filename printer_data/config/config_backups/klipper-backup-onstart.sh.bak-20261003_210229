@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Run by klipper-backup-onstart.service (2026-10-03): one GitHub backup per
+# Klipper service start, replacing the filewatch service + 4-hourly cron.
+exec "$HOME/klipper-backup/script.sh" -c "Klipper start backup - $(date +"%x %X")"
