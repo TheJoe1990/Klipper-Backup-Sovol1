@@ -127,10 +127,6 @@ gcode:
 # ============================================================
 [gcode_macro TC_HOME_ROUTE]
 description: "Plain English: Called by G28 after DETECT. If detected>=0: init toolchanger + normal homing. If detected<0: toolless homing then INITIALIZE_TOOLCHANGER."
-# 2026-10-04: blind Z lift (mm) before any X/Y move in the TOOLLESS branch. 30 clears the
-# worst case seen (shuttle left at Z~-25 after a toolless QGL dive -> crashed into the back
-# of the bed on the Y move). Highest normal shuttle Z is at the docks (~312): +30 < 347 max.
-variable_toolless_z_lift: 30
 gcode:
     {% set hx = params.HX|default(0)|int %}
     {% set hy = params.HY|default(0)|int %}
@@ -154,25 +150,6 @@ gcode:
         SET_GCODE_OFFSET X=0.0 Y=0.0 Z=0.0
         FORGET_TOOL
 
-        # --- Z lift BEFORE any X/Y move (2026-10-04) ---------------------------------
-        # This branch used to go straight to G28.1 Y with the shuttle wherever it was in Z.
-        {% set lift = printer["gcode_macro TC_HOME_ROUTE"].toolless_z_lift|float %}
-        {% if 'z' in printer.toolhead.homed_axes %}
-            # Z known: just make sure we are at least `lift` above Z0
-            {% if printer.toolhead.position.z < lift %}
-                G90
-                G0 Z{lift} F600
-            {% endif %}
-        {% else %}
-            # Z unknown (after restart / e-stop): pretend Z=0, lift blind, then mark Z
-            # un-homed again so nothing trusts the made-up position. TOOLLESS_HOME sets Z.
-            RESPOND TYPE=echo MSG="G28 toolless: blind Z lift {lift}mm before X/Y moves"
-            SET_KINEMATIC_POSITION Z=0 SET_HOMED=Z
-            G91
-            G0 Z{lift} F600
-            G90
-            SET_KINEMATIC_POSITION CLEAR_HOMED=Z
-        {% endif %}
 
         {% if hy or hx %}
             G28.1 Y
