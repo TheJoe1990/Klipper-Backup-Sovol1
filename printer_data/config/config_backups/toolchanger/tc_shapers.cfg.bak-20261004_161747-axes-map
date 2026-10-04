@@ -183,9 +183,6 @@ variable_save_to_svf: True
 variable_save_to_config: False
 variable_show_images: True
 gcode:
-  # 2026-10-04: refuse if any tool accelerometer has no axes_map (Y was being
-  # measured on the wrong axis for every tool until then). Must stay first.
-  _REQUIRE_ADXL_AXES_MAP
   {% set P      = printer %}
   {% set tc     = P.toolchanger %}
   {% set tns    = tc.tool_numbers %}
@@ -309,35 +306,3 @@ gcode:
   {% else %}
     { action_respond_info("APPLIED shaper: cannot read (no 'input_shaper' object on this build). Use TC_LOAD_SHAPERS output as confirmation.") }
   {% endif %}
-
-
-# =============================================================================
-#  ADXL axes_map guard (2026-10-04)
-# =============================================================================
-#  Every [adxl345 ...] must have an explicit axes_map. Nitehawk-36 boards here
-#  stand upright, so the default (x, y, z) silently measures the wrong axes:
-#  Y-axis shaper tests read mostly vertical vibration. Verify a new toolhead with
-#  AXES_MAP_CALIBRATION (uses the [resonance_tester] accel_chip) before shaping.
-[gcode_macro _REQUIRE_ADXL_AXES_MAP]
-description: Error (or warn with WARN_ONLY=1) if any [adxl345 ...] section has no axes_map
-gcode:
-    {% set missing = [] %}
-    {% for sec in printer.configfile.config %}
-        {% if (sec|lower).startswith('adxl345') and 'axes_map' not in printer.configfile.config[sec] %}
-            {% set _ = missing.append(sec) %}
-        {% endif %}
-    {% endfor %}
-    {% if missing %}
-        {% set msg = "No axes_map on " ~ (missing|join(", ")) ~ ". Input shaper and drop detection would read the wrong axes. Nitehawk-36 here needs axes_map: -x, -z, -y (check with AXES_MAP_CALIBRATION)." %}
-        {% if params.WARN_ONLY|default(0)|int %}
-            RESPOND TYPE=error MSG="{msg}"
-        {% else %}
-            {action_raise_error("REFUSED: " ~ msg)}
-        {% endif %}
-    {% endif %}
-
-[delayed_gcode _CHECK_ADXL_AXES_MAP_STARTUP]
-initial_duration: 6
-gcode:
-    _REQUIRE_ADXL_AXES_MAP WARN_ONLY=1
-

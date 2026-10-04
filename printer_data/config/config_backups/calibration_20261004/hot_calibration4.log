@@ -2,3 +2,22 @@
 15:50:40 bed at temp
 15:50:40 mounted tool at start: 1
 15:50:41    detected tool: 1 (expected 1)
+15:51:12    detected tool: 1 (expected 1)
+15:51:57    detected tool: 1 (expected 1)
+    // Retries: 1/5 Probed points range: 0.011250 tolerance: 0.050000
+15:51:57 hot input shaper T1 (one tool per command; T0 saved 15:4x)
+shapers_t1 = {'x': {'type': 'MZV', 'freq': 67.4, 'damp': 0.2}, 'y': {'type': '2HUMP_EI', 'freq': 70.4, 'damp': 0.2}}
+15:57:08 hot input shaper T2 (one tool per command; T0 saved 15:4x)
+shapers_t2 = {'x': {'type': '2HUMP_EI', 'freq': 83.6, 'damp': 0.2}, 'y': {'type': 'MZV', 'freq': 50.6, 'damp': 0.2}}
+16:02:46 hot input shaper T3 (one tool per command; T0 saved 15:4x)
+shapers_t3 = {'x': {'type': 'MZV', 'freq': 65.6, 'damp': 0.2}, 'y': {'type': 'MZV', 'freq': 49.6, 'damp': 0.2}}
+16:08:22 T3 probe z offset (T0 reference, then T3 pickup)
+    TC_CALIBRATE_TOOL_PROBE_Z_OFFSETS T=3
+    // probe: z_offset: 1.832
+// The SAVE_CONFIG command will update the printer config file
+// with the above and restart the printer.
+    // Tool probe z_offset T3: old=0.0 -> new=1.8319 d=1.8319
+probe_z_offset_t1 = {'z_offset': 1.4062500000001323, 'z': 1.8056250000001528}
+probe_z_offset_t2 = {'z_offset': 1.5037500000003896, 'z': 1.5450000000002286}
+probe_z_offset_t3 = {'z': 1.8318750000003043}
+16:12:01 === DONE (bed left at 100C)

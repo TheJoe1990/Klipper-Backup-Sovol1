@@ -117,12 +117,6 @@ cs_pin: T2:gpio27
 spi_software_sclk_pin: T2:gpio18
 spi_software_mosi_pin: T2:gpio20
 spi_software_miso_pin: T2:gpio19
-# 2026-10-04: the Nitehawk-36 stands upright in the toolhead, so the ADXL axes
-# are rotated vs the printer. Measured with AXES_MAP_CALIBRATION on T0:
-# X->-x (3.1 deg), Y->-z (5.9 deg), Z->-y (4.6 deg), gravity 10.18 m/s^2.
-# Without this, input shaper Y (and drop-detection tilt) read the wrong axis.
-# _REQUIRE_ADXL_AXES_MAP (tc_shapers.cfg) refuses shaper calibration if missing.
-axes_map: -x, -z, -y
 
 [gcode_macro T2]
 variable_color: ""
