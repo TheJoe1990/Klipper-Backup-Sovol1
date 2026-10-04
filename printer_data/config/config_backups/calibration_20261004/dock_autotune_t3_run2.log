@@ -1,0 +1,20 @@
+14:07:28 M117 Picking up T3 for dock autotune
+14:08:02 M117 Dock autotune T3 - click Continue
+14:08:02 TC_DOCK_AUTOTUNE
+14:08:02 echo: Dock autotune started, range: ±0.5mm and step: ±0.05mm
+14:08:06 echo: Recording baseline, Unselecting
+14:09:00 // action:prompt_begin Dock alignment check
+14:09:00 // action:prompt_text f-b: 0.0°
+14:09:00 // action:prompt_text l-r: 0.0°
+14:12:56 echo: Baseline: 3.294g,  dock_pitch: 0.0°,  dock_roll: 0.0°
+14:16:48 echo: Better -> axis=x offset=0.05 Δpeak=-0.175g new=3.119g
+14:20:39 echo: Better -> axis=x offset=0.1 Δpeak=-0.201g new=2.918g
+14:24:31 echo: Better -> axis=x offset=0.15 Δpeak=-0.235g new=2.683g
+14:28:22 echo: Found worse -> axis=x offset=0.2 peak=3.2g (resetting 210.25 -> 210.05)
+14:32:14 echo: Found worse -> axis=x offset=-0.05 peak=2.829g (resetting 210.0 -> 210.05)
+14:36:05 echo: Found worse -> axis=y offset=0.05 peak=3.058g (resetting 4.85 -> 4.8)
+14:39:56 echo: Found worse -> axis=y offset=-0.05 peak=2.922g (resetting 4.75 -> 4.8)
+14:39:56 echo: Done -> ΔX: 0.3mm,  ΔY: 0.0mm old peak: 3.294g, new peak: 2.683g
+14:39:56 echo: params_park_x: 210.05
+14:39:56 echo: params_park_y: 4.8
+14:40:03 watcher end

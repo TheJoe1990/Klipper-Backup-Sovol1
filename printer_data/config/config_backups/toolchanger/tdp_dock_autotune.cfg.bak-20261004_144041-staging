@@ -45,18 +45,6 @@ gcode:
     G90
     STOP_TOOL_PROBE_CRASH_DETECTION
 
-    # 2026-10-04 (user): stage near this tool's dock first. Every UNSELECT_TOOL in the
-    # loop returns to where the toolhead was when the tune started, so starting at the
-    # bed made each cycle travel all the way down and back. Stage: same X as the dock,
-    # safe_y in front of the docks, 20 mm below dock height. Y first (clear of the
-    # docks at the current height), then X and Z together -- same approach the
-    # toolchanger itself uses.
-    {% set safe_y = (tool_object.params_safe_y or 100)|float %}
-    RESPOND MSG="Dock autotune: staging at X{x} Y{safe_y} Z{z - 20.0}"
-    G0 Y{safe_y} F6000
-    G0 X{x} Z{z - 20.0} F3000
-    M400
-
     {% set startingVars = [
         ('path_speed', tool_object.params_path_speed),
         ('tool',         actn),

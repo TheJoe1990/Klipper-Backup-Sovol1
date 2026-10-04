@@ -27,9 +27,8 @@ fan: T3_partfan
 params_type: 'sc'
 # Dock position tuned 2026-10-04 with DOCK_TUNER T=3 (user). X matched the
 # 2026-10-03 estimate; Y moved in from 6.5. Re-tuned hot (bed 100C) same day:
-# Y 4.5 -> 4.8 after T3 pickups kept failing. TC_DOCK_AUTOTUNE (hot, 14:08-14:40):
-# X 209.75 -> 210.05 (peak 3.294g -> 2.683g), Y 4.8 confirmed best.
-params_park_x: 210.05
+# Y 4.5 -> 4.8 after T3 pickups kept failing. TC_DOCK_AUTOTUNE run next.
+params_park_x: 209.75
 params_park_y: 4.8
 params_park_z: 304.1
 params_safe_y: 100

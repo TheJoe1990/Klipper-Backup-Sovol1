@@ -10,3 +10,20 @@
 13:32:45 !! Tool not detected, expected 0. Pausing the print.
 13:33:46 !! No trigger on probe after full movement
 13:33:46 !! No trigger on probe after full movement
+13:55:16 !! Error evaluating 'gcode_macro DOCK_TUNER:gcode': gcode.CommandError: DOCK_TUNER: please only provide T after dropping the tool off.
+13:55:23 !! Error evaluating 'gcode_macro DOCK_TUNER:gcode': gcode.CommandError: DOCK_TUNER: please only provide T after dropping the tool off.
+13:55:27 !! Error evaluating 'gcode_macro DOCK_TUNER:gcode': gcode.CommandError: DOCK_TUNER: please only provide T after dropping the tool off.
+13:55:58 !! Cannot select tool, toolchanger status is uninitialized, reason:
+13:55:58 !! Cannot select tool, toolchanger status is uninitialized, reason:
+13:55:58 !! Cannot select tool, toolchanger status is uninitialized, reason:
+14:07:28 M117 Picking up T3 for dock autotune
+14:08:02 M117 Dock autotune T3 - click Continue
+14:08:02 TC_DOCK_AUTOTUNE
+14:08:02 echo: Dock autotune started, range: ±0.5mm and step: ±0.05mm
+14:08:06 echo: Recording baseline, Unselecting
+14:09:00 // action:prompt_begin Dock alignment check
+14:09:00 // action:prompt_text f-b: 0.0°
+14:09:00 // action:prompt_text l-r: 0.0°
+14:12:56 echo: Baseline: 3.294g,  dock_pitch: 0.0°,  dock_roll: 0.0°
+14:16:48 echo: Better -> axis=x offset=0.05 Δpeak=-0.175g new=3.119g
+14:20:39 echo: Better -> axis=x offset=0.1 Δpeak=-0.201g new=2.918g
