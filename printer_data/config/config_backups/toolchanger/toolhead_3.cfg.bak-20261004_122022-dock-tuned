@@ -25,10 +25,10 @@ fan: T3_partfan
 
 # Position with the toolhead aligned with the dock
 params_type: 'sc'
-# Dock position tuned 2026-10-04 with DOCK_TUNER T=3 (user). X matched the
-# 2026-10-03 estimate; Y moved in from 6.5.
+# !! ESTIMATED 2026-10-03, NOT TUNED: T2 park_x + avg dock spacing (64.7mm).
+# !! Dock-tune T3 (park x/y/z) before ANY pickup/dropoff of T3.
 params_park_x: 209.75
-params_park_y: 4.5
+params_park_y: 6.5
 params_park_z: 304.1
 params_safe_y: 100
 params_close_y: 58
