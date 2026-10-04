@@ -156,17 +156,13 @@ activate_gcode:
 #  Orbiter2 Smart Sensor — Tool 2 (T2)
 #####################################################################
 
-# 2026-10-03: Orbiter2 smart sensor being REMOVED from T2 (user decision). Section
-# disabled. It never did anything useful: its runout/insert macros below were already
-# commented out, so events only printed "Unknown command". T2's future filament
-# sensor goes on the Birds Nest like T0/T1 (see "Set up the encoder sensor for T2").
-#[filament_switch_sensor T2_filament_sensor]
-#switch_pin: T2:gpio3
-#pause_on_runout: False
-#runout_gcode: T2_FILAMENT_RUNOUT
-#insert_gcode: T2_FILAMENT_INSERT
-#event_delay: 1.0
-#pause_delay: 0.1
+[filament_switch_sensor T2_filament_sensor]
+switch_pin: T2:gpio3
+pause_on_runout: False
+runout_gcode: T2_FILAMENT_RUNOUT
+insert_gcode: T2_FILAMENT_INSERT
+event_delay: 1.0
+pause_delay: 0.1
 
 
 #####################################################################
