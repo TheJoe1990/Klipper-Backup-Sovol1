@@ -1,0 +1,1000 @@
+22:58:06 B:99.3 /100.0 T0:193.9 /0.0 T1:63.4 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:07 B:99.4 /100.0 T0:192.9 /0.0 T1:63.2 /0.0 T2:43.8 /0.0 T3:42.0 /0.0
+22:58:08 B:99.4 /100.0 T0:191.9 /0.0 T1:63.1 /0.0 T2:43.7 /0.0 T3:42.1 /0.0
+22:58:09 B:99.5 /100.0 T0:190.6 /0.0 T1:62.9 /0.0 T2:43.7 /0.0 T3:42.1 /0.0
+22:58:10 B:99.5 /100.0 T0:189.7 /0.0 T1:62.8 /0.0 T2:43.7 /0.0 T3:42.1 /0.0
+22:58:11 B:99.6 /100.0 T0:188.7 /0.0 T1:62.6 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:12 START_PRINT SKIP=1
+22:58:12 B:99.6 /100.0 T0:187.4 /0.0 T1:62.4 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:13 B:99.7 /100.0 T0:186.5 /0.0 T1:62.3 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:14 B:99.7 /100.0 T0:185.5 /0.0 T1:62.2 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:15 B:99.8 /100.0 T0:184.3 /0.0 T1:62.0 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:16 B:99.9 /100.0 T0:183.3 /0.0 T1:61.8 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:17 B:99.9 /100.0 T0:182.4 /0.0 T1:61.7 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:18 B:100.0 /100.0 T0:181.2 /0.0 T1:61.5 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:19 B:100.0 /100.0 T0:180.3 /0.0 T1:61.4 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:20 B:100.0 /100.0 T0:179.0 /0.0 T1:61.2 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:21 B:100.0 /100.0 T0:178.2 /0.0 T1:61.1 /0.0 T2:43.8 /0.0 T3:42.0 /0.0
+22:58:22 B:100.1 /100.0 T0:177.2 /0.0 T1:61.0 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:23 B:100.1 /100.0 T0:176.0 /0.0 T1:60.8 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:24 B:100.2 /100.0 T0:175.2 /0.0 T1:60.7 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:25 B:100.2 /100.0 T0:174.3 /0.0 T1:60.6 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:26 B:100.2 /100.0 T0:173.1 /0.0 T1:60.4 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:27 B:100.3 /100.0 T0:172.3 /0.0 T1:60.3 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:28 B:100.3 /100.0 T0:171.4 /0.0 T1:60.1 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:29 B:100.3 /100.0 T0:170.3 /0.0 T1:60.0 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:30 B:100.4 /100.0 T0:169.4 /0.0 T1:59.8 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:31 B:100.4 /100.0 T0:168.6 /0.0 T1:59.7 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:32 B:100.4 /100.0 T0:167.5 /0.0 T1:59.5 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:33 B:100.5 /100.0 T0:166.7 /0.0 T1:59.4 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:34 B:100.5 /100.0 T0:165.9 /0.0 T1:59.3 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:35 B:100.5 /100.0 T0:164.8 /0.0 T1:59.2 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:36 B:100.5 /100.0 T0:164.0 /0.0 T1:59.1 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:37 B:100.5 /100.0 T0:163.2 /0.0 T1:58.9 /0.0 T2:43.7 /0.0 T3:41.9 /0.0
+22:58:38 B:100.6 /100.0 T0:162.2 /0.0 T1:58.8 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:39 B:100.6 /100.0 T0:161.4 /0.0 T1:58.7 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:40 B:100.6 /100.0 T0:160.6 /0.0 T1:58.6 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:41 B:100.6 /100.0 T0:159.6 /0.0 T1:58.4 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:42 B:100.6 /100.0 T0:158.8 /0.0 T1:58.3 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:43 B:100.6 /100.0 T0:158.1 /0.0 T1:58.2 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:44 B:100.6 /100.0 T0:157.0 /0.0 T1:58.0 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:45 B:100.6 /100.0 T0:156.3 /0.0 T1:57.9 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:46 B:100.7 /100.0 T0:155.6 /0.0 T1:57.8 /0.0 T2:43.7 /0.0 T3:42.0 /0.0
+22:58:57 // Run Current: 1.00A Hold Current: 1.00A
+22:59:02 // Run Current: 1.08A Hold Current: 1.08A
+22:59:02 // Run Current: 1.08A Hold Current: 1.08A
+22:59:09 START_PRINT SKIP=1
+22:59:10 RESPOND type="command" msg="action:prompt_end"
+22:59:15 echo: ADJUST_Z_HOME_FOR_TOOL_OFFSET: tool active_tool=0 -> kinematic Z=10.0 + 0.0
+22:59:15 // Heatsoak SKIP: proceeding to print
+22:59:15 // action:prompt_end
+22:59:15 // Heatsoak complete -- calling _START_PRINT
+22:59:15 echo: DEBUG: All received parameters: {'BED_TEMP': '100', 'EXTRUDER_TEMP': '255', 'TOOL': '1', 'TOOL_TEMP': '255', 'T0_TEMP': '255', 'T1_TEMP': '255', 'T2_TEMP': '0', 'T3_TEMP': '0', 'T4_TEMP': '0', 'T5_TEMP': '0', 'LAYER': '', 'FILAMENT': 'ABS', 'EXCLUDE': '', 'SURFACE': '', 'OAPA': '', 'DMGCC': ''}
+22:59:15 // toolchanger initialized, active tool T0
+22:59:15 // Found active tool probe: tool_probe T0
+22:59:15 // Started: none
+22:59:16 echo: Slicer tools 0 1 -> physical tools 0 1 (Mainsail mapping applied). All other tools are turned off after the bed mesh.
+22:59:17 // Speed limits reset to printer.cfg (V=500.0 A=10000.0 SCV=30.0)
+22:59:17 // max_velocity: 500.000000 | // max_accel: 10000.000000 | // minimum_cruise_ratio: 0.500000 | // square_corner_velocity: 30.000000
+22:59:17 // Smart Park location: 152.0,228.0.
+22:59:17 // tool T0 already selected
+22:59:17 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+22:59:17 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+22:59:18 // Found active tool probe: tool_probe T0
+22:59:18 echo: TC_HOME_ROUTE: detected_tool=0
+22:59:18 echo: G28: tool present -> normal (T0)
+22:59:18 // toolchanger initialized, active tool T0
+22:59:28 // Run Current: 1.00A Hold Current: 1.00A
+22:59:34 // Run Current: 1.08A Hold Current: 1.08A
+22:59:34 // Run Current: 1.08A Hold Current: 1.08A
+22:59:46 echo: ADJUST_Z_HOME_FOR_TOOL_OFFSET: tool active_tool=0 -> kinematic Z=10.0 + 0.0
+22:59:47 B:100.5 /100.0 T0:116.2 /125.0 T1:52.0 /0.0 T2:43.8 /0.0 T3:41.9 /0.0
+22:59:48 B:100.5 /100.0 T0:115.6 /125.0 T1:51.9 /0.0 T2:43.8 /0.0 T3:42.0 /0.0
+22:59:49 B:100.5 /100.0 T0:115.2 /125.0 T1:51.8 /0.0 T2:43.8 /0.0 T3:42.0 /0.0
+22:59:50 B:100.4 /100.0 T0:115.8 /125.0 T1:51.8 /0.0 T2:43.8 /0.0 T3:42.0 /0.0
+22:59:51 B:100.4 /100.0 T0:118.6 /125.0 T1:51.7 /0.0 T2:43.9 /0.0 T3:41.9 /0.0
+22:59:52 B:100.4 /100.0 T0:121.7 /125.0 T1:51.6 /0.0 T2:43.8 /0.0 T3:42.0 /0.0
+22:59:53 // Starting Quad Gantry Leveling...
+22:59:53 // Found active tool probe: tool_probe T0
+22:59:54 // probe at 40.000,40.000 is z=0.514375
+22:59:55 // probe at 40.000,40.000 is z=0.512500
+22:59:56 // probe at 40.000,40.000 is z=0.510625
+22:59:59 // probe at 40.000,310.000 is z=0.656875
+22:59:59 // probe at 40.000,310.000 is z=0.649375
+22:59:59 // Probe samples exceed tolerance. Retrying...
+23:00:00 // probe at 40.000,310.000 is z=0.647500
+23:00:01 // probe at 40.000,310.000 is z=0.643750
+23:00:02 // probe at 40.000,310.000 is z=0.640000
+23:00:02 // Probe samples exceed tolerance. Retrying...
+23:00:03 // probe at 40.000,310.000 is z=0.636250
+23:00:03 // probe at 40.000,310.000 is z=0.634375
+23:00:04 // probe at 40.000,310.000 is z=0.632500
+23:00:07 // probe at 310.000,310.000 is z=0.816250
+23:00:08 // probe at 310.000,310.000 is z=0.806875
+23:00:08 // Probe samples exceed tolerance. Retrying...
+23:00:08 // probe at 310.000,310.000 is z=0.803125
+23:00:09 // probe at 310.000,310.000 is z=0.799375
+23:00:10 // probe at 310.000,310.000 is z=0.797500
+23:00:13 // probe at 310.000,40.000 is z=0.550000
+23:00:14 // probe at 310.000,40.000 is z=0.551875
+23:00:14 // probe at 310.000,40.000 is z=0.548125
+23:00:14 // Gantry-relative probe points: | // 0: 9.487500 1: 9.365625 2: 9.200625 3: 9.450000
+23:00:14 // Actuator Positions: | // z: 9.520131 z1: 9.387781 z2: 8.942881 z3: 9.509581
+23:00:14 // Average: 9.340093
+23:00:14 // Making the following Z adjustments: | // stepper_z = -0.180038 | // stepper_z1 = -0.047687 | // stepper_z2 = 0.397213 | // stepper_z3 = -0.169488
+23:00:15 // Retries: 0/5 Probed points range: 0.286875 tolerance: 0.050000
+23:00:17 // probe at 40.000,40.000 is z=0.679413
+23:00:18 // probe at 40.000,40.000 is z=0.679413
+23:00:19 // probe at 40.000,40.000 is z=0.679413
+23:00:22 // probe at 40.000,310.000 is z=0.655038
+23:00:22 // probe at 40.000,310.000 is z=0.649413
+23:00:23 // probe at 40.000,310.000 is z=0.647538
+23:00:23 // Probe samples exceed tolerance. Retrying...
+23:00:24 // probe at 40.000,310.000 is z=0.647538
+23:00:25 // probe at 40.000,310.000 is z=0.645663
+23:00:25 // probe at 40.000,310.000 is z=0.645663
+23:00:28 // probe at 310.000,310.000 is z=0.660663
+23:00:30 // probe at 310.000,310.000 is z=0.658788
+23:00:30 // probe at 310.000,310.000 is z=0.656913
+23:00:33 // probe at 310.000,40.000 is z=0.655038
+23:00:33 // probe at 310.000,40.000 is z=0.656913
+23:00:34 // probe at 310.000,40.000 is z=0.655038
+23:00:34 // Gantry-relative probe points: | // 0: 9.320587 1: 9.354337 2: 9.341212 3: 9.344962
+23:00:34 // Actuator Positions: | // z: 9.298491 z1: 9.391280 z2: 9.324155 z3: 9.359116
+23:00:34 // Average: 9.343261
+23:00:34 // Making the following Z adjustments: | // stepper_z = 0.044770 | // stepper_z1 = -0.048020 | // stepper_z2 = 0.019105 | // stepper_z3 = -0.015855
+23:00:35 // Retries: 1/5 Probed points range: 0.033750 tolerance: 0.050000
+23:00:35 // Algorithm: lagrange.
+23:00:35 // Default probe count: 9,9.
+23:00:35 // Adapted probe count: 3,3.
+23:00:35 // Default mesh bounds: (5.0, 0.0), (350.0, 325.0).
+23:00:35 // Mesh margin is 0, margin not increased.
+23:00:35 // Mesh point fuzzing enabled, points fuzzed up to 3.0mm.
+23:00:35 // Adapted mesh bounds: (159.42, 237.97), (192.07, 315.32).
+23:00:35 // KAMP adjustments successful. Happy KAMPing!
+23:00:39 // probe at 159.419,237.969 is z=0.033645
+23:00:39 // probe at 159.419,237.969 is z=0.031770
+23:00:40 // probe at 159.419,237.969 is z=0.026145
+23:00:40 // Probe samples exceed tolerance. Retrying...
+23:00:41 // probe at 159.419,237.969 is z=0.022395
+23:00:42 // probe at 159.419,237.969 is z=0.024270
+23:00:43 // probe at 159.419,237.969 is z=0.020520
+23:00:44 // probe at 175.744,237.969 is z=0.014895
+23:00:45 // probe at 175.744,237.969 is z=0.013020
+23:00:45 // probe at 175.744,237.969 is z=0.009270
+23:00:47 // probe at 192.056,237.969 is z=-0.000105
+23:00:48 // probe at 192.056,237.969 is z=-0.005730
+23:00:48 // probe at 192.056,237.969 is z=-0.001980
+23:00:50 // probe at 192.063,276.638 is z=0.058020
+23:00:51 // probe at 192.063,276.638 is z=0.044895
+23:00:51 // Probe samples exceed tolerance. Retrying...
+23:00:51 // probe at 192.063,276.638 is z=0.046770
+23:00:52 // probe at 192.063,276.638 is z=0.044895
+23:00:53 // probe at 192.063,276.638 is z=0.043020
+23:00:54 // probe at 175.738,276.638 is z=0.033645
+23:00:55 // probe at 175.738,276.638 is z=0.031770
+23:00:56 // probe at 175.738,276.638 is z=0.031770
+23:00:57 // probe at 159.419,276.644 is z=0.033645
+23:00:58 // probe at 159.419,276.644 is z=0.033645
+23:00:59 // probe at 159.419,276.644 is z=0.035520
+23:01:00 // probe at 159.419,315.306 is z=0.116145
+23:01:01 // probe at 159.419,315.306 is z=0.103020
+23:01:01 // Probe samples exceed tolerance. Retrying...
+23:01:02 // probe at 159.419,315.306 is z=0.101145
+23:01:03 // probe at 159.419,315.306 is z=0.099270
+23:01:03 // probe at 159.419,315.306 is z=0.097395
+23:01:05 // probe at 175.738,315.313 is z=0.091770
+23:01:05 // probe at 175.738,315.313 is z=0.089895
+23:01:06 // probe at 175.738,315.313 is z=0.086145
+23:01:08 // probe at 192.063,315.313 is z=0.093645
+23:01:08 // probe at 192.063,315.313 is z=0.095520
+23:01:09 // probe at 192.063,315.313 is z=0.095520
+23:01:09 // Mesh Bed Leveling Complete
+23:01:09 // Bed Mesh state has been saved to profile [default] | // for the current session.  The SAVE_CONFIG command will | // update the printer config file and restart the printer.
+23:01:09 // Smart Park location: 152.0,228.0.
+23:01:22 // Activating extruder extruder1
+23:01:34 // Found active tool probe: tool_probe T1
+23:01:39 // Selected tool 1 (tool T1)
+23:01:41 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:01:41 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:01:41 // tool T1 already selected
+23:01:41 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:01:41 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:01:41 B:100.1 /100.0 T0:125.3 /125.0 T1:47.4 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:42 B:100.1 /100.0 T0:125.4 /125.0 T1:47.4 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:01:43 B:100.1 /100.0 T0:125.4 /125.0 T1:48.2 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:44 B:100.1 /100.0 T0:125.2 /125.0 T1:50.9 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:45 B:100.1 /100.0 T0:124.9 /125.0 T1:57.0 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:46 B:100.1 /100.0 T0:124.8 /125.0 T1:62.8 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:47 B:100.0 /100.0 T0:124.9 /125.0 T1:68.7 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:48 B:100.0 /100.0 T0:125.2 /125.0 T1:76.9 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:49 B:100.1 /100.0 T0:125.4 /125.0 T1:83.1 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:50 B:100.0 /100.0 T0:125.5 /125.0 T1:89.1 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:51 B:100.0 /100.0 T0:125.3 /125.0 T1:96.9 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:52 B:100.0 /100.0 T0:125.1 /125.0 T1:102.5 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:53 B:100.0 /100.0 T0:124.9 /125.0 T1:108.0 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:01:54 B:100.0 /100.0 T0:124.9 /125.0 T1:114.8 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:55 B:100.0 /100.0 T0:125.1 /125.0 T1:119.8 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:56 B:100.0 /100.0 T0:125.3 /125.0 T1:124.7 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:01:57 B:100.0 /100.0 T0:125.4 /125.0 T1:131.2 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:01:58 B:100.0 /100.0 T0:125.4 /125.0 T1:136.0 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:01:59 B:100.0 /100.0 T0:125.2 /125.0 T1:140.6 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:00 B:99.9 /100.0 T0:124.9 /125.0 T1:146.7 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:01 B:100.0 /100.0 T0:124.8 /125.0 T1:151.0 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:02:02 B:99.9 /100.0 T0:124.8 /125.0 T1:155.3 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:02:03 B:99.9 /100.0 T0:125.0 /125.0 T1:160.9 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:02:04 B:100.0 /100.0 T0:125.2 /125.0 T1:165.2 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:02:05 B:100.0 /100.0 T0:125.3 /125.0 T1:169.3 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:06 B:99.9 /100.0 T0:125.2 /125.0 T1:174.8 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:07 B:99.9 /100.0 T0:125.0 /125.0 T1:178.9 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:08 B:99.9 /100.0 T0:124.8 /125.0 T1:182.8 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:09 B:99.9 /100.0 T0:124.7 /125.0 T1:188.1 /255.0 T2:43.9 /0.0 T3:42.0 /0.0
+23:02:10 B:99.9 /100.0 T0:124.8 /125.0 T1:191.9 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:11 B:99.9 /100.0 T0:125.1 /125.0 T1:195.7 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:12 B:100.0 /100.0 T0:125.3 /125.0 T1:200.7 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:13 B:99.9 /100.0 T0:125.3 /125.0 T1:204.5 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:14 B:100.0 /100.0 T0:125.1 /125.0 T1:208.2 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:02:15 B:100.0 /100.0 T0:124.8 /125.0 T1:213.0 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:16 B:99.9 /100.0 T0:124.7 /125.0 T1:216.2 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:17 B:100.0 /100.0 T0:124.9 /125.0 T1:219.1 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:18 B:99.9 /100.0 T0:125.2 /125.0 T1:223.5 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:19 B:99.9 /100.0 T0:125.4 /125.0 T1:226.7 /255.0 T2:43.8 /0.0 T3:42.1 /0.0
+23:02:20 B:99.9 /100.0 T0:125.4 /125.0 T1:230.0 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:21 B:100.0 /100.0 T0:125.3 /125.0 T1:234.4 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:22 B:99.9 /100.0 T0:125.1 /125.0 T1:237.6 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:23 B:100.0 /100.0 T0:124.8 /125.0 T1:241.8 /255.0 T2:44.0 /0.0 T3:42.1 /0.0
+23:02:24 B:100.0 /100.0 T0:124.8 /125.0 T1:244.8 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:25 B:100.0 /100.0 T0:125.0 /125.0 T1:247.4 /255.0 T2:44.0 /0.0 T3:42.1 /0.0
+23:02:26 B:100.0 /100.0 T0:125.2 /125.0 T1:250.3 /255.0 T2:44.0 /0.0 T3:42.1 /0.0
+23:02:27 B:100.0 /100.0 T0:125.3 /125.0 T1:251.8 /255.0 T2:44.0 /0.0 T3:42.1 /0.0
+23:02:28 B:99.9 /100.0 T0:125.3 /125.0 T1:252.9 /255.0 T2:43.9 /0.0 T3:42.1 /0.0
+23:02:29 // Moving filament tip 0.0mms
+23:02:29 // KAMP purge is not using firmware retraction, it is recommended to configure it.
+23:02:29 // KAMP purge starting at 162.0, 228.0 and purging 30.0mm of filament, requested flow rate is 12.0mm3/s.
+23:02:39 // Filament Sensor encoder_sensor0: filament detected
+23:02:39 // Filament Sensor encoder_sensor1: filament detected
+23:02:39 echo: Runout sensors enabled; initial state looks OK (see QUERY_FILAMENT_SENSOR output).
+23:02:39 // Heatsoak SKIP ignored: no active soak
+23:02:39 // action:prompt_end
+23:02:41 // tool T1 already selected
+23:02:41 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:02:41 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:02:42 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:03:52 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:04:06 // Activating extruder extruder
+23:04:07 B:100.1 /100.0 T0:183.6 /250.0 T1:235.5 /200.0 T2:44.1 /0.0 T3:42.2 /0.0
+23:04:08 B:100.1 /100.0 T0:187.9 /250.0 T1:233.6 /200.0 T2:44.1 /0.0 T3:42.2 /0.0
+23:04:09 B:100.1 /100.0 T0:193.1 /250.0 T1:231.2 /200.0 T2:44.0 /0.0 T3:42.2 /0.0
+23:04:10 B:100.1 /100.0 T0:196.6 /250.0 T1:229.4 /200.0 T2:44.0 /0.0 T3:42.2 /0.0
+23:04:11 B:100.1 /100.0 T0:199.9 /250.0 T1:227.8 /200.0 T2:44.1 /0.0 T3:42.2 /0.0
+23:04:12 B:100.0 /100.0 T0:204.1 /250.0 T1:225.7 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:13 B:100.1 /100.0 T0:207.1 /250.0 T1:224.2 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:14 B:100.1 /100.0 T0:210.1 /250.0 T1:222.7 /200.0 T2:44.0 /0.0 T3:42.2 /0.0
+23:04:15 B:100.0 /100.0 T0:213.9 /250.0 T1:220.9 /200.0 T2:44.0 /0.0 T3:42.2 /0.0
+23:04:16 B:100.1 /100.0 T0:216.5 /250.0 T1:219.5 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:17 B:100.1 /100.0 T0:218.6 /250.0 T1:218.5 /200.0 T2:44.0 /0.0 T3:42.2 /0.0
+23:04:18 B:100.0 /100.0 T0:221.9 /250.0 T1:217.5 /200.0 T2:44.1 /0.0 T3:42.2 /0.0
+23:04:19 B:100.1 /100.0 T0:224.4 /250.0 T1:216.4 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:20 B:100.0 /100.0 T0:226.9 /250.0 T1:215.2 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:21 B:100.0 /100.0 T0:230.2 /250.0 T1:213.6 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:22 B:100.1 /100.0 T0:232.6 /250.0 T1:212.4 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:23 B:100.1 /100.0 T0:235.0 /250.0 T1:211.3 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:24 B:100.1 /100.0 T0:238.1 /250.0 T1:209.8 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:25 B:100.1 /100.0 T0:240.3 /250.0 T1:208.7 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:26 B:100.1 /100.0 T0:242.3 /250.0 T1:207.5 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:27 B:100.1 /100.0 T0:244.4 /250.0 T1:206.1 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:28 B:100.1 /100.0 T0:245.7 /250.0 T1:205.0 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:29 B:100.1 /100.0 T0:246.6 /250.0 T1:204.0 /200.0 T2:44.0 /0.0 T3:42.3 /0.0
+23:04:30 B:100.2 /100.0 T0:247.6 /250.0 T1:202.7 /200.0 T2:44.1 /0.0 T3:42.3 /0.0
+23:04:40 // Found active tool probe: tool_probe T0
+23:04:45 // Selected tool 0 (tool T0)
+23:04:46 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:04:46 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:05:00 // Print paused!
+23:05:01 // idle_timeout: Timeout set to 43200.00 s
+23:05:01 echo: Filament encoder runout on T0
+23:05:27 // Print resuming!
+23:05:27 // toolchanger initialized, active tool T0
+23:05:27 // Found active tool probe: tool_probe T0
+23:05:42 // Print paused!
+23:05:42 // idle_timeout: Timeout set to 43200.00 s
+23:05:42 echo: Filament encoder runout on T0
+23:05:51 SET_FILAMENT_SENSOR SENSOR=encoder_sensor0 ENABLE=0
+23:05:53 // Print resuming!
+23:05:53 // toolchanger initialized, active tool T0
+23:05:53 // Found active tool probe: tool_probe T0
+23:06:11 SET_FILAMENT_SENSOR SENSOR=encoder_sensor1 ENABLE=0
+23:07:32 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:07:40 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:07:52 // Activating extruder extruder1
+23:08:05 // Found active tool probe: tool_probe T1
+23:08:10 // Selected tool 1 (tool T1)
+23:08:11 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:08:11 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:08:39 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:08:53 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:09:06 // Activating extruder extruder
+23:09:08 B:100.1 /100.0 T0:238.8 /250.0 T1:231.4 /195.0 T2:44.8 /0.0 T3:42.6 /0.0
+23:09:09 B:100.2 /100.0 T0:241.9 /250.0 T1:229.5 /195.0 T2:44.8 /0.0 T3:42.6 /0.0
+23:09:10 B:100.1 /100.0 T0:244.9 /250.0 T1:227.1 /195.0 T2:44.8 /0.0 T3:42.6 /0.0
+23:09:11 B:100.1 /100.0 T0:246.1 /250.0 T1:225.4 /195.0 T2:44.9 /0.0 T3:42.6 /0.0
+23:09:12 B:100.1 /100.0 T0:246.7 /250.0 T1:223.9 /195.0 T2:44.9 /0.0 T3:42.6 /0.0
+23:09:13 B:100.1 /100.0 T0:247.2 /250.0 T1:221.8 /195.0 T2:44.8 /0.0 T3:42.6 /0.0
+23:09:14 B:100.0 /100.0 T0:247.9 /250.0 T1:220.4 /195.0 T2:44.8 /0.0 T3:42.7 /0.0
+23:09:24 // Found active tool probe: tool_probe T0
+23:09:29 // Selected tool 0 (tool T0)
+23:09:30 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:09:30 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:09:47 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:09:51 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:10:03 // Activating extruder extruder1
+23:10:05 B:99.9 /100.0 T0:225.1 /195.0 T1:238.6 /250.0 T2:45.0 /0.0 T3:42.7 /0.0
+23:10:06 B:99.9 /100.0 T0:222.1 /195.0 T1:242.6 /250.0 T2:45.1 /0.0 T3:42.7 /0.0
+23:10:07 B:99.9 /100.0 T0:220.1 /195.0 T1:245.0 /250.0 T2:45.0 /0.0 T3:42.7 /0.0
+23:10:08 B:99.9 /100.0 T0:218.7 /195.0 T1:246.9 /250.0 T2:45.0 /0.0 T3:42.7 /0.0
+23:10:18 // Found active tool probe: tool_probe T1
+23:10:24 // Selected tool 1 (tool T1)
+23:10:25 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:10:25 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:10:38 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:10:43 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:10:56 // Activating extruder extruder
+23:10:57 B:100.1 /100.0 T0:237.7 /250.0 T1:228.8 /195.0 T2:45.1 /0.0 T3:42.9 /0.0
+23:10:58 B:100.0 /100.0 T0:240.9 /250.0 T1:227.0 /195.0 T2:45.2 /0.0 T3:42.8 /0.0
+23:10:59 B:100.0 /100.0 T0:244.1 /250.0 T1:224.6 /195.0 T2:45.2 /0.0 T3:42.8 /0.0
+23:11:00 B:100.0 /100.0 T0:245.4 /250.0 T1:222.9 /195.0 T2:45.1 /0.0 T3:42.8 /0.0
+23:11:01 B:100.0 /100.0 T0:246.1 /250.0 T1:221.3 /195.0 T2:45.1 /0.0 T3:42.8 /0.0
+23:11:02 B:100.0 /100.0 T0:246.6 /250.0 T1:219.2 /195.0 T2:45.2 /0.0 T3:42.8 /0.0
+23:11:03 B:100.0 /100.0 T0:247.3 /250.0 T1:218.3 /195.0 T2:45.1 /0.0 T3:42.8 /0.0
+23:11:14 // Found active tool probe: tool_probe T0
+23:11:18 // Selected tool 0 (tool T0)
+23:11:19 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:11:19 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:11:34 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:11:38 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:11:51 // Activating extruder extruder1
+23:11:52 B:100.1 /100.0 T0:225.7 /195.0 T1:239.8 /250.0 T2:45.4 /0.0 T3:42.9 /0.0
+23:11:53 B:100.1 /100.0 T0:223.4 /195.0 T1:242.7 /250.0 T2:45.4 /0.0 T3:42.9 /0.0
+23:11:54 B:100.1 /100.0 T0:221.4 /195.0 T1:245.2 /250.0 T2:45.4 /0.0 T3:42.9 /0.0
+23:11:55 B:100.1 /100.0 T0:219.2 /195.0 T1:247.5 /250.0 T2:45.3 /0.0 T3:42.9 /0.0
+23:12:06 // Found active tool probe: tool_probe T1
+23:12:11 // Selected tool 1 (tool T1)
+23:12:12 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:12:12 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:12:24 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:12:29 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:12:42 // Activating extruder extruder
+23:12:43 B:100.0 /100.0 T0:237.4 /250.0 T1:229.2 /195.0 T2:45.4 /0.0 T3:43.0 /0.0
+23:12:44 B:99.9 /100.0 T0:241.6 /250.0 T1:226.8 /195.0 T2:45.5 /0.0 T3:43.0 /0.0
+23:12:45 B:100.0 /100.0 T0:243.9 /250.0 T1:225.0 /195.0 T2:45.4 /0.0 T3:43.0 /0.0
+23:12:46 B:100.0 /100.0 T0:245.4 /250.0 T1:223.3 /195.0 T2:45.4 /0.0 T3:43.0 /0.0
+23:12:47 B:99.9 /100.0 T0:246.3 /250.0 T1:221.1 /195.0 T2:45.4 /0.0 T3:43.0 /0.0
+23:12:48 B:99.9 /100.0 T0:246.7 /250.0 T1:219.5 /195.0 T2:45.5 /0.0 T3:43.0 /0.0
+23:12:49 B:99.9 /100.0 T0:247.3 /250.0 T1:218.5 /195.0 T2:45.4 /0.0 T3:43.0 /0.0
+23:13:00 // Found active tool probe: tool_probe T0
+23:13:04 // Selected tool 0 (tool T0)
+23:13:05 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:13:05 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:13:19 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:13:23 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:13:36 // Activating extruder extruder1
+23:13:37 B:100.1 /100.0 T0:225.7 /195.0 T1:239.1 /250.0 T2:45.5 /0.0 T3:43.1 /0.0
+23:13:38 B:100.0 /100.0 T0:223.5 /195.0 T1:242.2 /250.0 T2:45.5 /0.0 T3:43.2 /0.0
+23:13:39 B:100.0 /100.0 T0:221.5 /195.0 T1:244.8 /250.0 T2:45.6 /0.0 T3:43.2 /0.0
+23:13:40 B:100.1 /100.0 T0:219.3 /195.0 T1:247.3 /250.0 T2:45.6 /0.0 T3:43.2 /0.0
+23:13:51 // Found active tool probe: tool_probe T1
+23:13:56 // Selected tool 1 (tool T1)
+23:13:57 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:13:57 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:14:08 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:14:12 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:14:25 // Activating extruder extruder
+23:14:27 B:100.1 /100.0 T0:238.4 /250.0 T1:229.2 /195.0 T2:45.7 /0.0 T3:43.2 /0.0
+23:14:28 B:100.1 /100.0 T0:241.5 /250.0 T1:227.3 /195.0 T2:45.7 /0.0 T3:43.2 /0.0
+23:14:29 B:100.1 /100.0 T0:243.9 /250.0 T1:225.6 /195.0 T2:45.6 /0.0 T3:43.2 /0.0
+23:14:30 B:100.1 /100.0 T0:245.7 /250.0 T1:223.3 /195.0 T2:45.6 /0.0 T3:43.2 /0.0
+23:14:31 B:100.0 /100.0 T0:246.3 /250.0 T1:221.7 /195.0 T2:45.7 /0.0 T3:43.2 /0.0
+23:14:32 B:100.0 /100.0 T0:246.8 /250.0 T1:220.1 /195.0 T2:45.7 /0.0 T3:43.3 /0.0
+23:14:33 B:100.1 /100.0 T0:247.6 /250.0 T1:218.6 /195.0 T2:45.7 /0.0 T3:43.2 /0.0
+23:14:43 // Found active tool probe: tool_probe T0
+23:14:48 // Selected tool 0 (tool T0)
+23:14:49 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:14:49 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:15:01 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:15:06 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:15:18 // Activating extruder extruder1
+23:15:20 B:100.0 /100.0 T0:226.5 /195.0 T1:238.4 /250.0 T2:45.7 /0.0 T3:43.3 /0.0
+23:15:21 B:100.0 /100.0 T0:223.5 /195.0 T1:242.5 /250.0 T2:45.8 /0.0 T3:43.4 /0.0
+23:15:22 B:100.0 /100.0 T0:221.6 /195.0 T1:245.0 /250.0 T2:45.8 /0.0 T3:43.4 /0.0
+23:15:23 B:100.0 /100.0 T0:219.9 /195.0 T1:246.8 /250.0 T2:45.8 /0.0 T3:43.4 /0.0
+23:15:33 // Found active tool probe: tool_probe T1
+23:15:38 // Selected tool 1 (tool T1)
+23:15:39 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:15:39 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:15:50 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:15:55 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:16:08 // Activating extruder extruder
+23:16:09 B:100.1 /100.0 T0:239.0 /250.0 T1:229.6 /195.0 T2:45.9 /0.0 T3:43.4 /0.0
+23:16:10 B:100.1 /100.0 T0:242.9 /250.0 T1:227.2 /195.0 T2:45.9 /0.0 T3:43.5 /0.0
+23:16:11 B:100.1 /100.0 T0:245.0 /250.0 T1:225.4 /195.0 T2:45.8 /0.0 T3:43.5 /0.0
+23:16:12 B:100.1 /100.0 T0:246.0 /250.0 T1:223.7 /195.0 T2:45.9 /0.0 T3:43.5 /0.0
+23:16:13 B:100.1 /100.0 T0:246.6 /250.0 T1:221.5 /195.0 T2:45.9 /0.0 T3:43.4 /0.0
+23:16:14 B:100.1 /100.0 T0:246.9 /250.0 T1:220.0 /195.0 T2:45.9 /0.0 T3:43.4 /0.0
+23:16:15 B:100.1 /100.0 T0:247.6 /250.0 T1:218.7 /195.0 T2:45.9 /0.0 T3:43.4 /0.0
+23:16:26 // Found active tool probe: tool_probe T0
+23:16:30 // Selected tool 0 (tool T0)
+23:16:31 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:16:31 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:16:44 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:16:48 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:17:00 // Activating extruder extruder1
+23:17:02 B:100.0 /100.0 T0:226.5 /195.0 T1:238.1 /250.0 T2:46.1 /0.0 T3:43.6 /0.0
+23:17:03 B:100.0 /100.0 T0:223.6 /195.0 T1:242.2 /250.0 T2:46.1 /0.0 T3:43.5 /0.0
+23:17:04 B:100.0 /100.0 T0:221.6 /195.0 T1:244.7 /250.0 T2:46.1 /0.0 T3:43.5 /0.0
+23:17:05 B:100.0 /100.0 T0:219.9 /195.0 T1:246.7 /250.0 T2:46.2 /0.0 T3:43.5 /0.0
+23:17:15 // Found active tool probe: tool_probe T1
+23:17:20 // Selected tool 1 (tool T1)
+23:17:21 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:17:21 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:17:32 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:17:38 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:17:51 // Activating extruder extruder
+23:17:52 B:100.0 /100.0 T0:238.4 /250.0 T1:229.2 /195.0 T2:46.2 /0.0 T3:43.6 /0.0
+23:17:53 B:100.0 /100.0 T0:241.6 /250.0 T1:226.7 /195.0 T2:46.1 /0.0 T3:43.6 /0.0
+23:17:54 B:100.0 /100.0 T0:243.9 /250.0 T1:225.0 /195.0 T2:46.1 /0.0 T3:43.6 /0.0
+23:17:55 B:99.9 /100.0 T0:245.7 /250.0 T1:222.7 /195.0 T2:46.1 /0.0 T3:43.7 /0.0
+23:17:56 B:100.0 /100.0 T0:246.3 /250.0 T1:221.1 /195.0 T2:46.2 /0.0 T3:43.6 /0.0
+23:17:57 B:100.0 /100.0 T0:246.7 /250.0 T1:219.5 /195.0 T2:46.2 /0.0 T3:43.6 /0.0
+23:17:58 B:99.9 /100.0 T0:247.5 /250.0 T1:218.3 /195.0 T2:46.2 /0.0 T3:43.7 /0.0
+23:18:09 // Found active tool probe: tool_probe T0
+23:18:13 // Selected tool 0 (tool T0)
+23:18:14 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:18:14 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:18:26 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:18:30 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:18:42 // Activating extruder extruder1
+23:18:44 B:100.2 /100.0 T0:226.3 /195.0 T1:238.1 /250.0 T2:46.3 /0.0 T3:43.8 /0.0
+23:18:45 B:100.1 /100.0 T0:223.4 /195.0 T1:242.2 /250.0 T2:46.2 /0.0 T3:43.7 /0.0
+23:18:46 B:100.1 /100.0 T0:221.4 /195.0 T1:244.8 /250.0 T2:46.3 /0.0 T3:43.7 /0.0
+23:18:47 B:100.0 /100.0 T0:219.7 /195.0 T1:246.8 /250.0 T2:46.3 /0.0 T3:43.7 /0.0
+23:18:58 // Found active tool probe: tool_probe T1
+23:19:03 // Selected tool 1 (tool T1)
+23:19:04 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:19:04 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:19:15 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:19:21 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:19:34 // Activating extruder extruder
+23:19:36 B:100.0 /100.0 T0:237.5 /250.0 T1:229.3 /195.0 T2:46.3 /0.0 T3:43.8 /0.0
+23:19:37 B:100.0 /100.0 T0:241.7 /250.0 T1:226.9 /195.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:19:38 B:100.0 /100.0 T0:244.1 /250.0 T1:225.1 /195.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:19:39 B:100.0 /100.0 T0:245.5 /250.0 T1:223.4 /195.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:19:40 B:100.0 /100.0 T0:246.4 /250.0 T1:221.3 /195.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:19:41 B:100.0 /100.0 T0:246.8 /250.0 T1:219.7 /195.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:19:42 B:100.0 /100.0 T0:247.4 /250.0 T1:218.6 /195.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:19:52 // Found active tool probe: tool_probe T0
+23:19:57 // Selected tool 0 (tool T0)
+23:19:58 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:19:58 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:20:10 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:20:14 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:20:26 // Activating extruder extruder1
+23:20:28 B:100.0 /100.0 T0:226.5 /195.0 T1:238.2 /250.0 T2:46.5 /0.0 T3:43.8 /0.0
+23:20:29 B:100.0 /100.0 T0:224.3 /195.0 T1:241.2 /250.0 T2:46.4 /0.0 T3:43.8 /0.0
+23:20:30 B:100.0 /100.0 T0:221.6 /195.0 T1:244.6 /250.0 T2:46.5 /0.0 T3:43.9 /0.0
+23:20:31 B:100.0 /100.0 T0:219.9 /195.0 T1:246.4 /250.0 T2:46.5 /0.0 T3:43.9 /0.0
+23:20:32 B:100.0 /100.0 T0:218.7 /195.0 T1:247.6 /250.0 T2:46.5 /0.0 T3:44.0 /0.0
+23:20:42 // Found active tool probe: tool_probe T1
+23:20:47 // Selected tool 1 (tool T1)
+23:20:48 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:20:48 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:21:00 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:21:07 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:21:20 // Activating extruder extruder
+23:21:21 B:100.0 /100.0 T0:241.6 /250.0 T1:229.1 /195.0 T2:46.6 /0.0 T3:44.0 /0.0
+23:21:22 B:100.0 /100.0 T0:244.2 /250.0 T1:227.3 /195.0 T2:46.5 /0.0 T3:44.0 /0.0
+23:21:23 B:100.1 /100.0 T0:246.1 /250.0 T1:225.5 /195.0 T2:46.5 /0.0 T3:44.1 /0.0
+23:21:24 B:100.0 /100.0 T0:247.2 /250.0 T1:223.2 /195.0 T2:46.6 /0.0 T3:44.0 /0.0
+23:21:25 B:100.0 /100.0 T0:247.4 /250.0 T1:221.6 /195.0 T2:46.6 /0.0 T3:44.0 /0.0
+23:21:26 B:100.0 /100.0 T0:247.7 /250.0 T1:220.0 /195.0 T2:46.6 /0.0 T3:44.0 /0.0
+23:21:37 // Found active tool probe: tool_probe T0
+23:21:41 // Selected tool 0 (tool T0)
+23:21:42 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:21:42 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:21:53 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:21:57 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:22:09 // Activating extruder extruder1
+23:22:11 B:100.0 /100.0 T0:225.7 /195.0 T1:239.3 /250.0 T2:46.7 /0.0 T3:44.1 /0.0
+23:22:12 B:100.0 /100.0 T0:223.5 /195.0 T1:242.4 /250.0 T2:46.7 /0.0 T3:44.1 /0.0
+23:22:13 B:99.9 /100.0 T0:221.5 /195.0 T1:244.9 /250.0 T2:46.7 /0.0 T3:44.1 /0.0
+23:22:14 B:100.0 /100.0 T0:219.3 /195.0 T1:247.3 /250.0 T2:46.7 /0.0 T3:44.1 /0.0
+23:22:25 // Found active tool probe: tool_probe T1
+23:22:30 // Selected tool 1 (tool T1)
+23:22:31 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:22:31 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:22:42 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:22:50 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:23:03 // Activating extruder extruder
+23:23:05 B:100.1 /100.0 T0:239.9 /250.0 T1:229.4 /195.0 T2:46.6 /0.0 T3:44.2 /0.0
+23:23:06 B:100.1 /100.0 T0:243.7 /250.0 T1:226.9 /195.0 T2:46.7 /0.0 T3:44.2 /0.0
+23:23:07 B:100.0 /100.0 T0:245.6 /250.0 T1:225.2 /195.0 T2:46.7 /0.0 T3:44.2 /0.0
+23:23:08 B:100.0 /100.0 T0:246.6 /250.0 T1:223.5 /195.0 T2:46.7 /0.0 T3:44.2 /0.0
+23:23:09 B:100.0 /100.0 T0:247.0 /250.0 T1:221.3 /195.0 T2:46.7 /0.0 T3:44.2 /0.0
+23:23:10 B:100.0 /100.0 T0:247.3 /250.0 T1:219.8 /195.0 T2:46.7 /0.0 T3:44.2 /0.0
+23:23:11 B:100.0 /100.0 T0:247.8 /250.0 T1:218.6 /195.0 T2:46.7 /0.0 T3:44.2 /0.0
+23:23:21 // Found active tool probe: tool_probe T0
+23:23:26 // Selected tool 0 (tool T0)
+23:23:27 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:23:27 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:23:38 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:23:42 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:23:54 // Activating extruder extruder1
+23:23:56 B:100.0 /100.0 T0:225.7 /195.0 T1:239.3 /250.0 T2:46.9 /0.0 T3:44.3 /0.0
+23:23:57 B:100.0 /100.0 T0:223.5 /195.0 T1:242.2 /250.0 T2:46.8 /0.0 T3:44.3 /0.0
+23:23:58 B:100.0 /100.0 T0:221.5 /195.0 T1:244.8 /250.0 T2:46.8 /0.0 T3:44.3 /0.0
+23:23:59 B:100.1 /100.0 T0:219.3 /195.0 T1:247.3 /250.0 T2:46.8 /0.0 T3:44.3 /0.0
+23:24:09 // Found active tool probe: tool_probe T1
+23:24:14 // Selected tool 1 (tool T1)
+23:24:15 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:24:15 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:24:29 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:24:36 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:24:49 // Activating extruder extruder
+23:24:50 B:100.1 /100.0 T0:240.4 /250.0 T1:229.2 /195.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:24:51 B:100.0 /100.0 T0:243.2 /250.0 T1:227.4 /195.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:24:52 B:100.1 /100.0 T0:245.7 /250.0 T1:225.0 /195.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:24:53 B:100.0 /100.0 T0:246.6 /250.0 T1:223.3 /195.0 T2:46.9 /0.0 T3:44.4 /0.0
+23:24:54 B:100.1 /100.0 T0:246.9 /250.0 T1:221.7 /195.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:24:55 B:100.0 /100.0 T0:247.3 /250.0 T1:219.7 /195.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:24:56 B:100.0 /100.0 T0:247.8 /250.0 T1:218.6 /195.0 T2:46.9 /0.0 T3:44.4 /0.0
+23:25:07 // Found active tool probe: tool_probe T0
+23:25:11 // Selected tool 0 (tool T0)
+23:25:13 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:25:13 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:25:23 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:25:27 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:25:39 // Activating extruder extruder1
+23:25:41 B:99.9 /100.0 T0:225.7 /195.0 T1:238.0 /250.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:25:42 B:99.9 /100.0 T0:223.5 /195.0 T1:242.1 /250.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:25:43 B:99.9 /100.0 T0:221.6 /195.0 T1:244.7 /250.0 T2:47.1 /0.0 T3:44.4 /0.0
+23:25:44 B:99.9 /100.0 T0:219.3 /195.0 T1:247.2 /250.0 T2:47.0 /0.0 T3:44.4 /0.0
+23:25:55 // Found active tool probe: tool_probe T1
+23:26:00 // Selected tool 1 (tool T1)
+23:26:01 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:26:01 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:26:13 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:26:19 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:26:32 // Activating extruder extruder
+23:26:33 B:99.9 /100.0 T0:237.6 /250.0 T1:229.8 /195.0 T2:47.1 /0.0 T3:44.5 /0.0
+23:26:34 B:99.9 /100.0 T0:241.8 /250.0 T1:227.4 /195.0 T2:47.2 /0.0 T3:44.5 /0.0
+23:26:35 B:100.0 /100.0 T0:244.1 /250.0 T1:225.6 /195.0 T2:47.1 /0.0 T3:44.5 /0.0
+23:26:36 B:99.9 /100.0 T0:245.5 /250.0 T1:223.9 /195.0 T2:47.1 /0.0 T3:44.6 /0.0
+23:26:37 B:99.9 /100.0 T0:246.4 /250.0 T1:221.8 /195.0 T2:47.1 /0.0 T3:44.6 /0.0
+23:26:38 B:99.9 /100.0 T0:246.8 /250.0 T1:220.2 /195.0 T2:47.1 /0.0 T3:44.6 /0.0
+23:26:39 B:99.9 /100.0 T0:247.3 /250.0 T1:218.9 /195.0 T2:47.1 /0.0 T3:44.6 /0.0
+23:26:50 // Found active tool probe: tool_probe T0
+23:26:54 // Selected tool 0 (tool T0)
+23:26:56 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:26:56 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:27:06 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:27:10 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:27:22 // Activating extruder extruder1
+23:27:24 B:100.1 /100.0 T0:224.9 /195.0 T1:239.2 /250.0 T2:47.2 /0.0 T3:44.6 /0.0
+23:27:25 B:100.0 /100.0 T0:222.7 /195.0 T1:242.2 /250.0 T2:47.2 /0.0 T3:44.7 /0.0
+23:27:26 B:100.0 /100.0 T0:220.1 /195.0 T1:245.5 /250.0 T2:47.2 /0.0 T3:44.6 /0.0
+23:27:27 B:100.0 /100.0 T0:218.7 /195.0 T1:247.2 /250.0 T2:47.2 /0.0 T3:44.6 /0.0
+23:27:37 // Found active tool probe: tool_probe T1
+23:27:42 // Selected tool 1 (tool T1)
+23:27:43 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:27:43 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:27:55 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:28:00 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:28:13 // Activating extruder extruder
+23:28:15 B:100.1 /100.0 T0:239.6 /250.0 T1:229.1 /195.0 T2:47.3 /0.0 T3:44.6 /0.0
+23:28:16 B:100.1 /100.0 T0:242.6 /250.0 T1:227.3 /195.0 T2:47.2 /0.0 T3:44.6 /0.0
+23:28:17 B:100.0 /100.0 T0:244.8 /250.0 T1:225.5 /195.0 T2:47.3 /0.0 T3:44.7 /0.0
+23:28:18 B:100.0 /100.0 T0:246.3 /250.0 T1:223.3 /195.0 T2:47.2 /0.0 T3:44.7 /0.0
+23:28:19 B:100.0 /100.0 T0:246.7 /250.0 T1:221.7 /195.0 T2:47.3 /0.0 T3:44.7 /0.0
+23:28:20 B:100.0 /100.0 T0:247.0 /250.0 T1:220.1 /195.0 T2:47.2 /0.0 T3:44.7 /0.0
+23:28:21 B:100.0 /100.0 T0:247.8 /250.0 T1:218.6 /195.0 T2:47.3 /0.0 T3:44.7 /0.0
+23:28:31 // Found active tool probe: tool_probe T0
+23:28:36 // Selected tool 0 (tool T0)
+23:28:37 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:28:37 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:28:48 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:28:52 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:29:05 // Activating extruder extruder1
+23:29:06 B:100.0 /100.0 T0:226.4 /195.0 T1:238.4 /250.0 T2:47.4 /0.0 T3:44.7 /0.0
+23:29:07 B:100.0 /100.0 T0:224.1 /195.0 T1:241.5 /250.0 T2:47.4 /0.0 T3:44.7 /0.0
+23:29:08 B:100.1 /100.0 T0:221.5 /195.0 T1:244.9 /250.0 T2:47.4 /0.0 T3:44.8 /0.0
+23:29:09 B:100.0 /100.0 T0:219.8 /195.0 T1:246.8 /250.0 T2:47.4 /0.0 T3:44.7 /0.0
+23:29:10 B:100.0 /100.0 T0:218.7 /195.0 T1:248.0 /250.0 T2:47.4 /0.0 T3:44.8 /0.0
+23:29:21 // Found active tool probe: tool_probe T1
+23:29:26 // Selected tool 1 (tool T1)
+23:29:27 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:29:27 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:29:39 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:29:47 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:30:00 // Activating extruder extruder
+23:30:01 B:100.0 /100.0 T0:239.1 /250.0 T1:230.6 /195.0 T2:47.4 /0.0 T3:44.8 /0.0
+23:30:02 B:100.0 /100.0 T0:243.1 /250.0 T1:228.1 /195.0 T2:47.5 /0.0 T3:44.9 /0.0
+23:30:03 B:99.9 /100.0 T0:245.1 /250.0 T1:226.3 /195.0 T2:47.4 /0.0 T3:44.9 /0.0
+23:30:04 B:100.0 /100.0 T0:246.2 /250.0 T1:224.6 /195.0 T2:47.4 /0.0 T3:44.8 /0.0
+23:30:05 B:100.0 /100.0 T0:246.8 /250.0 T1:222.4 /195.0 T2:47.4 /0.0 T3:44.8 /0.0
+23:30:06 B:100.1 /100.0 T0:247.1 /250.0 T1:220.9 /195.0 T2:47.4 /0.0 T3:44.9 /0.0
+23:30:07 B:100.0 /100.0 T0:247.6 /250.0 T1:219.4 /195.0 T2:47.5 /0.0 T3:44.9 /0.0
+23:30:18 // Found active tool probe: tool_probe T0
+23:30:22 // Selected tool 0 (tool T0)
+23:30:23 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:30:23 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:30:35 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:30:39 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:30:51 // Activating extruder extruder1
+23:30:53 B:100.0 /100.0 T0:226.0 /195.0 T1:238.6 /250.0 T2:47.5 /0.0 T3:44.9 /0.0
+23:30:54 B:100.0 /100.0 T0:223.8 /195.0 T1:241.7 /250.0 T2:47.5 /0.0 T3:44.9 /0.0
+23:30:55 B:100.0 /100.0 T0:221.8 /195.0 T1:244.3 /250.0 T2:47.5 /0.0 T3:44.9 /0.0
+23:30:56 B:100.0 /100.0 T0:219.5 /195.0 T1:246.9 /250.0 T2:47.5 /0.0 T3:45.0 /0.0
+23:31:06 // Found active tool probe: tool_probe T1
+23:31:11 // Selected tool 1 (tool T1)
+23:31:12 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:31:12 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:31:24 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:31:31 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:31:44 // Activating extruder extruder
+23:31:45 B:99.9 /100.0 T0:238.6 /250.0 T1:230.0 /195.0 T2:47.6 /0.0 T3:45.1 /0.0
+23:31:46 B:99.9 /100.0 T0:242.6 /250.0 T1:227.6 /195.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:31:47 B:99.9 /100.0 T0:244.9 /250.0 T1:225.8 /195.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:31:48 B:99.9 /100.0 T0:246.3 /250.0 T1:224.1 /195.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:31:49 B:99.9 /100.0 T0:246.7 /250.0 T1:221.9 /195.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:31:50 B:99.9 /100.0 T0:247.0 /250.0 T1:220.4 /195.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:31:51 B:99.9 /100.0 T0:247.8 /250.0 T1:219.0 /195.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:32:02 // Found active tool probe: tool_probe T0
+23:32:06 // Selected tool 0 (tool T0)
+23:32:08 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:32:08 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:32:19 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:32:23 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:32:35 // Activating extruder extruder1
+23:32:37 B:100.1 /100.0 T0:226.7 /195.0 T1:237.9 /250.0 T2:47.7 /0.0 T3:45.0 /0.0
+23:32:38 B:100.0 /100.0 T0:223.8 /195.0 T1:241.9 /250.0 T2:47.7 /0.0 T3:45.1 /0.0
+23:32:39 B:100.1 /100.0 T0:221.8 /195.0 T1:244.4 /250.0 T2:47.6 /0.0 T3:45.0 /0.0
+23:32:40 B:100.1 /100.0 T0:220.1 /195.0 T1:246.3 /250.0 T2:47.6 /0.0 T3:45.1 /0.0
+23:32:41 B:100.2 /100.0 T0:218.6 /195.0 T1:247.9 /250.0 T2:47.6 /0.0 T3:45.1 /0.0
+23:32:52 // Found active tool probe: tool_probe T1
+23:32:57 // Selected tool 1 (tool T1)
+23:32:58 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:32:58 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:33:12 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:33:18 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:33:31 // Activating extruder extruder
+23:33:33 B:99.9 /100.0 T0:239.0 /250.0 T1:229.6 /195.0 T2:47.7 /0.0 T3:45.1 /0.0
+23:33:34 B:100.1 /100.0 T0:242.1 /250.0 T1:227.8 /195.0 T2:47.7 /0.0 T3:45.2 /0.0
+23:33:35 B:100.1 /100.0 T0:244.4 /250.0 T1:226.0 /195.0 T2:47.7 /0.0 T3:45.2 /0.0
+23:33:36 B:100.0 /100.0 T0:246.0 /250.0 T1:223.7 /195.0 T2:47.7 /0.0 T3:45.2 /0.0
+23:33:37 B:100.1 /100.0 T0:246.5 /250.0 T1:222.1 /195.0 T2:47.8 /0.0 T3:45.2 /0.0
+23:33:38 B:100.1 /100.0 T0:246.9 /250.0 T1:220.6 /195.0 T2:47.7 /0.0 T3:45.2 /0.0
+23:33:39 B:100.0 /100.0 T0:247.7 /250.0 T1:218.8 /195.0 T2:47.7 /0.0 T3:45.2 /0.0
+23:33:49 // Found active tool probe: tool_probe T0
+23:33:54 // Selected tool 0 (tool T0)
+23:33:55 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:33:55 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:34:07 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:34:11 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:34:23 // Activating extruder extruder1
+23:34:24 B:100.1 /100.0 T0:226.1 /195.0 T1:239.0 /250.0 T2:47.9 /0.0 T3:45.2 /0.0
+23:34:25 B:100.0 /100.0 T0:223.9 /195.0 T1:242.0 /250.0 T2:47.9 /0.0 T3:45.2 /0.0
+23:34:26 B:100.1 /100.0 T0:221.9 /195.0 T1:244.5 /250.0 T2:47.9 /0.0 T3:45.2 /0.0
+23:34:27 B:100.0 /100.0 T0:219.7 /195.0 T1:246.9 /250.0 T2:47.8 /0.0 T3:45.2 /0.0
+23:34:28 B:100.0 /100.0 T0:218.6 /195.0 T1:247.9 /250.0 T2:47.9 /0.0 T3:45.2 /0.0
+23:34:39 // Found active tool probe: tool_probe T1
+23:34:44 // Selected tool 1 (tool T1)
+23:34:45 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:34:45 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:34:57 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:35:04 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:35:17 // Activating extruder extruder
+23:35:18 B:100.0 /100.0 T0:238.6 /250.0 T1:229.4 /195.0 T2:47.8 /0.0 T3:45.3 /0.0
+23:35:19 B:100.0 /100.0 T0:242.7 /250.0 T1:227.0 /195.0 T2:47.9 /0.0 T3:45.2 /0.0
+23:35:20 B:100.0 /100.0 T0:244.8 /250.0 T1:225.2 /195.0 T2:47.9 /0.0 T3:45.3 /0.0
+23:35:21 B:99.9 /100.0 T0:246.0 /250.0 T1:223.5 /195.0 T2:47.9 /0.0 T3:45.3 /0.0
+23:35:22 B:100.0 /100.0 T0:246.7 /250.0 T1:221.4 /195.0 T2:47.9 /0.0 T3:45.3 /0.0
+23:35:23 B:99.9 /100.0 T0:247.0 /250.0 T1:219.9 /195.0 T2:47.9 /0.0 T3:45.3 /0.0
+23:35:24 B:100.0 /100.0 T0:247.6 /250.0 T1:218.7 /195.0 T2:47.9 /0.0 T3:45.3 /0.0
+23:35:35 // Found active tool probe: tool_probe T0
+23:35:39 // Selected tool 0 (tool T0)
+23:35:41 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:35:41 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:35:52 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:35:56 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:36:08 // Activating extruder extruder1
+23:36:10 B:100.1 /100.0 T0:226.6 /195.0 T1:238.4 /250.0 T2:48.0 /0.0 T3:45.3 /0.0
+23:36:11 B:100.1 /100.0 T0:223.7 /195.0 T1:242.5 /250.0 T2:47.9 /0.0 T3:45.3 /0.0
+23:36:12 B:100.1 /100.0 T0:221.7 /195.0 T1:244.9 /250.0 T2:48.0 /0.0 T3:45.3 /0.0
+23:36:13 B:100.1 /100.0 T0:220.0 /195.0 T1:246.8 /250.0 T2:48.0 /0.0 T3:45.3 /0.0
+23:36:23 // Found active tool probe: tool_probe T1
+23:36:28 // Selected tool 1 (tool T1)
+23:36:30 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:36:30 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:36:41 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:36:47 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:37:00 // Activating extruder extruder
+23:37:01 B:100.0 /100.0 T0:237.4 /250.0 T1:229.2 /195.0 T2:48.0 /0.0 T3:45.4 /0.0
+23:37:02 B:100.0 /100.0 T0:240.6 /250.0 T1:227.4 /195.0 T2:48.0 /0.0 T3:45.4 /0.0
+23:37:03 B:100.0 /100.0 T0:243.9 /250.0 T1:225.0 /195.0 T2:48.0 /0.0 T3:45.5 /0.0
+23:37:04 B:100.0 /100.0 T0:245.3 /250.0 T1:223.4 /195.0 T2:48.1 /0.0 T3:45.4 /0.0
+23:37:05 B:100.0 /100.0 T0:246.1 /250.0 T1:221.8 /195.0 T2:48.0 /0.0 T3:45.5 /0.0
+23:37:06 B:100.0 /100.0 T0:246.7 /250.0 T1:219.7 /195.0 T2:48.0 /0.0 T3:45.4 /0.0
+23:37:07 B:100.0 /100.0 T0:247.4 /250.0 T1:218.6 /195.0 T2:48.0 /0.0 T3:45.4 /0.0
+23:37:18 // Found active tool probe: tool_probe T0
+23:37:23 // Selected tool 0 (tool T0)
+23:37:24 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:37:24 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:37:36 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:37:39 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:37:51 // Activating extruder extruder1
+23:37:53 B:100.2 /100.0 T0:226.4 /195.0 T1:239.5 /250.0 T2:48.1 /0.0 T3:45.5 /0.0
+23:37:54 B:100.1 /100.0 T0:223.5 /195.0 T1:243.3 /250.0 T2:48.1 /0.0 T3:45.5 /0.0
+23:37:55 B:100.1 /100.0 T0:221.5 /195.0 T1:245.6 /250.0 T2:48.1 /0.0 T3:45.4 /0.0
+23:37:56 B:100.1 /100.0 T0:219.9 /195.0 T1:247.3 /250.0 T2:48.1 /0.0 T3:45.4 /0.0
+23:38:07 // Found active tool probe: tool_probe T1
+23:38:11 // Selected tool 1 (tool T1)
+23:38:13 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:38:13 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:38:24 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:38:32 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:38:45 // Activating extruder extruder
+23:38:46 B:100.0 /100.0 T0:240.7 /250.0 T1:229.6 /195.0 T2:48.0 /0.0 T3:45.5 /0.0
+23:38:47 B:100.0 /100.0 T0:243.5 /250.0 T1:227.8 /195.0 T2:48.1 /0.0 T3:45.5 /0.0
+23:38:48 B:100.0 /100.0 T0:245.6 /250.0 T1:226.0 /195.0 T2:48.1 /0.0 T3:45.4 /0.0
+23:38:49 B:100.0 /100.0 T0:246.8 /250.0 T1:223.8 /195.0 T2:48.1 /0.0 T3:45.4 /0.0
+23:38:50 B:100.0 /100.0 T0:247.0 /250.0 T1:222.1 /195.0 T2:48.1 /0.0 T3:45.5 /0.0
+23:38:51 B:100.0 /100.0 T0:247.3 /250.0 T1:220.6 /195.0 T2:48.1 /0.0 T3:45.5 /0.0
+23:39:02 // Found active tool probe: tool_probe T0
+23:39:06 // Selected tool 0 (tool T0)
+23:39:08 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:39:08 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:39:19 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:39:23 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:39:35 // Activating extruder extruder1
+23:39:37 B:100.1 /100.0 T0:226.0 /195.0 T1:238.7 /250.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:39:38 B:100.1 /100.0 T0:223.8 /195.0 T1:241.7 /250.0 T2:48.2 /0.0 T3:45.5 /0.0
+23:39:39 B:100.0 /100.0 T0:221.1 /195.0 T1:245.0 /250.0 T2:48.2 /0.0 T3:45.5 /0.0
+23:39:40 B:100.0 /100.0 T0:219.5 /195.0 T1:246.8 /250.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:39:41 B:100.0 /100.0 T0:218.5 /195.0 T1:248.0 /250.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:39:51 // Found active tool probe: tool_probe T1
+23:39:56 // Selected tool 1 (tool T1)
+23:39:57 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:39:57 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:40:09 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:40:14 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:40:27 // Activating extruder extruder
+23:40:28 B:100.1 /100.0 T0:238.7 /250.0 T1:229.1 /195.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:40:29 B:100.1 /100.0 T0:241.8 /250.0 T1:227.3 /195.0 T2:48.3 /0.0 T3:45.6 /0.0
+23:40:30 B:100.1 /100.0 T0:244.1 /250.0 T1:225.5 /195.0 T2:48.3 /0.0 T3:45.6 /0.0
+23:40:31 B:100.1 /100.0 T0:245.8 /250.0 T1:223.2 /195.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:40:32 B:100.1 /100.0 T0:246.3 /250.0 T1:221.6 /195.0 T2:48.3 /0.0 T3:45.5 /0.0
+23:40:33 B:100.1 /100.0 T0:246.7 /250.0 T1:220.1 /195.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:40:34 B:100.1 /100.0 T0:247.6 /250.0 T1:218.6 /195.0 T2:48.2 /0.0 T3:45.5 /0.0
+23:40:45 // Found active tool probe: tool_probe T0
+23:40:50 // Selected tool 0 (tool T0)
+23:40:51 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:40:51 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:41:02 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:41:06 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:41:18 // Activating extruder extruder1
+23:41:20 B:100.1 /100.0 T0:226.1 /195.0 T1:239.5 /250.0 T2:48.3 /0.0 T3:45.6 /0.0
+23:41:21 B:100.0 /100.0 T0:224.0 /195.0 T1:242.5 /250.0 T2:48.3 /0.0 T3:45.6 /0.0
+23:41:22 B:100.1 /100.0 T0:221.9 /195.0 T1:245.0 /250.0 T2:48.2 /0.0 T3:45.6 /0.0
+23:41:23 B:100.0 /100.0 T0:219.7 /195.0 T1:247.3 /250.0 T2:48.3 /0.0 T3:45.6 /0.0
+23:41:33 // Found active tool probe: tool_probe T1
+23:41:38 // Selected tool 1 (tool T1)
+23:41:39 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:41:40 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:41:50 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:41:55 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:42:08 // Activating extruder extruder
+23:42:10 B:100.0 /100.0 T0:238.5 /250.0 T1:229.2 /195.0 T2:48.3 /0.0 T3:45.7 /0.0
+23:42:11 B:100.0 /100.0 T0:241.6 /250.0 T1:227.4 /195.0 T2:48.3 /0.0 T3:45.7 /0.0
+23:42:12 B:100.0 /100.0 T0:244.0 /250.0 T1:225.6 /195.0 T2:48.3 /0.0 T3:45.7 /0.0
+23:42:13 B:100.0 /100.0 T0:245.7 /250.0 T1:223.4 /195.0 T2:48.3 /0.0 T3:45.6 /0.0
+23:42:14 B:99.9 /100.0 T0:246.3 /250.0 T1:221.8 /195.0 T2:48.3 /0.0 T3:45.7 /0.0
+23:42:15 B:99.9 /100.0 T0:246.8 /250.0 T1:220.2 /195.0 T2:48.4 /0.0 T3:45.7 /0.0
+23:42:16 B:99.9 /100.0 T0:247.6 /250.0 T1:218.6 /195.0 T2:48.3 /0.0 T3:45.7 /0.0
+23:42:26 // Found active tool probe: tool_probe T0
+23:42:31 // Selected tool 0 (tool T0)
+23:42:32 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:42:32 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:42:56 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:43:00 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:43:12 // Activating extruder extruder1
+23:43:14 B:100.1 /100.0 T0:226.5 /195.0 T1:239.2 /250.0 T2:48.4 /0.0 T3:45.7 /0.0
+23:43:15 B:100.1 /100.0 T0:223.6 /195.0 T1:243.1 /250.0 T2:48.4 /0.0 T3:45.7 /0.0
+23:43:16 B:100.1 /100.0 T0:221.6 /195.0 T1:245.4 /250.0 T2:48.4 /0.0 T3:45.7 /0.0
+23:43:17 B:100.1 /100.0 T0:220.0 /195.0 T1:247.1 /250.0 T2:48.4 /0.0 T3:45.7 /0.0
+23:43:27 // Found active tool probe: tool_probe T1
+23:43:32 // Selected tool 1 (tool T1)
+23:43:33 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:43:33 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:43:44 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:43:50 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:44:02 // Activating extruder extruder
+23:44:04 B:100.0 /100.0 T0:238.4 /250.0 T1:229.5 /195.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:05 B:100.0 /100.0 T0:241.5 /250.0 T1:227.7 /195.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:06 B:100.0 /100.0 T0:243.9 /250.0 T1:225.9 /195.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:07 B:100.0 /100.0 T0:245.7 /250.0 T1:223.7 /195.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:08 B:100.0 /100.0 T0:246.3 /250.0 T1:222.1 /195.0 T2:48.5 /0.0 T3:45.8 /0.0
+23:44:09 B:100.0 /100.0 T0:246.8 /250.0 T1:220.5 /195.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:10 B:100.0 /100.0 T0:247.7 /250.0 T1:218.8 /195.0 T2:48.5 /0.0 T3:45.8 /0.0
+23:44:20 // Found active tool probe: tool_probe T0
+23:44:25 // Selected tool 0 (tool T0)
+23:44:26 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:44:26 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:44:37 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:44:39 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:44:51 // Activating extruder extruder1
+23:44:53 B:99.9 /100.0 T0:225.0 /195.0 T1:238.7 /250.0 T2:48.5 /0.0 T3:45.8 /0.0
+23:44:54 B:99.9 /100.0 T0:222.1 /195.0 T1:242.6 /250.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:55 B:99.9 /100.0 T0:220.1 /195.0 T1:245.1 /250.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:44:56 B:99.9 /100.0 T0:218.8 /195.0 T1:246.8 /250.0 T2:48.5 /0.0 T3:45.8 /0.0
+23:45:06 // Found active tool probe: tool_probe T1
+23:45:11 // Selected tool 1 (tool T1)
+23:45:12 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:45:12 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:45:23 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:45:28 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:45:41 // Activating extruder extruder
+23:45:43 B:100.0 /100.0 T0:238.4 /250.0 T1:229.3 /195.0 T2:48.5 /0.0 T3:45.9 /0.0
+23:45:44 B:99.9 /100.0 T0:241.5 /250.0 T1:227.5 /195.0 T2:48.5 /0.0 T3:45.9 /0.0
+23:45:45 B:100.0 /100.0 T0:244.6 /250.0 T1:225.1 /195.0 T2:48.4 /0.0 T3:45.8 /0.0
+23:45:46 B:100.0 /100.0 T0:245.8 /250.0 T1:223.4 /195.0 T2:48.4 /0.0 T3:45.9 /0.0
+23:45:47 B:100.0 /100.0 T0:246.4 /250.0 T1:221.8 /195.0 T2:48.5 /0.0 T3:45.9 /0.0
+23:45:48 B:99.9 /100.0 T0:246.9 /250.0 T1:219.8 /195.0 T2:48.6 /0.0 T3:45.9 /0.0
+23:45:49 B:100.0 /100.0 T0:247.6 /250.0 T1:218.6 /195.0 T2:48.5 /0.0 T3:45.9 /0.0
+23:45:59 // Found active tool probe: tool_probe T0
+23:46:04 // Selected tool 0 (tool T0)
+23:46:05 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:46:05 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:46:15 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:46:17 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:46:29 // Activating extruder extruder1
+23:46:31 B:100.0 /100.0 T0:224.8 /195.0 T1:238.7 /250.0 T2:48.6 /0.0 T3:45.9 /0.0
+23:46:32 B:99.9 /100.0 T0:222.6 /195.0 T1:241.7 /250.0 T2:48.6 /0.0 T3:45.9 /0.0
+23:46:33 B:100.0 /100.0 T0:219.9 /195.0 T1:245.0 /250.0 T2:48.6 /0.0 T3:45.9 /0.0
+23:46:34 B:100.0 /100.0 T0:218.7 /195.0 T1:246.8 /250.0 T2:48.6 /0.0 T3:45.9 /0.0
+23:46:35 B:99.9 /100.0 T0:217.8 /195.0 T1:248.0 /250.0 T2:48.6 /0.0 T3:45.9 /0.0
+23:46:46 // Found active tool probe: tool_probe T1
+23:46:51 // Selected tool 1 (tool T1)
+23:46:52 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:46:52 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:47:06 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:48:00 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:48:13 // Activating extruder extruder
+23:48:25 // Found active tool probe: tool_probe T0
+23:48:30 // Selected tool 0 (tool T0)
+23:48:31 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:48:31 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:48:54 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:48:58 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:49:11 // Activating extruder extruder1
+23:49:12 B:100.2 /100.0 T0:225.7 /195.0 T1:238.7 /250.0 T2:48.6 /0.0 T3:46.0 /0.0
+23:49:13 B:100.2 /100.0 T0:223.5 /195.0 T1:241.7 /250.0 T2:48.6 /0.0 T3:46.0 /0.0
+23:49:14 B:100.1 /100.0 T0:221.5 /195.0 T1:244.4 /250.0 T2:48.6 /0.0 T3:46.0 /0.0
+23:49:15 B:100.1 /100.0 T0:219.2 /195.0 T1:247.0 /250.0 T2:48.6 /0.0 T3:46.0 /0.0
+23:49:26 // Found active tool probe: tool_probe T1
+23:49:31 // Selected tool 1 (tool T1)
+23:49:32 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:49:32 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:49:49 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:50:14 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:50:27 // Activating extruder extruder
+23:50:29 B:100.0 /100.0 T0:239.0 /250.0 T1:231.1 /195.0 T2:48.7 /0.0 T3:46.1 /0.0
+23:50:30 B:100.0 /100.0 T0:242.1 /250.0 T1:229.3 /195.0 T2:48.6 /0.0 T3:46.1 /0.0
+23:50:31 B:100.0 /100.0 T0:244.4 /250.0 T1:227.6 /195.0 T2:48.6 /0.0 T3:46.1 /0.0
+23:50:32 B:100.0 /100.0 T0:246.1 /250.0 T1:225.4 /195.0 T2:48.6 /0.0 T3:46.1 /0.0
+23:50:33 B:100.0 /100.0 T0:246.6 /250.0 T1:223.8 /195.0 T2:48.6 /0.0 T3:46.1 /0.0
+23:50:34 B:100.1 /100.0 T0:246.9 /250.0 T1:222.3 /195.0 T2:48.6 /0.0 T3:46.1 /0.0
+23:50:35 B:100.0 /100.0 T0:247.7 /250.0 T1:220.3 /195.0 T2:48.6 /0.0 T3:46.1 /0.0
+23:50:45 // Found active tool probe: tool_probe T0
+23:50:50 // Selected tool 0 (tool T0)
+23:50:51 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+23:50:51 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+23:51:07 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:51:07 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+23:51:20 // Activating extruder extruder1
+23:51:21 B:100.0 /100.0 T0:225.4 /195.0 T1:238.1 /250.0 T2:48.8 /0.0 T3:46.2 /0.0
+23:51:22 B:100.0 /100.0 T0:223.2 /195.0 T1:241.2 /250.0 T2:48.8 /0.0 T3:46.1 /0.0
+23:51:23 B:100.0 /100.0 T0:220.5 /195.0 T1:244.7 /250.0 T2:48.7 /0.0 T3:46.1 /0.0
+23:51:24 B:100.0 /100.0 T0:219.0 /195.0 T1:246.7 /250.0 T2:48.8 /0.0 T3:46.1 /0.0
+23:51:25 B:100.0 /100.0 T0:218.2 /195.0 T1:248.0 /250.0 T2:48.7 /0.0 T3:46.1 /0.0
+23:51:36 // Found active tool probe: tool_probe T1
+23:51:41 // Selected tool 1 (tool T1)
+23:51:42 // shaper_type_x:mzv shaper_freq_x:68.000 damping_ratio_x:0.200000
+23:51:42 // shaper_type_y:2hump_ei shaper_freq_y:71.000 damping_ratio_y:0.200000
+23:51:56 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:52:05 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:52:13 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:52:22 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:52:31 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:52:41 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:52:49 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:00 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:08 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:19 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:28 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:38 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:47 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:53:56 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:54:05 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:54:15 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:54:24 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:54:34 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:54:43 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:54:53 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:01 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:10 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:17 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:26 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:34 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:43 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:55:51 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:00 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:08 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:16 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:23 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:32 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:39 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:47 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:56:55 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:03 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:10 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:18 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:25 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:34 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:41 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:50 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:57:57 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:06 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:13 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:22 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:30 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:39 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:47 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:58:57 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:59:05 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:59:15 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:59:24 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:59:33 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:59:42 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+23:59:51 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:01 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:10 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:19 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:29 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:37 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:47 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:00:56 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:05 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:14 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:23 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:31 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:40 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:48 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:01:57 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:05 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:14 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:22 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:30 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:37 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:45 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:02:52 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:00 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:07 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:14 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:21 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:29 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:36 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:43 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:50 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:03:57 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:03 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:16 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:22 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:30 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:36 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:43 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:49 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:04:56 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:05:29 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:05:38 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:05:51 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:06:00 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:07:12 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:07:29 SET_GCODE_VARIABLE MACRO=TIMELAPSE_TAKE_FRAME VARIABLE=takingframe VALUE=False
+00:08:11 // pressure_advance: 0.000000 | // pressure_advance_smooth_time: 0.040000
+00:08:12 // Finish Print!
+00:08:24 // Activating extruder extruder
+00:08:37 // Found active tool probe: tool_probe T0
+00:08:41 // Selected tool 0 (tool T0)
+00:08:42 // shaper_type_x:2hump_ei shaper_freq_x:88.800 damping_ratio_x:0.200000
+00:08:42 // shaper_type_y:2hump_ei shaper_freq_y:66.000 damping_ratio_y:0.200000
+00:08:42 // Stopped: T0, T1, T2, T3
+00:08:44 Done printing file

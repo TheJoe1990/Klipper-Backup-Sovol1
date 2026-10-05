@@ -34,28 +34,3 @@ variable_smart_park_height: 10              # Z position for Smart Park, default
 gcode: # Gcode section left intentionally blank. Do not disturb.
 
     {action_respond_info(" Running the KAMP_Settings macro does nothing, it is only used for storing KAMP settings. ")}
-
-
-# 2026-10-04: make the adaptive bed mesh (KAMP, BED_MESH_CALIBRATE ADAPTIVE=1 in
-# _START_PRINT) also cover the prime tower. Orca does not label the tower as an
-# object, so KAMP only meshed the parts. The slicer's start G-code calls this BEFORE
-# START_PRINT with the tower position/size; it declares the footprint as one more
-# exclude_object, which KAMP then includes. Depth defaults to the width (Orca has
-# no depth placeholder; measured 2026-10-04 the 2-tool ABS tower was ~32 mm deep
-# for a 30 mm width). Adds the brim plus 2 mm. The tower's own moves are not
-# labeled, so excluding PRIME_TOWER_AREA in Mainsail does nothing.
-#   Orca start G-code line (before START_PRINT):
-#   {if enable_prime_tower}_PRIME_TOWER_AREA X={wipe_tower_x[0]} Y={wipe_tower_y[0]} W={prime_tower_width} B={prime_tower_brim_width}{endif}
-[gcode_macro _PRIME_TOWER_AREA]
-description: Declare the prime tower footprint so the adaptive bed mesh covers it. X= Y= W= [D=] [B=]
-gcode:
-    {% set x = params.X|float %}
-    {% set y = params.Y|float %}
-    {% set w = params.W|default(30)|float %}
-    {% set d = params.D|default(w)|float %}
-    {% set b = params.B|default(0)|float + 2.0 %}
-    {% set x0 = [x - b, 0.0]|max %}
-    {% set y0 = [y - b, 0.0]|max %}
-    EXCLUDE_OBJECT_DEFINE NAME=PRIME_TOWER_AREA POLYGON=[[{x0|round(2)},{y0|round(2)}],[{(x+w+b)|round(2)},{y0|round(2)}],[{(x+w+b)|round(2)},{(y+d+b)|round(2)}],[{x0|round(2)},{(y+d+b)|round(2)}]]
-    RESPOND TYPE=echo MSG="Prime tower area added to the bed mesh: X{x0|round(1)}-{(x+w+b)|round(1)} Y{y0|round(1)}-{(y+d+b)|round(1)}"
-

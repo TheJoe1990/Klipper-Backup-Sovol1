@@ -1113,7 +1113,7 @@ gcode:
     # 2026-10-03: loops over every tool instead of hardcoded encoder_sensor0/1.
     # Only tools that actually have an encoder_sensorN are touched (T2's Orbiter
     # sensor and T3, which has none yet, are skipped). Still checks ALL tools'
-    # sensors' state is only CHECKED for the active tool (changed 2026-10-04, see below).
+    # sensors, not just the ones this print uses (unchanged behavior).
     {% set bad = [] %}
     {% for n in printer.toolchanger.tool_numbers %}
         {% set sname = "encoder_sensor" ~ n %}
@@ -1123,13 +1123,8 @@ gcode:
             # Enable, then always query so the console log shows current status
             SET_FILAMENT_SENSOR SENSOR={sname} ENABLE=1
             QUERY_FILAMENT_SENSOR SENSOR={sname}
-            # Both sensor types expose filament_detected.
-            # 2026-10-04: only judge the ACTIVE tool's sensor. An inactive tool's motion
-            # sensor reads "no filament" after another tool extrudes (seen twice: T0's
-            # encoder tripped this check right after T1 purged), which paused prints for
-            # nothing. Every sensor is still enabled; each runout_gcode already acts only
-            # while its own extruder is the active one.
-            {% if n == printer.toolchanger.tool_number and not (sw if sw is defined else mo).filament_detected %}
+            # Both sensor types expose filament_detected
+            {% if not (sw if sw is defined else mo).filament_detected %}
                 {% set _ = bad.append(sname) %}
             {% endif %}
         {% endif %}
