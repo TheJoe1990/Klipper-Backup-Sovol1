@@ -906,13 +906,9 @@ gcode:
 
     M117 Ready
     {action_respond_info("Cancel Print Success!")}
-    # 2026-10-04: these used to target START_PRINT (Sovol stock name). On the Boss
-    # START_PRINT is the HEATSOAK entry, so every cancel overwrote heatsoak's `state`
-    # dict with the string "Prepare" -> the next print's START_PRINT crashed ("'str
-    # object' has no attribute 'update'"). The variables belong to _START_PRINT.
-    SET_GCODE_VARIABLE MACRO=_START_PRINT VARIABLE=state VALUE='"Prepare"'
-    SET_GCODE_VARIABLE MACRO=_START_PRINT VARIABLE=record_extruder_temp VALUE=0
-    SET_GCODE_VARIABLE MACRO=_START_PRINT VARIABLE=max_record_extruder_temp VALUE=0
+    SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=state VALUE='"Prepare"'
+    SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=record_extruder_temp VALUE=0
+    SET_GCODE_VARIABLE MACRO=START_PRINT VARIABLE=max_record_extruder_temp VALUE=0
 
 
 [delayed_gcode _resume_wait]
