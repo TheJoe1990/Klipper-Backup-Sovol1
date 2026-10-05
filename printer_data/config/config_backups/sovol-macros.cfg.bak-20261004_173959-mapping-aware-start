@@ -473,24 +473,8 @@ gcode:
         {% endif %}
     {% endfor %}
 
-    # 2026-10-04: translate SLICER tool numbers to PHYSICAL tools through the Mainsail
-    # tool mapping (SET_TOOL_MAPPING stores the physical tool in each T<n> macro's
-    # `tool` variable; END_PRINT/CANCEL_PRINT reset it). Everything below that turns
-    # heaters on/off or picks tools uses the physical list.
-    {% set slicer_tools = tools_used_during_print %}
-    {% set tools_used_during_print = [] %}
-    {% for n in slicer_tools %}
-        {% set p = printer["gcode_macro T" ~ n].tool|int if ("gcode_macro T" ~ n) in printer else n %}
-        {% if p not in tools_used_during_print %}
-            {% set _ = tools_used_during_print.append(p) %}
-        {% endif %}
-    {% endfor %}
-    {% set active_phys = printer["gcode_macro T" ~ active_tool].tool|int if ("gcode_macro T" ~ active_tool) in printer else active_tool %}
-    {% if active_phys not in tools_used_during_print %}
-        {% set _ = tools_used_during_print.append(active_phys) %}
-    {% endif %}
     SET_GCODE_VARIABLE MACRO=_START_PRINT VARIABLE=tools_used_during_print VALUE="{tools_used_during_print}"
-    RESPOND TYPE='echo' MSG="Slicer tools {slicer_tools|join(' ')} -> physical tools {tools_used_during_print|join(' ')} (Mainsail mapping applied). All other tools are turned off after the bed mesh."
+    RESPOND TYPE='echo' MSG="The print uses the following tools: {tools_used_during_print|join(' ')}. M104 will be ignored for all other tools while the print is active"
 
     G90
 
@@ -527,21 +511,17 @@ gcode:
     M117 Parking toolhead...
     Smart_Park
 
-    # 2026-10-04: turn off EVERY physical tool this print does not use (was: only the
-    # service tool T0, and judged by slicer number, so a Mainsail remap of slicer T0 to
-    # physical T1 left physical T0 hot all print). Heaters are set directly by extruder
-    # name so the mapping can't redirect it.
-    {% for n in printer.toolchanger.tool_numbers %}
-        {% if n not in tools_used_during_print %}
-            SET_HEATER_TEMPERATURE HEATER={printer["tool T" ~ n].extruder} TARGET=0
-        {% endif %}
-    {% endfor %}
-    M117 Unused tools off (printing with T{tools_used_during_print|join(',T')})
+    # If the service tool (T0) is NOT used in this print, turn it off now.
+    {% if 0 not in tools_used_during_print %}
+        M117 Service tool T0 not used → turning off
+        M104 S0
+    {% else %}
+        M117 Service tool T0 is used → leaving on
+    {% endif %}
 
     # Grab the first tool to be used for printing
     {% if tools_used_during_print|length > 0 %}
-        # Physical tool for the slicer's first tool (same tool T{active_tool} selects below)
-        {% set first_tool = active_phys %}
+        {% set first_tool = tools_used_during_print[0] %}
         SELECT_TOOL T={first_tool}
         M117 Selected first toolhead: T{first_tool}
     {% endif %}

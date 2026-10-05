@@ -367,15 +367,10 @@ gcode:
         # only for used tools (plus TOOL= the first tool), all captured in the soak state
         # before this runs. (_START_PRINT.tools_used_during_print can't be used here: it
         # is only set later, so at this point it still holds the PREVIOUS print's tools.)
-        # 2026-10-04: map slicer numbers -> physical tools (Mainsail SET_TOOL_MAPPING lives
-        # in each T<n> macro's `tool` variable) so the tools that will really print get
-        # calibrated, not the slicer-numbered ones.
-        {% set t0 = st.state.get("tool", 0)|int %}
-        {% set ns_cal = namespace(tools=[printer["gcode_macro T" ~ t0].tool|int if ("gcode_macro T" ~ t0) in printer else t0]) %}
+        {% set ns_cal = namespace(tools=[st.state.get("tool", 0)|int]) %}
         {% for n in range(6) %}
-            {% set p = printer["gcode_macro T" ~ n].tool|int if ("gcode_macro T" ~ n) in printer else n %}
-            {% if st.state.get("t%d_temp" % n, 0)|int > 0 and p not in ns_cal.tools %}
-                {% set ns_cal.tools = ns_cal.tools + [p] %}
+            {% if st.state.get("t%d_temp" % n, 0)|int > 0 and n not in ns_cal.tools %}
+                {% set ns_cal.tools = ns_cal.tools + [n] %}
             {% endif %}
         {% endfor %}
         CALIBRATE_TOOL_OFFSETS CAL_TEMP={cfg.soak_nozzle_temp|int} TOOLS={ns_cal.tools|join(",")}
