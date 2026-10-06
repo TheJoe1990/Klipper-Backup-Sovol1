@@ -5,37 +5,43 @@
 # See https://docs.ldomotors.com/en/Toolboard/nitehawk-36#firmware-setup-and-update
 # For instructions on uploading/updating klipper firmware to the PCB
 
+## 2026-10-03: T0 moved off the BTT EBB36 over CAN (CAN adapter removed) onto a
+## Nitehawk-36 over USB, same as T1/T2. Rebuilt from toolhead_1.cfg as the source
+## of truth. Kept T0-specific values: dock params, nest filament sensor pins, and
+## the [tool_probe T0] z_offset that lives in printer.cfg's SAVE_CONFIG block.
+## Old EBB/CAN version: config_backups/toolchanger/toolhead_0.cfg.bak-20261003_*
+
 ## LDO Nitehawk-SB Toolboard Partial Config
 
 ## *** THINGS TO CHANGE/CHECK: ***
 ## MCU paths                            [mcu] section
 ## Thermistor types                     [extruder] sections
 
-## *MAKE SURE* to include this partial config file *AFTER* the main controller config. 
+## *MAKE SURE* to include this partial config file *AFTER* the main controller config.
 ## This will ensure the relevant sections are overwritten by the pin mappings specified here.
 
-[tool T1]
-tool_number: 1
-extruder: extruder1
-fan: T1_partfan
+[tool T0]
+tool_number: 0
+extruder: extruder
+fan: T0_partfan
 
 # Position with the toolhead aligned with the dock
 params_type: 'sc'
-params_park_x: 81.1
-params_park_y: 6.8
+params_park_x: 15.6
+params_park_y: 6.45
 params_park_z: 304.1
 params_safe_y: 100
-params_close_y: 58
-#params_input_shaper_freq_x: 68.2
-#params_input_shaper_freq_y: 79.4
-#params_max_accel: 5000
+params_close_y: 75
+#params_input_shaper_freq_x: 35.4
+#params_input_shaper_freq_y: 38.6
+#params_max_accel: 20000
 params_dropoff_path: [{'z':3.5, 'y':4}, {'z':0, 'y':0}, {'z':-12, 'y':0}]
-params_pickup_path: [{'z':-12, 'y':2}, {'z':-12, 'y':0}, {'z':1.5, 'y':0, 'f':0.5, 'verify':1}, {'z':0.5, 'y':2.5, 'f':0.5}, {'z':8, 'y':8}, ]  
+params_pickup_path: [{'z':-12, 'y':2}, {'z':-12, 'y':0}, {'z':1.5, 'y':0, 'f':0.5, 'verify':1}, {'z':0.5, 'y':2.5, 'f':0.5}, {'z':8, 'y':8}, ]
 
-[mcu T1]
+[mcu T0]
 ##  Obtain definition by "ls -l /dev/serial/by-id/" then unplug to verify
-
-serial: /dev/serial/by-id/usb-Klipper_rp2040_4E363334320E5718-if00
+## USB path 1.3.1.2 (hub port 1 = T0 dock, same port ordering as T1=2, T2=3, T3=4)
+serial: /dev/serial/by-id/usb-Klipper_rp2040_323232323619A59D-if00
 restart_method: command
 
 #####################################################################
@@ -43,7 +49,7 @@ restart_method: command
 #####################################################################
 ## XES - Toolhead PCB
 #[stepper_x]
-#endstop_pin: T1:gpio13
+#endstop_pin: T0:gpio13
 
 #####################################################################
 #   Filament Sensor
@@ -52,37 +58,36 @@ restart_method: command
 #switch_pin: nhk:gpio3
 #pause_on_runout: True
 
-[extruder1]
-step_pin: T1:gpio23
-dir_pin: !T1:gpio24
-enable_pin: !T1:gpio25
+[extruder]
+step_pin: T0:gpio23
+dir_pin: !T0:gpio24
+enable_pin: !T0:gpio25
 microsteps: 16
 full_steps_per_rotation: 200
 rotation_distance: 4.720466 #4.637
 nozzle_diameter: 0.400
 filament_diameter: 1.750
-heater_pin: T1:gpio9
+heater_pin: T0:gpio9
 sensor_type: ATC Semitec 104NT-4-R025H42G
-sensor_pin: T1:gpio29
+sensor_pin: T0:gpio29
 pullup_resistor: 2200
 #control: pid
-#pid_Kp: 26.056
-#pid_Ki: 2.757
-#pid_Kd: 61.559
+#pid_Kp: 25.349
+#pid_Ki: 2.195
+#pid_Kd: 73.198
 min_temp: 0
 max_temp: 300
 filament_diameter: 1.750
 max_extrude_only_distance: 500
 max_extrude_cross_section: 200
-max_extrude_only_velocity: 120 
-#pressure_advance: 0.025                #to be calibrated 
+max_extrude_only_velocity: 120
+#pressure_advance: 0.025                #to be calibrated
 #pressure_advance_smooth_time: 0.03     #to be calibrated
-#pid_Kp=28.017 pid_Ki=3.277 pid_Kd=59.889
 
-[tmc2209 extruder1]
+[tmc2209 extruder]
 sense_resistor: 0.100
-uart_pin: T1:gpio0
-tx_pin: T1:gpio1
+uart_pin: T0:gpio0
+tx_pin: T0:gpio1
 interpolate: false
 run_current: 0.85 #**
 sense_resistor: 0.11 #**
@@ -95,9 +100,9 @@ driver_TOFF: 4
 #####################################################################
 #   Additional Sensors
 #####################################################################
-[temperature_sensor T1_temp]
+[temperature_sensor T0_temp]
 sensor_type: temperature_mcu
-sensor_mcu: T1
+sensor_mcu: T0
 min_temp: 0
 max_temp: 100
 
@@ -105,20 +110,20 @@ max_temp: 100
 #   Fans
 #####################################################################
 ## PCF
-[fan_generic T1_partfan]
-pin: T1:gpio6
+[fan_generic T0_partfan]
+pin: T0:gpio6
 
 ## HEF
-[heater_fan T1_hotend_fan]
-pin: T1:gpio5
+[heater_fan T0_hotend_fan]
+pin: T0:gpio5
 heater_temp: 50.0
-heater: extruder1
-#tachometer_pin: T1:gpio16
+heater: extruder
+#tachometer_pin: T0:gpio16
 #tachometer_ppr: 2
 
 
-[neopixel T1_hotend_rgb]
-pin: T1:gpio7
+[neopixel T0_hotend_rgb]
+pin: T0:gpio7
 chain_count: 1
 color_order: GRB
 initial_RED: 1.0
@@ -127,17 +132,18 @@ initial_BLUE: 1.0
 
 
 ## PCB Activity Light
-[output_pin T1_act_led]
-pin: !T1:gpio8
+[output_pin T0_act_led]
+pin: !T0:gpio8
 
 #####################################################################
 #   Accelerometer
 #####################################################################
-[adxl345 T1]
-cs_pin: T1:gpio27
-spi_software_sclk_pin: T1:gpio18
-spi_software_mosi_pin: T1:gpio20
-spi_software_miso_pin: T1:gpio19
+## Also used by [resonance_tester] accel_chip in printer.cfg
+[adxl345 T0]
+cs_pin: T0:gpio27
+spi_software_sclk_pin: T0:gpio18
+spi_software_mosi_pin: T0:gpio20
+spi_software_miso_pin: T0:gpio19
 # 2026-10-04: the Nitehawk-36 stands upright in the toolhead, so the ADXL axes
 # are rotated vs the printer. Measured with AXES_MAP_CALIBRATION on T0:
 # X->-x (3.1 deg), Y->-z (5.9 deg), Z->-y (4.6 deg), gravity 10.18 m/s^2.
@@ -145,16 +151,16 @@ spi_software_miso_pin: T1:gpio19
 # _REQUIRE_ADXL_AXES_MAP (tc_shapers.cfg) refuses shaper calibration if missing.
 axes_map: -x, -z, -y
 
-[gcode_macro T1]
+[gcode_macro T0]
 variable_color: ""
 gcode:
-  SELECT_TOOL T=1
-  
-[tool_probe T1]
-pin: T1:gpio10
-tool: 1
-# You can find the z_offset option in the printer.cfg
-z_offset : -0.55
+  SELECT_TOOL T=0
+
+[tool_probe T0]
+pin: T0:gpio10
+tool: 0
+# T0's z_offset lives in printer.cfg's SAVE_CONFIG block (-1.020), don't set it here
+#z_offset : -1.045 #inverted from baby step menu
 speed: 15.0
 samples: 3
 sample_retract_dist: 2.0
@@ -166,8 +172,8 @@ samples_tolerance_retries: 10
 activate_gcode:
     {% set PROBE_TEMP = 150 %}
     {% set MAX_TEMP = PROBE_TEMP + 5 %}
-    {% set ACTUAL_TEMP = printer.extruder1.temperature %}
-    {% set TARGET_TEMP = printer.extruder1.target %}
+    {% set ACTUAL_TEMP = printer.extruder.temperature %}
+    {% set TARGET_TEMP = printer.extruder.target %}
 
     {% if TARGET_TEMP > PROBE_TEMP %}
         { action_respond_info('Extruder temperature target of %.1fC is too high, lowering to %.1fC' % (TARGET_TEMP, PROBE_TEMP)) }
@@ -176,38 +182,38 @@ activate_gcode:
         # Temperature target is already low enough, but nozzle may still be too hot.
         {% if ACTUAL_TEMP > MAX_TEMP %}
             { action_respond_info('Extruder temperature %.1fC is still too high, waiting until below %.1fC' % (ACTUAL_TEMP, MAX_TEMP)) }
-            TEMPERATURE_WAIT SENSOR=extruder1 MAXIMUM={ MAX_TEMP }
+            TEMPERATURE_WAIT SENSOR=extruder MAXIMUM={ MAX_TEMP }
         {% endif %}
     {% endif %}
 
-[filament_switch_sensor switch_sensor1]
-switch_pin: ^nest:PB7
+[filament_switch_sensor switch_sensor0]
+switch_pin: ^nest:PB8
 pause_on_runout: False  # Disable automatic pause to handle manually
 runout_gcode:
-  {% if printer.toolhead.extruder == "extruder1" and printer.print_stats.state == "printing" %}
+  {% if printer.toolhead.extruder == "extruder" and printer.print_stats.state == "printing" %}
       PAUSE
-      M117 Filament switch runout on T1
-      RESPOND TYPE='echo' MSG='Filament switch runout on T1'
+      M117 Filament switch runout on T0
+      RESPOND TYPE='echo' MSG='Filament switch runout on T0'
   {% endif %}
 insert_gcode:
-  {% if printer.toolhead.extruder == "extruder1" and printer.print_stats.state == "printing" %}
+  {% if printer.toolhead.extruder == "extruder" and printer.print_stats.state == "printing" %}
       M117 Filament switch inserted
       RESPOND TYPE='echo' MSG='Filament switch inserted'
   {% endif %}
 
-[filament_motion_sensor encoder_sensor1]
-switch_pin: ^nest:PB6
+[filament_motion_sensor encoder_sensor0]
+switch_pin: ^nest:PB9
 detection_length: 6
-extruder: extruder1  # REQUIRED for filament_motion_sensor
+extruder: extruder  # REQUIRED for filament_motion_sensor
 pause_on_runout: False  # Disable automatic pause to handle manually
 runout_gcode:
-  # 2026-10-05: pauses, except inside the 2 s toolchange grace window (encoder_toolchange_grace.cfg)
-  {% if printer.toolhead.extruder == "extruder1" and printer.print_stats.state == "printing" %}
-      _ENCODER_RUNOUT TOOL=1
+  {% if printer.toolhead.extruder == "extruder" and printer.print_stats.state == "printing" %}
+      PAUSE
+      M117 Filament encoder runout on T0
+      RESPOND TYPE='echo' MSG='Filament encoder runout on T0'
   {% endif %}
 insert_gcode:
-  {% if printer.toolhead.extruder == "extruder1" and printer.print_stats.state == "printing" %}
+  {% if printer.toolhead.extruder == "extruder" and printer.print_stats.state == "printing" %}
       M117 Filament encoder inserted
       RESPOND TYPE='echo' MSG='Filament encoder inserted'
   {% endif %}
-

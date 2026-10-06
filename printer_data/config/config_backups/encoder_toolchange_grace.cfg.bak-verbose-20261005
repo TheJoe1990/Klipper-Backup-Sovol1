@@ -1,0 +1,97 @@
+# =====================================================================
+# 2026-10-05: Filament ENCODER grace period after a tool pickup (Boss).
+# Plain English:
+# - At a tool change Orca retracts the old tool 10 mm, and when a tool is picked
+#   up again it pushes 10 mm back in and primes on the tower. The encoder can
+#   miss that push-in (tube slack), see >6 mm with no pulse, and pause the print.
+# - So for `grace` seconds after each pickup (timer starts when the pickup move
+#   is finished, plus `lead` for Klipper's move-queue start), encoder runouts are
+#   IGNORED. Outside that window the encoder pauses exactly like before.
+# - Safety net: if a runout was ignored during the grace window and the filament
+#   still is not moving when the window ends, the encoder gets one more `grace`
+#   seconds and then pauses. (Klipper only fires a runout on a change, so without
+#   this a real jam right at pickup would never pause.)
+# - The filament SWITCH sensors are untouched.
+# Called from the T0-T3 macros (tool_mapping.cfg) and from the encoder runout_gcode.
+# =====================================================================
+
+[gcode_macro _ENCODER_GRACE]
+description: Start the encoder grace window for TOOL=<n> (called right after SELECT_TOOL).
+variable_grace: 2.0
+variable_lead: 0.25
+# per tool: '' none, 'grace' window open, 'hit' runout ignored inside the window, 'follow' extra check pending
+variable_state: {}
+gcode:
+    {% set t = params.TOOL|int %}
+    {% if printer.print_stats.state == "printing" %}
+        M400    # pickup moves finished -> start the clock right before the first extrusion
+        {% set _ = state.update({t|string: 'grace'}) %}
+        SET_GCODE_VARIABLE MACRO=_ENCODER_GRACE VARIABLE=state VALUE="{state}"
+        UPDATE_DELAYED_GCODE ID=_ENCODER_GRACE_END_{t} DURATION={grace + lead}
+    {% endif %}
+
+[gcode_macro _ENCODER_RUNOUT]
+description: Encoder runout_gcode body. TOOL=<n>. Pause, unless inside the pickup grace window.
+gcode:
+    {% set t = params.TOOL|int %}
+    {% set g = printer["gcode_macro _ENCODER_GRACE"] %}
+    {% set st = g.state.get(t|string, '') %}
+    {% if st == 'grace' or st == 'hit' %}
+        {% set _ = g.state.update({t|string: 'hit'}) %}
+        SET_GCODE_VARIABLE MACRO=_ENCODER_GRACE VARIABLE=state VALUE="{g.state}"
+        RESPOND TYPE=echo MSG="Encoder on T{t}: no motion during the {g.grace|round(1)}s toolchange grace -- ignored"
+    {% else %}
+        PAUSE
+        M117 Filament encoder runout on T{t}
+        RESPOND TYPE=echo MSG="Filament encoder runout on T{t}"
+    {% endif %}
+
+[gcode_macro _ENCODER_GRACE_END]
+description: Internal. TOOL=<n>. Close the grace window; run the safety-net check.
+gcode:
+    {% set t = params.TOOL|int %}
+    {% set g = printer["gcode_macro _ENCODER_GRACE"] %}
+    {% set st = g.state.get(t|string, '') %}
+    {% set extr = printer[printer.toolchanger.tool_names[t]].extruder|string %}
+    {% set sname = "filament_motion_sensor encoder_sensor" ~ t %}
+    {% set s = printer[sname] if sname in printer else none %}
+    {% set still_bad = s is not none and s.enabled and not s.filament_detected and printer.print_stats.state == "printing" and printer.toolhead.extruder == extr %}
+    {% set newst = '' %}
+    {% if st == 'hit' and still_bad %}
+        {% set newst = 'follow' %}
+        RESPOND TYPE=echo MSG="Encoder on T{t} still sees no motion after the grace -- {g.grace|round(1)}s more, then pause"
+        UPDATE_DELAYED_GCODE ID=_ENCODER_FOLLOW_{t} DURATION={g.grace}
+    {% elif st == 'follow' %}
+        {% if still_bad %}
+            PAUSE
+            M117 Filament encoder runout on T{t}
+            RESPOND TYPE=echo MSG="Filament encoder runout on T{t} (no motion through the toolchange grace + {g.grace|round(1)}s)"
+        {% endif %}
+    {% endif %}
+    {% set _ = g.state.update({t|string: newst}) %}
+    SET_GCODE_VARIABLE MACRO=_ENCODER_GRACE VARIABLE=state VALUE="{g.state}"
+
+[delayed_gcode _ENCODER_GRACE_END_0]
+gcode:
+    _ENCODER_GRACE_END TOOL=0
+[delayed_gcode _ENCODER_GRACE_END_1]
+gcode:
+    _ENCODER_GRACE_END TOOL=1
+[delayed_gcode _ENCODER_GRACE_END_2]
+gcode:
+    _ENCODER_GRACE_END TOOL=2
+[delayed_gcode _ENCODER_GRACE_END_3]
+gcode:
+    _ENCODER_GRACE_END TOOL=3
+[delayed_gcode _ENCODER_FOLLOW_0]
+gcode:
+    _ENCODER_GRACE_END TOOL=0
+[delayed_gcode _ENCODER_FOLLOW_1]
+gcode:
+    _ENCODER_GRACE_END TOOL=1
+[delayed_gcode _ENCODER_FOLLOW_2]
+gcode:
+    _ENCODER_GRACE_END TOOL=2
+[delayed_gcode _ENCODER_FOLLOW_3]
+gcode:
+    _ENCODER_GRACE_END TOOL=3

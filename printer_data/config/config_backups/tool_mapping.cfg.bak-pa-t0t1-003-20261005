@@ -4,22 +4,19 @@ filename: ~/printer_data/config/variables.cfg
 [gcode_macro T0]
 variable_tool: 0
 variable_spool_id: None
-# 2026-10-05: rough PA Pattern (Orca), ABS, outer wall 200mm/s accel 1500. Shared T0/T1 value 0.03 (T0 clean ~0.025-0.04, T1 ~0.025-0.045). Re-test after speed/accel changes.
-variable_pressure_advance: 0.03
+# 2026-10-05: PA Pattern (Orca), Black ABS, outer wall 200mm/s accel 1500 -> 0.04. Re-test after speed/accel changes.
+variable_pressure_advance: 0.04
 gcode:
     SET_TOOL_PRESSURE_ADVANCE TOOL={tool} PA={pressure_advance} SMOOTH=0.040
     SELECT_TOOL T={tool}
-    _ENCODER_GRACE TOOL={tool}   # 2026-10-05: 2 s encoder grace after pickup (encoder_toolchange_grace.cfg)
 
 [gcode_macro T1]
 variable_tool: 1
 variable_spool_id: None
-# 2026-10-05: rough PA, shared with T0 (see T0 note).
-variable_pressure_advance: 0.03
+variable_pressure_advance: None
 gcode:
     SET_TOOL_PRESSURE_ADVANCE TOOL={tool} PA={pressure_advance} SMOOTH=0.040
     SELECT_TOOL T={tool}
-    _ENCODER_GRACE TOOL={tool}   # 2026-10-05: 2 s encoder grace after pickup (encoder_toolchange_grace.cfg)
 
 [gcode_macro T2]
 variable_tool: 2
@@ -28,7 +25,6 @@ variable_pressure_advance: None
 gcode:
     SET_TOOL_PRESSURE_ADVANCE TOOL={tool} PA={pressure_advance} SMOOTH=0.040
     SELECT_TOOL T={tool}
-    _ENCODER_GRACE TOOL={tool}   # 2026-10-05: 2 s encoder grace after pickup (encoder_toolchange_grace.cfg)
 
 
 # 2026-10-03: T3 enabled, same form as T0-T2 above (old commented draft replaced)
@@ -39,7 +35,6 @@ variable_pressure_advance: None
 gcode:
     SET_TOOL_PRESSURE_ADVANCE TOOL={tool} PA={pressure_advance} SMOOTH=0.040
     SELECT_TOOL T={tool}
-    _ENCODER_GRACE TOOL={tool}   # 2026-10-05: 2 s encoder grace after pickup (encoder_toolchange_grace.cfg)
   
 [gcode_macro SET_TOOL_MAPPING]
 description: [T<number>] [TOOL<number>]

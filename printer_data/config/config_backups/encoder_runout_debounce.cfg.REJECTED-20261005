@@ -1,0 +1,81 @@
+# =====================================================================
+# 2026-10-05: Debounced filament ENCODER runout (Boss).
+# Plain English:
+# - The encoders (encoder_sensor0/1) used to PAUSE instantly when they missed
+#   motion for detection_length (6 mm). Tonight they paused 3 times in one print.
+# - Now a runout event only starts a recheck. After `delay` seconds we look again:
+#     * filament moving again (sensor shows detected) -> keep printing, log it
+#     * still not moving and that tool is printing     -> PAUSE (same as before)
+#     * a different tool is active (tool change in the delay) -> keep watching;
+#       when the tool comes back it gets its own `delay` seconds to show motion,
+#       then PAUSE if it still has not moved. A real jam is not lost on a swap.
+# - The filament SWITCH sensors are untouched (still instant).
+# State per tool: 0 = idle, 1 = armed (tool active), 2 = waiting for the tool to come back.
+# =====================================================================
+
+[gcode_macro _ENCODER_RUNOUT]
+description: Called from an encoder runout_gcode. TOOL=<n>. Starts the delayed recheck.
+variable_delay: 5.0
+variable_state: {}
+gcode:
+    {% set t = params.TOOL|int %}
+    {% set tc = printer.toolchanger %}
+    {% set extr = printer[tc.tool_names[t]].extruder|string %}
+    {% if printer.print_stats.state == "printing" and printer.toolhead.extruder == extr %}
+        {% set _ = state.update({t|string: 1}) %}
+        SET_GCODE_VARIABLE MACRO=_ENCODER_RUNOUT VARIABLE=state VALUE="{state}"
+        RESPOND TYPE=echo MSG="Encoder on T{t} saw no motion -- rechecking in {delay|round(1)}s before pausing"
+        UPDATE_DELAYED_GCODE ID=_ENCODER_RECHECK_{t} DURATION={delay}
+    {% endif %}
+
+[gcode_macro _ENCODER_RECHECK]
+description: Internal. TOOL=<n>. Decide whether an encoder runout is real.
+gcode:
+    {% set t = params.TOOL|int %}
+    {% set m = printer["gcode_macro _ENCODER_RUNOUT"] %}
+    {% set st = m.state.get(t|string, 0)|int %}
+    {% set tc = printer.toolchanger %}
+    {% set extr = printer[tc.tool_names[t]].extruder|string %}
+    {% set sname = "filament_motion_sensor encoder_sensor" ~ t %}
+    {% set s = printer[sname] if sname in printer else none %}
+    {% set newst = 0 %}
+    {% if st == 0 %}
+        G4 P0
+    {% elif printer.print_stats.state != "printing" or s is none or not s.enabled %}
+        {% set newst = 0 %}
+    {% elif s.filament_detected %}
+        RESPOND TYPE=echo MSG="Encoder on T{t} recovered within {m.delay|round(1)}s -- not pausing"
+        {% set newst = 0 %}
+    {% elif printer.toolhead.extruder != extr %}
+        {% set newst = 2 %}
+        UPDATE_DELAYED_GCODE ID=_ENCODER_RECHECK_{t} DURATION={m.delay}
+    {% elif st == 2 %}
+        RESPOND TYPE=echo MSG="T{t} is back -- giving its encoder {m.delay|round(1)}s to see motion"
+        {% set newst = 1 %}
+        UPDATE_DELAYED_GCODE ID=_ENCODER_RECHECK_{t} DURATION={m.delay}
+    {% else %}
+        PAUSE
+        M117 Filament encoder runout on T{t}
+        RESPOND TYPE=echo MSG="Filament encoder runout on T{t} (no motion for {m.delay|round(1)}s after the trigger) -- paused"
+        {% set newst = 0 %}
+    {% endif %}
+    {% if st != 0 %}
+        {% set _ = m.state.update({t|string: newst}) %}
+        SET_GCODE_VARIABLE MACRO=_ENCODER_RUNOUT VARIABLE=state VALUE="{m.state}"
+    {% endif %}
+
+[delayed_gcode _ENCODER_RECHECK_0]
+gcode:
+    _ENCODER_RECHECK TOOL=0
+
+[delayed_gcode _ENCODER_RECHECK_1]
+gcode:
+    _ENCODER_RECHECK TOOL=1
+
+[delayed_gcode _ENCODER_RECHECK_2]
+gcode:
+    _ENCODER_RECHECK TOOL=2
+
+[delayed_gcode _ENCODER_RECHECK_3]
+gcode:
+    _ENCODER_RECHECK TOOL=3

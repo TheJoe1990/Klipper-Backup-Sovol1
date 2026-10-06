@@ -10,7 +10,6 @@
 # Enable arcs support
 [gcode_arcs]
 [include Toolchanger.cfg]
-[include encoder_toolchange_grace.cfg]   # 2026-10-05 encoder ignores runouts for 2 s after each tool pickup
 #[include T0.cfg]
 #[include T5.cfg]
 [include timelapse.cfg] # DONT FORGET TO INSTALL THE TIMELAPSE PLUGIN
