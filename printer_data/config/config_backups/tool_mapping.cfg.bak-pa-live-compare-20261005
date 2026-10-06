@@ -139,13 +139,8 @@ gcode:
         {% set extr = P[tool_name].extruder|string %}
 
         # Load previous applied values for this extruder
-        # 2026-10-05: compare against the LIVE extruder PA, not just the cache.
-        # Orca prime-tower ramming sends SET_PRESSURE_ADVANCE ADVANCE=0 on unload and never restores it,
-        # so the cache went stale and the next pickup of that tool skipped re-applying PA.
         {% set prev = last.get(extr, none) %}
-        {% set live_pa = P[extr].pressure_advance|float %}
-        {% set live_smooth = P[extr].smooth_time|float %}
-        {% set changed = (prev is none) or (live_pa != pa) or (live_smooth != smooth) %}
+        {% set changed = (prev is none) or (prev.get('pa', -999)|float != pa) or (prev.get('smooth', -999)|float != smooth) %}
 
         {% if changed %}
             SET_PRESSURE_ADVANCE EXTRUDER={extr} ADVANCE={pa} SMOOTH_TIME={smooth}
