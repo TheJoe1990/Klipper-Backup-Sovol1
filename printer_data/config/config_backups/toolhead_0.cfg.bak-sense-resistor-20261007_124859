@@ -90,6 +90,7 @@ uart_pin: T0:gpio0
 tx_pin: T0:gpio1
 interpolate: false
 run_current: 0.85 #**
+sense_resistor: 0.11 #**
 stealthchop_threshold: 0
 driver_TBL: 0
 driver_HEND: 6
