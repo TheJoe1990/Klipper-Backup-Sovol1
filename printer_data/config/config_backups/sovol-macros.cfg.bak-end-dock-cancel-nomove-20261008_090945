@@ -565,68 +565,39 @@ gcode:
 
 
 [gcode_macro END_PRINT]
-description: Ends the print -- rapid move off the part, Z lift, dock the tool, park the empty shuttle at the back center, then heaters off
+description: Ends the print and performs cleanup
 variable_state: 'normal'
 gcode:
-    # 2026-10-08 (user): end-of-print order is
-    #   1) rapid move to the Smart Park spot (snaps strings), then lift Z a bit if there is room
-    #   2) dock the active tool -- ONLY if the tool probe confirms it is really on the shuttle
-    #   3) park the EMPTY shuttle at the back center (X175 Y340, _PARK_BACK defaults)
-    #   4) heaters / fans / LEDs / motors off
-    # The old version lifted Z 25, picked T0 back up (SELECT_TOOL T=0) and parked with T0 on;
-    # the shuttle is now left EMPTY after a print (heatsoak/_START_PRINT pick the service tool).
-    # Smart Park spot = same math as SMART_PARK (KAMP_Smart_Park_TC.cfg): front-left corner of
-    # the objects minus purge_margin, PRIME_TOWER_AREA ignored, kept 5 mm inside the axis minimum.
-    # SMART_PARK itself is NOT called: its last line does an absolute G0 Z{smart_park_height}
-    # (10 mm), which would drive the nozzle back down into any print taller than that.
     {% set z_max = printer['gcode_macro _global_var'].z_maximum_lifting_distance|int %}
     {% set current_z = printer.gcode_move.position.z|float %}
-    {% set end_z_lift = 10.0 %}
-    {% set kamp = printer["gcode_macro _KAMP_Settings"] %}
-    {% set margin = kamp.purge_margin|float %}
-    {% set pts = printer.exclude_object.objects | rejectattr('name', 'equalto', 'PRIME_TOWER_AREA') | map(attribute='polygon') | sum(start=[]) %}
-    {% set rapid_f = (printer.toolhead.max_velocity * 60)|int %}
 
     M400
 
     M117 Print Complete!
-
-    # --- 1) Rapid move to the Smart Park spot at the current height, then lift ---
-    _RESET_SPEED_LIMITS_TO_CFG    ; drop the slicer's last per-feature accel (e.g. 1500) so the move is truly rapid
-    G90  ; Absolute positioning
-    {% if pts|length > 0 %}
-        {% set park_x = [[pts|map(attribute=0)|min - margin, printer.toolhead.axis_minimum.x + 5.0]|max, printer.toolhead.axis_maximum.x - 5.0]|min %}
-        {% set park_y = [[pts|map(attribute=1)|min - margin, printer.toolhead.axis_minimum.y + 5.0]|max, printer.toolhead.axis_maximum.y - 5.0]|min %}
-        M117 Parking off the print...
-        G0 X{park_x|round(2)} Y{park_y|round(2)} F{rapid_f}
-    {% else %}
-        RESPOND TYPE=echo MSG="END_PRINT: no objects defined, skipping the Smart Park move (Z lift only)."
-    {% endif %}
-    ; Lift Z a bit, only as far as there is room
     G91  ; Relative positioning
-    {% if (current_z + end_z_lift) < z_max %}
-        G1 Z{end_z_lift} F3000
-    {% elif (z_max - current_z) > 0 %}
-        G1 Z{(z_max - current_z)} F3000
+
+    ; Lift Z to avoid collisions
+    {% if (printer.gcode_move.position.z + 50) < z_max %}
+        G1 Z25 F3000
+    {% else %}
+        G1 Z{(z_max - printer.gcode_move.position.z)} F3000
     {% endif %}
+
     G90  ; Absolute positioning
-    M400
 
-    # --- 2) + 3) Dock the tool (confirmed present), then park the empty shuttle ---
-    # Tool-drop polling is stopped BEFORE docking (was after the park) so taking the tool off
-    # the shuttle on purpose can't look like a dropped tool.
-    TDD_POLLING_STOP
-    DETECT_ACTIVE_TOOL_PROBE
-    _END_PRINT_DOCK_AND_PARK      ; separate macro so it sees the fresh probe result
+    ; Switch to T0 (toolhead 0) for extruder shutdown and parking
+    SELECT_TOOL T=0
 
-    # --- 4) Shut everything down ---
     ; Turn off all extruders
     {% for tool_nr in printer.toolchanger.tool_numbers %}
         M104 T{tool_nr} S0 ; Turn off extruder heater for tool {tool_nr}
     {% endfor %}
 
+    _PARK_BACK X=0 Y=50
+
     TURN_OFF_HEATERS
     RESET_TOOL_MAPPING
+    TDD_POLLING_STOP
 
         M117 Print Complete - Turning Off LEDs
         # 2026-10-03: loop over every tool instead of hardcoded T0/T1 (T2/T3 added)
@@ -652,39 +623,7 @@ gcode:
     M117 Ready
     {action_respond_info("Finish Print!")}
 
-
-[gcode_macro _END_PRINT_DOCK_AND_PARK]
-description: END_PRINT steps 2+3 -- dock the tool if the probe confirms it is mounted, then park the empty shuttle (2026-10-08)
-gcode:
-    # Rendered AFTER DETECT_ACTIVE_TOOL_PROBE ran (separate macro), so it sees fresh data --
-    # same pattern as _QGL_REQUIRE_TOOL. Any doubt about the tool = NO motion, just a message.
-    {% set det = printer.tool_probe_endstop.active_tool_number|int %}
-    {% set tc  = printer.toolchanger.tool_number|int %}
-    {% if tc >= 0 and det == tc %}
-        M117 Docking T{tc}...
-        UNSELECT_TOOL
-        DETECT_ACTIVE_TOOL_PROBE
-        _END_PRINT_PARK_EMPTY     ; re-checks that the shuttle is really empty first
-    {% elif tc < 0 and det < 0 %}
-        # Shuttle already empty (nothing to dock) -- just park it.
-        _END_PRINT_PARK_EMPTY
-    {% else %}
-        RESPOND TYPE=error MSG="END_PRINT: tool NOT confirmed on the shuttle (toolchanger T{tc}, probe detected {det}) -- not docking or parking. Check the toolhead."
-    {% endif %}
-
-
-[gcode_macro _END_PRINT_PARK_EMPTY]
-description: END_PRINT step 3 -- park the EMPTY shuttle at the back center, only if the probe confirms no tool is mounted (2026-10-08)
-gcode:
-    {% set det = printer.tool_probe_endstop.active_tool_number|int %}
-    {% if det < 0 %}
-        M117 Parking empty shuttle...
-        _PARK_BACK X=175 Y=340 Z_LIFT=0
-    {% else %}
-        RESPOND TYPE=error MSG="END_PRINT: dock NOT confirmed (probe still detects T{det}) -- not parking the shuttle. Check the dock."
-    {% endif %}
-
-
+    
 [gcode_macro PAUSE]
 rename_existing: PAUSE_BASE
 variable_state: 'normal'
@@ -899,7 +838,7 @@ gcode:
 
 
 [gcode_macro CANCEL_PRINT]
-description: "Cancels the current print WITHOUT ANY MOVEMENT (2026-10-08) -- heaters, fans and LEDs off only. Also tears down any active\
+description: "Cancels the current print and parks the nozzle. Also tears down any active\
     heatsoak first (folded in 2026-09-14 from the new Heatsoak_Universal.cfg template instead\
     of letting the template declare its own second [gcode_macro CANCEL_PRINT] section -- two\
     sections with the same name silently merge in Klipper's config loader instead of erroring,\
@@ -914,24 +853,41 @@ gcode:
     # stops the new _HEATSOAK_PAUSE_GUARD timer. No-op if no soak is active. Keep first.
     _HEATSOAK_CANCEL_TEARDOWN
 
+    {% set z_max = printer['gcode_macro _global_var'].z_maximum_lifting_distance|int %}
+    {% set e_retract = printer['gcode_macro _global_var'].cancel_park.e|float %}
+    {% set current_z = printer.gcode_move.position.z|float %}
+
     ; Execute base cancel behavior
     CANCEL_PRINT_BASE
 
     M117 Print canceled!
+    G91  ; Relative positioning
 
-    # 2026-10-08 (user): a cancel makes NO MOVEMENT AT ALL -- removed the filament retract,
-    # the Z lift, both SELECT_TOOL T=0 calls (a toolchange!) and _PARK_BACK. Cancels are often
-    # because a toolhead fell off / came loose (tool-drop detection pauses the print), and then
-    # nothing may move. The normal end-of-print park/dock lives in END_PRINT only.
-    TDD_POLLING_STOP   ; 2026-10-08: stop tool-drop polling too (no motion; prevents a stray drop alarm after the cancel)
+    ; Retract filament
+    G1 E-{e_retract} F500
+
+    ; Lift Z to avoid collision
+    {% if (printer.gcode_move.position.z + 10) < z_max %}
+        G1 Z10 F3000
+    {% else %}
+        G1 Z{(z_max - printer.gcode_move.position.z)} F3000
+    {% endif %}
+
+    G90  ; Absolute positioning
+
+    ; Switch to T0 (toolhead 0) for extruder shutdown and parking
+    SELECT_TOOL T=0
 
     ; Turn off all extruders
     {% for tool_nr in printer.toolchanger.tool_numbers %}
         M104 T{tool_nr} S0 ; Turn off extruder heater for tool {tool_nr}
     {% endfor %}
 
+    _PARK_BACK
+
     TURN_OFF_HEATERS
     RESET_TOOL_MAPPING
+    SELECT_TOOL T=0
 
         M117 Print Complete - Turning Off LEDs
         # 2026-10-03: loop over every tool instead of hardcoded T0/T1 (T2/T3 added)
@@ -947,7 +903,7 @@ gcode:
     _ALL_FAN_OFF
 
     CLEAR_PAUSE
-    M84 X Y Z E  ; Disable motors (no movement; lets the shuttle be moved by hand)
+    M84 X Y Z E  ; Disable motors
 
     M117 Ready
     {action_respond_info("Cancel Print Success!")}
