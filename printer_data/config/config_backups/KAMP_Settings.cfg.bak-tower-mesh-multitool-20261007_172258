@@ -47,12 +47,7 @@ gcode: # Gcode section left intentionally blank. Do not disturb.
 #   Orca start G-code line (before START_PRINT):
 #   {if enable_prime_tower}_PRIME_TOWER_AREA X={wipe_tower_x[0]} Y={wipe_tower_y[0]} W={prime_tower_width} B={prime_tower_brim_width}{endif}
 [gcode_macro _PRIME_TOWER_AREA]
-description: Record the prime tower footprint; _START_PRINT adds it to the adaptive mesh only for multi-tool prints. X= Y= W= [D=] [B=]
-# 2026-10-07: Orca calls this whenever enable_prime_tower is on, even for one-tool prints that
-# never build a tower -> the mesh stretched from the part to the tower corner. Now this only
-# RECORDS the area; _PRIME_TOWER_AREA_APPLY (called in _START_PRINT right before the mesh)
-# defines the exclude object only when the slicer uses more than one tool.
-variable_pending: []
+description: Declare the prime tower footprint so the adaptive bed mesh covers it. X= Y= W= [D=] [B=]
 gcode:
     {% set x = params.X|float %}
     {% set y = params.Y|float %}
@@ -61,20 +56,6 @@ gcode:
     {% set b = params.B|default(0)|float + 2.0 %}
     {% set x0 = [x - b, 0.0]|max %}
     {% set y0 = [y - b, 0.0]|max %}
-    SET_GCODE_VARIABLE MACRO=_PRIME_TOWER_AREA VARIABLE=pending VALUE="[{x0|round(2)},{y0|round(2)},{(x+w+b)|round(2)},{(y+d+b)|round(2)}]"
-
-[gcode_macro _PRIME_TOWER_AREA_APPLY]
-description: Add the recorded prime tower area to the mesh if the print uses more than one tool. TOOLS=<count>
-gcode:
-    {% set a = printer["gcode_macro _PRIME_TOWER_AREA"].pending %}
-    {% set tools = params.TOOLS|default(1)|int %}
-    {% if a|length == 4 %}
-        {% if tools > 1 %}
-            EXCLUDE_OBJECT_DEFINE NAME=PRIME_TOWER_AREA POLYGON=[[{a[0]},{a[1]}],[{a[2]},{a[1]}],[{a[2]},{a[3]}],[{a[0]},{a[3]}]]
-            RESPOND TYPE=echo MSG="Prime tower area added to the bed mesh ({tools} tools): X{a[0]|round(1)}-{a[2]|round(1)} Y{a[1]|round(1)}-{a[3]|round(1)}"
-        {% else %}
-            RESPOND TYPE=echo MSG="One-tool print: no prime tower, so its area is left out of the bed mesh."
-        {% endif %}
-    {% endif %}
-    SET_GCODE_VARIABLE MACRO=_PRIME_TOWER_AREA VARIABLE=pending VALUE="[]"
+    EXCLUDE_OBJECT_DEFINE NAME=PRIME_TOWER_AREA POLYGON=[[{x0|round(2)},{y0|round(2)}],[{(x+w+b)|round(2)},{y0|round(2)}],[{(x+w+b)|round(2)},{(y+d+b)|round(2)}],[{x0|round(2)},{(y+d+b)|round(2)}]]
+    RESPOND TYPE=echo MSG="Prime tower area added to the bed mesh: X{x0|round(1)}-{(x+w+b)|round(1)} Y{y0|round(1)}-{(y+d+b)|round(1)}"
 

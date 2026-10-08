@@ -521,7 +521,6 @@ gcode:
     M117 Performing Post Heatsoak QGL... 
     QUAD_GANTRY_LEVEL #CHATGPT STOP FUCKING REMOVING THIS!  Yes its duplicate and yes its intentional so leave it the fuck alone!  
     M117 Performing Bed Mesh Calibration...
-    _PRIME_TOWER_AREA_APPLY TOOLS={slicer_tools|length}   # 2026-10-07: tower area only for multi-tool prints
     BED_MESH_CALIBRATE ADAPTIVE=1
 
     # Park toolhead

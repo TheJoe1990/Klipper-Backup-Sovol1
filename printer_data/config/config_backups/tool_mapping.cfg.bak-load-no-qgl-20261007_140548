@@ -218,7 +218,7 @@ gcode:
 
 
 [gcode_macro UNLOAD_ONE_FILAMENT]
-description: Wrapper for toolchanger UI - unload filament from specific tool (probe-based, no QGL)
+description: Wrapper for toolchanger UI - unload filament from specific tool (probe-based, QGL only if needed)
 gcode:
     {% set tool = params.TOOL|default(0)|int %}
     {% set state = printer.print_stats.state %}
@@ -320,7 +320,7 @@ gcode:
     M117 UNLOAD: done
 
 [gcode_macro LOAD_ONE_FILAMENT]
-description: Wrapper for toolchanger UI - load filament into specific tool (probe-based, no QGL)
+description: Wrapper for toolchanger UI - load filament into specific tool (probe-based, QGL only if needed)
 gcode:
     {% set tool = params.TOOL|default(0)|int %}
     {% set state = printer.print_stats.state %}
@@ -386,15 +386,12 @@ gcode:
             # Start full preheat of incoming tool while current tool does QGL
             M104 T{tool} S{load_temp}
 
-            # 2026-10-07: no QGL in load/unload (user). The qgl_applied block above was
-            # commented out but this call was left live -> undefined = falsy -> QGL on every
-            # toolchange load (incl. the QGL safety cool-down to 150C). Mirrors UNLOAD.
-            #{% if not qgl_applied %}
-            #    M117 LOAD: QGL before toolchange
-            #    QUAD_GANTRY_LEVEL
-            #{% else %}
-            #    M117 LOAD: skipping QGL (already applied)
-            #{% endif %}
+            {% if not qgl_applied %}
+                M117 LOAD: QGL before toolchange
+                QUAD_GANTRY_LEVEL
+            {% else %}
+                M117 LOAD: skipping QGL (already applied)
+            {% endif %}
 
             M117 LOAD: SELECT_TOOL T{tool}
             SELECT_TOOL T={tool}
