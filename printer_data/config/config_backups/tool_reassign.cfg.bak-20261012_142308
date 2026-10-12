@@ -1,0 +1,236 @@
+#####################################################################
+# Tool map + endless spool (added 2026-10-12, Happy-Hare-style)
+#
+# Plain English:
+# - TC_MAP (put it on the Mainsail dashboard as a macro button) opens a popup:
+#   every SLICER tool (T0..T3 in the gcode) shows which PHYSICAL tool prints it,
+#   plus optional BACKUP physical tools for endless spool.
+#   Several slicer tools may share one physical tool.
+# - Only usable while a print is PAUSED (user rule 2026-10-12). The dashboard button lives in a
+#   Mainsail macro group set to show only while paused; the macro also refuses otherwise.
+#   Before a print, map tools in the start-print dialog as usual.
+# - Changing a slicer tool's main tool while paused: other slicer tools are just remapped
+#   (they swap at their next tool change, at the prime tower). The slicer tool that is
+#   printing right now asks first, then swaps at the pause park spot: heat the new tool to
+#   the old tool's temperature, swap, purge, brush, resume if asked.
+# - Endless spool is ALWAYS a manual step: a runout pauses the print and the popup
+#   offers that slicer tool's backups (or any tool). Nothing switches by itself.
+# - Backups are per print: END_PRINT / CANCEL_PRINT clear them (like the mapping).
+# - Physical tool offsets follow the mounted tool automatically (klipper-toolchanger
+#   applies them as a move transform), so a swap during a pause resumes correctly.
+#####################################################################
+
+[gcode_macro _TC_MAP]
+description: Internal state for TC_MAP (backups per slicer tool, last slicer tool called)
+variable_backups: {}
+variable_active_slicer: -1
+variable_purge_mm: 20          # purged by the new tool after a swap during a pause
+variable_purge_speed: 150      # mm/min
+gcode:
+
+[gcode_macro _TC_MAP_ACTIVE]
+description: Internal. Remember which SLICER tool was just called (from the T<n> macros).
+gcode:
+    SET_GCODE_VARIABLE MACRO=_TC_MAP VARIABLE=active_slicer VALUE={params.T|int}
+
+[gcode_macro _TC_MAP_RESET]
+description: Internal. Clear backups (END_PRINT / CANCEL_PRINT).
+gcode:
+    SET_GCODE_VARIABLE MACRO=_TC_MAP VARIABLE=backups VALUE="{ {} }"
+    SET_GCODE_VARIABLE MACRO=_TC_MAP VARIABLE=active_slicer VALUE=-1
+
+[gcode_macro TC_MAP]
+description: Tool map + endless spool backups (popup). Use from the dashboard.
+gcode:
+    {% set st = printer["gcode_macro _TC_MAP"] %}
+    {% set nums = printer.toolchanger.tool_numbers %}
+    {% set sv = printer.save_variables.variables %}
+    {% set mats = sv.filament_types|default([]) %}
+    {%- macro ui(msg) -%}{ action_respond_info("action:prompt_" ~ msg) }{%- endmacro -%}
+    {%- macro label(p) -%}T{p}{ (" " ~ mats[p]) if p < mats|length and mats[p] else "" }{%- endmacro -%}
+    {% set state = printer.print_stats.state %}
+    {% set paused = printer.pause_resume.is_paused %}
+    {% set mounted = printer.toolchanger.tool_number|int %}
+
+    {% if params.CLOSE is defined %}
+        { ui("end") }
+
+    {% elif not paused %}
+        { ui("end") }
+        RESPOND TYPE=error MSG="TC_MAP: only while a print is paused. Pause first (before a print, map tools in the start-print dialog)."
+
+    {% elif params.SET is defined %}
+        # ---- change one slicer tool: main tool (TOOL=) or toggle a backup (TOGGLE=)
+        {% set n = params.SET|int %}
+        {% set key = 'T' ~ n %}
+        {% set main = printer["gcode_macro T" ~ n].tool|int %}
+        {% set bk = st.backups.get(key, [])|list %}
+        {% if params.TOGGLE is defined %}
+            {% set p = params.TOGGLE|int %}
+            {% if p in bk %}{% set _ = bk.remove(p) %}{% elif p != main %}{% set _ = bk.append(p) %}{% endif %}
+            {% set b2 = dict(st.backups) %}{% set _ = b2.update({key: bk}) %}
+            SET_GCODE_VARIABLE MACRO=_TC_MAP VARIABLE=backups VALUE="{b2}"
+            TC_MAP EDIT={n}
+        {% elif params.TOOL is defined %}
+            {% set p = params.TOOL|int %}
+            {% set live = st.active_slicer|int == n and mounted == main and p != main %}
+            {% if live %}
+                # swapping the tool that is printing right now: confirm first
+                { ui("begin Swap slicer T" ~ n ~ " to " ~ label(p) ~ "?") }
+                { ui("text Physical " ~ label(main) ~ " is printing slicer T" ~ n ~ ". This heats " ~ label(p) ~ " to the same temperature, swaps tools at the park spot, purges " ~ st.purge_mm ~ " mm and brushes the nozzle.") }
+                { ui("footer_button Cancel|TC_MAP EDIT=" ~ n ~ "|secondary") }
+                { ui("footer_button Swap, stay paused|TC_REASSIGN T=" ~ n ~ " TOOL=" ~ p ~ "|warning") }
+                { ui("footer_button Swap and resume|TC_REASSIGN T=" ~ n ~ " TOOL=" ~ p ~ " RESUME=1|primary") }
+                { ui("show") }
+            {% else %}
+                SET_TOOL_MAPPING T={n} TOOL={p}
+                {% if p in bk %}
+                    {% set _ = bk.remove(p) %}{% set b2 = dict(st.backups) %}{% set _ = b2.update({key: bk}) %}
+                    SET_GCODE_VARIABLE MACRO=_TC_MAP VARIABLE=backups VALUE="{b2}"
+                {% endif %}
+                TC_MAP EDIT={n}
+            {% endif %}
+        {% endif %}
+
+    {% elif params.EDIT is defined %}
+        # ---- one slicer tool: pick its main tool and its backups
+        {% set n = params.EDIT|int %}
+        {% set main = printer["gcode_macro T" ~ n].tool|int %}
+        {% set bk = st.backups.get('T' ~ n, []) %}
+        { ui("begin Slicer tool T" ~ n) }
+        { ui("text Main tool (prints slicer T" ~ n ~ "):") }
+        { ui("button_group_start") }
+        {% for p in nums %}
+            { ui("button " ~ ("> " if p == main else "") ~ label(p) ~ "|TC_MAP SET=" ~ n ~ " TOOL=" ~ p ~ "|" ~ ("primary" if p == main else "secondary")) }
+        {% endfor %}
+        { ui("button_group_end") }
+        { ui("text Backups for endless spool (tap to add or remove, used in this order):") }
+        { ui("button_group_start") }
+        {% for p in nums if p != main %}
+            { ui("button " ~ (("+" ~ (bk.index(p) + 1) ~ " ") if p in bk else "") ~ label(p) ~ "|TC_MAP SET=" ~ n ~ " TOGGLE=" ~ p ~ "|" ~ ("success" if p in bk else "secondary")) }
+        {% endfor %}
+        { ui("button_group_end") }
+        { ui("footer_button Back|TC_MAP|secondary") }
+        { ui("footer_button Close|TC_MAP CLOSE=1|primary") }
+        { ui("show") }
+
+    {% else %}
+        # ---- overview
+        { ui("begin Tool map") }
+        {% if st.active_slicer|int >= 0 %}
+            { ui("text Paused: slicer T" ~ st.active_slicer ~ " was printing on physical " ~ label(mounted)) }
+        {% endif %}
+        { ui("text Tap a slicer tool to change its tool or endless spool backups.") }
+        {% for n in nums %}
+            {% set main = printer["gcode_macro T" ~ n].tool|int %}
+            {% set bk = st.backups.get('T' ~ n, []) %}
+            {% set bl = [] %}{% for p in bk %}{% set _ = bl.append(label(p)) %}{% endfor %}
+            { ui("button Slicer T" ~ n ~ "  >  " ~ label(main) ~ (("   backups: " ~ bl|join(", ")) if bl else "") ~ "|TC_MAP EDIT=" ~ n ~ "|" ~ ("primary" if st.active_slicer|int == n else "secondary")) }
+        {% endfor %}
+        { ui("footer_button Close|TC_MAP CLOSE=1|primary") }
+        { ui("show") }
+    {% endif %}
+
+[gcode_macro TC_REASSIGN]
+description: While paused, move slicer tool T=<n> to physical TOOL=<m> and swap now. RESUME=1 resumes after.
+gcode:
+    {% set n = params.T|int %}
+    {% set p = params.TOOL|int %}
+    {% set old = printer["gcode_macro T" ~ n].tool|int %}
+    { action_respond_info("action:prompt_end") }
+    {% if not printer.pause_resume.is_paused %}
+        {action_raise_error("TC_REASSIGN: only while the print is paused (use TC_MAP to remap otherwise).")}
+    {% elif p not in printer.toolchanger.tool_numbers %}
+        {action_raise_error("TC_REASSIGN: T" ~ p ~ " is not a tool on this printer.")}
+    {% elif printer.toolchanger.tool_number|int != old %}
+        {action_raise_error("TC_REASSIGN: slicer T" ~ n ~ " maps to T" ~ old ~ " but T" ~ printer.toolchanger.tool_number ~ " is mounted. Remap with TC_MAP instead.")}
+    {% else %}
+        {% set old_ext = printer["tool T" ~ old].extruder %}
+        {% set new_ext = printer["tool T" ~ p].extruder %}
+        {% set temp = printer[old_ext].target|float %}
+        {% if temp < 170 %}
+            {% set temp = printer['gcode_macro _global_var'].active_tool_temp|float %}
+        {% endif %}
+        {% if temp < 170 %}
+            {action_raise_error("TC_REASSIGN: no print temperature known for slicer T" ~ n ~ " (old tool target " ~ printer[old_ext].target ~ "). Heat T" ~ p ~ " by hand first.")}
+        {% endif %}
+        RESPOND MSG="TC_REASSIGN: slicer T{n}: T{old} -> T{p} at {temp|int}C"
+        SET_HEATER_TEMPERATURE HEATER={new_ext} TARGET={temp}
+        SET_TOOL_MAPPING T={n} TOOL={p}
+        # drop the new tool from this slicer tool's backups
+        {% set st = printer["gcode_macro _TC_MAP"] %}
+        {% set bk = st.backups.get('T' ~ n, [])|list %}
+        {% if p in bk %}
+            {% set _ = bk.remove(p) %}{% set b2 = dict(st.backups) %}{% set _ = b2.update({'T' ~ n: bk}) %}
+            SET_GCODE_VARIABLE MACRO=_TC_MAP VARIABLE=backups VALUE="{b2}"
+        {% endif %}
+        _TC_REASSIGN_SWAP T={n} OLD={old} TEMP={temp|int} RESUME={params.RESUME|default(0)|int}
+    {% endif %}
+
+[gcode_macro _TC_REASSIGN_SWAP]
+description: Internal (separate macro so it runs after the mapping is updated).
+gcode:
+    {% set n = params.T|int %}
+    {% set old = params.OLD|int %}
+    {% set st = printer["gcode_macro _TC_MAP"] %}
+    T{n}                       # through the mapping: dropoff old, pick up new, waits for temp at the end of pickup
+    M83
+    G1 E{st.purge_mm} F{st.purge_speed}
+    G1 E-1 F1800
+    KOMB TEMPERATURE={params.TEMP|int}   # brush at the print temp (KOMB would otherwise heat to its own minimum), returns to the park spot
+    _TC_REASSIGN_OLD_OFF OLD={old}
+    {% if params.RESUME|default(0)|int == 1 %}
+        RESUME
+    {% else %}
+        RESPOND MSG="TC_REASSIGN: swapped, still paused. Press Resume when ready."
+    {% endif %}
+
+[gcode_macro _TC_REASSIGN_OLD_OFF]
+description: Internal. Turn the old physical tool's heater off if no slicer tool still maps to it.
+gcode:
+    {% set old = params.OLD|int %}
+    {% set still = [] %}
+    {% for n in printer.toolchanger.tool_numbers %}
+        {% if printer["gcode_macro T" ~ n].tool|int == old %}{% set _ = still.append(n) %}{% endif %}
+    {% endfor %}
+    {% if not still %}
+        SET_HEATER_TEMPERATURE HEATER={printer["tool T" ~ old].extruder} TARGET=0
+    {% endif %}
+
+[gcode_macro _TC_RUNOUT_OFFER]
+description: Internal. After a runout pause: offer the slicer tool's backups (manual choice, never automatic).
+gcode:
+    {% set p = params.TOOL|int %}
+    {% set st = printer["gcode_macro _TC_MAP"] %}
+    {% set n = st.active_slicer|int %}
+    {% set mats = printer.save_variables.variables.filament_types|default([]) %}
+    {%- macro ui(msg) -%}{ action_respond_info("action:prompt_" ~ msg) }{%- endmacro -%}
+    {%- macro label(q) -%}T{q}{ (" " ~ mats[q]) if q < mats|length and mats[q] else "" }{%- endmacro -%}
+    {% if printer.pause_resume.is_paused and n >= 0 and printer["gcode_macro T" ~ n].tool|int == p %}
+        {% set bk = st.backups.get('T' ~ n, []) %}
+        { ui("begin Runout on " ~ label(p)) }
+        { ui("text Slicer T" ~ n ~ " ran out on physical " ~ label(p) ~ ". Pick a tool to continue, or reload " ~ label(p) ~ " and press Resume.") }
+        {% for q in bk if q != p %}
+            { ui("button Continue on " ~ label(q) ~ " (backup " ~ loop.index ~ ")|TC_REASSIGN T=" ~ n ~ " TOOL=" ~ q ~ " RESUME=1|primary") }
+        {% endfor %}
+        { ui("footer_button Pick another tool|TC_MAP EDIT=" ~ n ~ "|secondary") }
+        { ui("footer_button Stay paused|TC_MAP CLOSE=1|secondary") }
+        { ui("show") }
+    {% endif %}
+
+# T2's Orbiter filament sensor calls these. Its runout_gcode used to call T2_FILAMENT_RUNOUT, which Klipper
+# cannot register (no digits inside macro names), so a T2 runout only logged "Unknown command".
+[gcode_macro _ORBITER_RUNOUT]
+gcode:
+    {% if printer.toolhead.extruder == printer["tool T2"].extruder and printer.print_stats.state == "printing" %}
+        PAUSE
+        M117 Filament switch runout on T2
+        RESPOND TYPE=echo MSG="Filament switch runout on T2"
+        _TC_RUNOUT_OFFER TOOL=2
+    {% endif %}
+
+[gcode_macro _ORBITER_INSERT]
+gcode:
+    {% if printer.toolhead.extruder == printer["tool T2"].extruder and printer.print_stats.state == "printing" %}
+        RESPOND TYPE=echo MSG="Filament switch inserted on T2"
+    {% endif %}
